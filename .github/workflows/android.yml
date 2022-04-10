@@ -22,9 +22,19 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+      
     - name: Build with Gradle
       run: ./gradlew build
+      
     - name: Run Debug Tests
       run: ./gradlew testDebugUnitTest
-    - name: Upload coverage to Codecov
-      run: bash <(curl -s https://codecov.io/bash)
+      
+    - name: Codcov Coverage
+    - uses: actions/checkout@master
+    - uses: codecov/codecov-action@v2
+      with:
+        files: ./coverage1.xml,./coverage2.xml # optional
+        flags: unittests # optional
+        name: codecov-umbrella # optional
+        fail_ci_if_error: true # optional (default = false)
+        verbose: true # optional (default = false)
