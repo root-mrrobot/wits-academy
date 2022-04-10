@@ -30,7 +30,6 @@ jobs:
       run: ./gradlew testDebugUnitTest
       
     - name: Codcov Coverage
-    - uses: actions/checkout@master
     - uses: codecov/codecov-action@v2
       with:
         files: ./coverage1.xml,./coverage2.xml # optional
