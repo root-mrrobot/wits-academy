@@ -83,30 +83,30 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         String fullName = editTextFullName.getText().toString().trim();
         String confirmPassword = editTextConfirmPassword.getText().toString().trim();
 
-        if(fullName.isEmpty()){
+        if(!RegisterValidation.notEmptyString(fullName)){
             editTextFullName.setError("Full name required");
             editTextFullName.requestFocus();
             return;
         }
-        if(email.isEmpty()){
+        if(!RegisterValidation.notEmptyString(email)){
             editTextEmail.setError("Email required");
             editTextEmail.requestFocus();
             return;
         }
 
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if(!RegisterValidation.matchesEmailPattern(email)){
             editTextEmail.setError("Valid Email Required");
             editTextEmail.requestFocus();
             return;
         }
 
-        if(password.isEmpty()&& password.length()<6){
+        if((!RegisterValidation.notEmptyString(password)) && (!RegisterValidation.lengthGreaterThanSix(password))){
             editTextPassword.setError("Invalid password");
             editTextPassword.requestFocus();
             return;
         }
 
-        if (!password.equals(confirmPassword)) {
+        if (!RegisterValidation.passwordMatchesConfirm(password, confirmPassword)) {
             editTextConfirmPassword.setError("Passwords do not match!");
             editTextConfirmPassword.requestFocus();
             return;
