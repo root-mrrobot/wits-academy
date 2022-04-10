@@ -3,7 +3,7 @@ package com.example.myapplication;
 public class User {
 
     public String fullName,age,email;
-    public User(){
+    public User(String fullName, String email){
 
     }
     public User(String fullName, String age, String email){
