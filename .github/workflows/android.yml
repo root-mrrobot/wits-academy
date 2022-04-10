@@ -27,4 +27,4 @@ jobs:
     - name: Run Debug Tests
       run: ./gradlew testDebugUnitTest
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
+      run: bash <(curl -s https://codecov.io/bash)
