@@ -6,9 +6,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class SplashScreen extends AppCompatActivity {
     Handler handler;
+
+    Animation topanim,bottomanim;
+    ImageView image;
+    TextView slogan1,slogan2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +26,19 @@ public class SplashScreen extends AppCompatActivity {
         // this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
         // WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_splash_screen);
+
+        //initialising animation for logo and slogan
+        topanim = AnimationUtils.loadAnimation(this,R.anim.top_animation);
+        bottomanim = AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
+
+        image = findViewById(R.id.WitsAcademyimg);
+        slogan1 = findViewById(R.id.slogan1);
+        slogan2 = findViewById(R.id.slogan2);
+
+        //creating animation
+        image.setAnimation(topanim);
+        slogan1.setAnimation(bottomanim);
+        slogan2.setAnimation(bottomanim);
 
         handler = new Handler();
         handler.postDelayed(new Runnable() {
