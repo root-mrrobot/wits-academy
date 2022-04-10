@@ -23,8 +23,7 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
         getSupportActionBar().hide(); // hide the title bar
-        // this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-        // WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
+
         setContentView(R.layout.activity_splash_screen);
 
         //initialising animation for logo and slogan
@@ -40,6 +39,7 @@ public class SplashScreen extends AppCompatActivity {
         slogan1.setAnimation(bottomanim);
         slogan2.setAnimation(bottomanim);
 
+        //creating splash screen.
         handler = new Handler();
         handler.postDelayed(new Runnable() {
 

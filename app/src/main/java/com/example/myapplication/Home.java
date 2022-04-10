@@ -18,7 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 public class Home extends AppCompatActivity implements View.OnClickListener{
-
+    //creatings variables
     TextView fullName;
     FirebaseUser fAuth;
     DatabaseReference fdata;
@@ -30,27 +30,23 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        //constants
         fullName = findViewById(R.id.full_Name);
         fAuth = FirebaseAuth.getInstance().getCurrentUser() ;
         assert fAuth != null;
         userId = fAuth.getUid();
         fdata = FirebaseDatabase.getInstance().getReference();
-        
         account =  findViewById(R.id.btnAccount);
         account.setOnClickListener(this);
 
 
-
+        //database object for referencing objects in database for use
         DatabaseReference data_ref = FirebaseDatabase.getInstance().getReference("Users/" + userId);
         data_ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 String val = snapshot.child("fullName").getValue(String.class);
-
                 fullName.setText(val);
-
-
             }
 
 
@@ -62,7 +58,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     }
 
 
-
+    //when account button pressed takes user to account page
     @Override
     public void onClick(View view) {
         switch(view.getId()){
