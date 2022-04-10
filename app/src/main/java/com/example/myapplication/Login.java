@@ -60,6 +60,19 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         });
     }
 
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.registerText:
+                startActivity(new Intent(this, Register.class));
+                break;
+
+            case R.id.buttonLogin:
+                userLogin();
+                break;
+        }
+    }
+
     private void userLogin() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
