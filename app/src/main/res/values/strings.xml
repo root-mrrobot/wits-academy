@@ -6,8 +6,8 @@
     <string name="password"> &#160;&#160;&#160; Password</string>
     <string name="confirmPassword"> &#160;&#160;&#160; Confirm Password</string>
 
-    <string name="registerHere">Don\'t have an account. <b><u>Register here</u></b></string>
-    <string name="loginHere">Already have an account. <b><u>Login here</u></b></string>
+    <string name="registerHere">Don\'t have an account? <b><u>Register here</u></b></string>
+    <string name="loginHere">Already have an account? <b><u>Login here</u></b></string>
 
     <string name="login">Login</string>
     <string name="logout">Logout</string>
