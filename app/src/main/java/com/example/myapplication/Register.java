@@ -30,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
+    //creating variables
     private FirebaseAuth mAuth;
     private Button registerUser;
     private TextView login;
@@ -47,6 +48,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         getSupportActionBar().hide(); // hide the title bar
         setContentView(R.layout.activity_register);
 
+        //initialising constants
         mAuth=FirebaseAuth.getInstance();
         login = findViewById(R.id.loginText);
         login.setOnClickListener(this);
@@ -62,16 +64,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         assert fAuth != null;
         userId = fAuth.getUid();
         fdata = FirebaseDatabase.getInstance().getReference();
-        String val;
 
 
-
-
-
-
-
-
-
+        //show password function
         showPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -89,11 +84,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         });
     }
 
+    //when register button pressed authenticates user and sends user to home page
     @Override
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.loginText:
-                startActivity(new Intent(this, Login.class));
+                startActivity(new Intent(this, Login.class));//not a member?go back to login
                 break;
             case R.id.btnRegister:
                 registerUser();
@@ -101,6 +97,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
+    //authentication of credentials entered on register page
     private void registerUser() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
@@ -136,6 +133,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
+
+        //firebase function to store user credentials in realtime database
         mAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -169,12 +168,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                     for(DataSnapshot i: snapshot.getChildren()) {
                         String val = snapshot.child("email").getValue(String.class);
-
                         Toast.makeText(Register.this, val, Toast.LENGTH_LONG).show();
-
                     }
-
-
             }
 
             @Override
@@ -182,9 +177,5 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
             }
         });*/
-
-
     }
-
-
 }
