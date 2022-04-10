@@ -77,21 +77,21 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
-        if(email.isEmpty()){
+        if(!LoginValidation.notEmptyString(email)){
             editTextEmail.setError("Email is required");
             editTextEmail.requestFocus();
             return;
         }
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if(!LoginValidation.matchesEmailPattern(email)){
             editTextEmail.setError("Please enter a valid email");
             return;
         }
-        if(password.isEmpty()){
+        if(!LoginValidation.notEmptyString(password)){
             editTextPassword.setError("Password is required");
             editTextPassword.requestFocus();
             return;
         }
-        if(password.length()<6){
+        if(!LoginValidation.lengthGreaterThanSix(password)){
             editTextPassword.setError("Password too short");
             editTextPassword.requestFocus();
             return;
