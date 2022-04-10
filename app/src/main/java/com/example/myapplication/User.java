@@ -1,15 +1,11 @@
 package com.example.myapplication;
-
 public class User {
+    public String fullName,email,password;
 
-    public String fullName,age,email;
-    public User(String fullName, String email){
-
-    }
-    public User(String fullName, String age, String email){
+    public User(String fullName,String email,String password){
         this.fullName=fullName;
-        this.age=age;
         this.email=email;
+        this.password=password;
 
     }
 }

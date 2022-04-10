@@ -22,7 +22,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
@@ -30,6 +35,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     private TextView login;
     private EditText editTextFullName, editTextEmail, editTextPassword, editTextConfirmPassword;
     private CheckBox showPassword;
+    TextView email;
+    FirebaseUser fAuth;
+    DatabaseReference fdata;
+    String userId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +57,20 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         editTextConfirmPassword = findViewById((R.id.confirmPassword));
         registerUser.setOnClickListener(this);
         showPassword = (CheckBox) findViewById(R.id.showRegisterPassword);
+        email = findViewById(R.id.email);
+        fAuth = FirebaseAuth.getInstance().getCurrentUser() ;
+        assert fAuth != null;
+        userId = fAuth.getUid();
+        fdata = FirebaseDatabase.getInstance().getReference();
+        String val;
+
+
+
+
+
+
+
+
 
         showPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -117,7 +141,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            User user = new User(fullName,email);
+                            User user = new User(fullName,email,password);
 
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -136,6 +160,30 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                         }
                     }
                 });
+
+        //getting email from database to compare with email entered(if exists already)
+        //TODO: caution - work in process
+        /*DatabaseReference data_ref = FirebaseDatabase.getInstance().getReference("Users/" + userId);
+        data_ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for(DataSnapshot i: snapshot.getChildren()) {
+                        String val = snapshot.child("email").getValue(String.class);
+
+                        Toast.makeText(Register.this, val, Toast.LENGTH_LONG).show();
+
+                    }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });*/
+
+
     }
 
 
