@@ -21,8 +21,10 @@
   <img src="https://contributors-img.web.app/image?repo=root-mrrobot/SD-Project">
 </a> -->
 
-### Build Status
+### Build-Test Status
 [![Android CI](https://github.com/root-mrrobot/SD-Project/actions/workflows/android.yml/badge.svg)](https://github.com/root-mrrobot/SD-Project/actions/workflows/android.yml)
-![GitHub issues](https://img.shields.io/github/issues/root-mrrobot/SD-Project)
+[![codecov](https://codecov.io/gh/root-mrrobot/SD-Project/branch/main/graph/badge.svg?token=ZZFG9J1N98)](https://codecov.io/gh/root-mrrobot/SD-Project)
+<!--  Not necessary -->
+<!-- ![GitHub issues](https://img.shields.io/github/issues/root-mrrobot/SD-Project) -->
 
 <em> See [Actions](https://github.com/root-mrrobot/SD-Project/actions) page for more build details. </em>
