@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+    id 'com.dicedmelon.gradle.jacoco-android'
 }
 
 android {
@@ -20,6 +21,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        //added
+        debug {
+            testCoverageEnabled true
         }
     }
     compileOptions {
