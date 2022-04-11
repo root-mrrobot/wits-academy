@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 public class Account extends AppCompatActivity implements View.OnClickListener {
+    
+    // Logout button
 
     private Button logout;
 
@@ -19,6 +21,8 @@ public class Account extends AppCompatActivity implements View.OnClickListener {
         logout =  findViewById(R.id.btnLogout);
         logout.setOnClickListener(this);
     }
+    
+    // Takes user back to login page
 
     @Override
     public void onClick(View view) {
