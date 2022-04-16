@@ -23,6 +23,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,7 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
-    //creating variables
+    //creating variables to use for reference
     private FirebaseAuth mAuth;
     private Button registerUser;
     private TextView login;
@@ -40,6 +41,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     FirebaseUser fAuth;
     DatabaseReference fdata;
     String userId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,7 +142,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            User user = new User(fullName,email,password);
+                            User user = new User(fullName,email,password);//varaiables that are stored in database.
 
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -148,7 +150,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
-                                        Toast.makeText(Register.this,"user registration succesful",Toast.LENGTH_LONG).show();
+                                        Toast.makeText(Register.this,"User registration succesful",Toast.LENGTH_LONG).show();
                                         startActivity(new Intent(Register.this, Home.class));
                                     }
                                     else{
@@ -161,21 +163,27 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 });
 
         //getting email from database to compare with email entered(if exists already)
-        //TODO: caution - work in process
-        /*DatabaseReference data_ref = FirebaseDatabase.getInstance().getReference("Users/" + userId);
-        data_ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for(DataSnapshot i: snapshot.getChildren()) {
-                        String val = snapshot.child("email").getValue(String.class);
-                        Toast.makeText(Register.this, val, Toast.LENGTH_LONG).show();
+        mAuth.fetchSignInMethodsForEmail(email)
+                .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+
+                        boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
+
+                        if (isNewUser) {
+                            //creates the new user.
+                        } else {
+                            //if email already exists user not created must change email
+                            Toast.makeText(Register.this,"Email already exists",Toast.LENGTH_LONG).show();
+                            Toast.makeText(Register.this,"Please enter another email",Toast.LENGTH_LONG).show();
+                        }
+
                     }
-            }
+                });
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });*/
+
+
+
     }
 }
