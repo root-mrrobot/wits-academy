@@ -171,7 +171,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                         boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
 
                         if (isNewUser) {
-                            //creates the new user.
+                            //creates the new user will run through the previous function.
                         } else {
                             //if email already exists user not created must change email
                             Toast.makeText(Register.this,"Email already exists",Toast.LENGTH_LONG).show();
