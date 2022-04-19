@@ -19,17 +19,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.ApiException;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
+
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -39,9 +37,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private Button signIn;
     private CheckBox showPassword;
     private FirebaseAuth mAuth;
-    private SignInButton googleSignIn;
-    private GoogleSignInClient mGoogle;
-    private GoogleSignInOptions gso;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +54,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         editTextPassword = findViewById(R.id.password);
         showPassword = findViewById(R.id.showLoginPassword);
         mAuth=FirebaseAuth.getInstance();
-        googleSignIn = findViewById(R.id.googleSignInButton);
-        googleSignIn.setOnClickListener(this);
+
+
 
         showPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -128,33 +124,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     }
 
-    //creating sign in method for listener
-    private void signIn(){
-        Intent signInIntent = mGoogle.getSignInIntent();
-        startActivityForResult(signInIntent,1000);
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode,Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1000){
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-
-            try {
-                task.getResult(ApiException.class);
-                finish();
-                Intent intent = new Intent(Login.this,Home.class);
-                startActivity(intent);
-            } catch (ApiException e) {
-                Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
-            }
-        }
-
-    }
 
     public void onClick(View view) {
         switch(view.getId()){
-
+                //listeners for when buttons are pressed
             case R.id.registerText:
                 startActivity(new Intent(this, Register.class));
                 break;
@@ -163,9 +137,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 userLogin();
                 break;
 
-            case R.id.googleSignInButton:
-                googleSignIn();
-                break;
+
 
         }
     }
@@ -207,33 +179,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         });
     }
 
-    private void googleSignIn()
-    {
-        //creating google sign in method
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-        mGoogle = GoogleSignIn.getClient(this,gso);
 
-        //setting listener for when google button clicked
-        GoogleSignInClient googleSignInClient= GoogleSignIn.getClient(this,gso);
-        googleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-
-                    FirebaseAuth.getInstance().signOut(); // very important if you are using firebase.
-                    Intent login_intent = new Intent(getApplicationContext(),Home.class);
-                    login_intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK); // clear previous task (optional)
-                    startActivity(login_intent);
-
-                }
-            }
-        });
-
-
-    }
 
 
 
