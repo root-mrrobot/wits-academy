@@ -33,8 +33,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         //constants
         fullName = findViewById(R.id.full_Name);
         fAuth = FirebaseAuth.getInstance().getCurrentUser() ;
-        assert fAuth != null;
-        userId = fAuth.getUid();
+        //assert fAuth != null;
+        if (fAuth != null) {
+            userId = fAuth.getUid();
+        }
         fdata = FirebaseDatabase.getInstance().getReference();
         account =  findViewById(R.id.btnAccount);
         account.setOnClickListener(this);
