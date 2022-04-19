@@ -7,11 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+
+
 public class Account extends AppCompatActivity implements View.OnClickListener {
     
     // Logout button
 
     private Button logout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -63,8 +63,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         showPassword = (CheckBox) findViewById(R.id.showRegisterPassword);
         email = findViewById(R.id.email);
         fAuth = FirebaseAuth.getInstance().getCurrentUser() ;
-        assert fAuth != null;
-        userId = fAuth.getUid();
+        if (fAuth != null) {
+            userId = fAuth.getUid();
+        }
         fdata = FirebaseDatabase.getInstance().getReference();
 
 
