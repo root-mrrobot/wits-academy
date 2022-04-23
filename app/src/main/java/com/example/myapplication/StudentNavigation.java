@@ -37,7 +37,7 @@ public class StudentNavigation extends AppCompatActivity {
                     case R.id.account:
                         fragment = new StudentAccountFragment();
                         break;
-                    case R.id.subsciptions:
+                    case R.id.subscriptions:
                         fragment = new StudentSubscriptionsFragment();
                         break;
                 }

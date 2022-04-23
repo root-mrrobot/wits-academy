@@ -73,7 +73,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageButton
-        android:id="@+id/btnTeacher"
+        android:id="@+id/btnLecturer"
         android:layout_width="170dp"
         android:layout_height="170dp"
         android:paddingBottom="40dp"
@@ -104,12 +104,12 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textColor="@color/black"
-        android:text="Teacher"
+        android:text="Lecturer"
         app:layout_constraintVertical_bias="0.85"
-        app:layout_constraintLeft_toLeftOf="@+id/btnTeacher"
-        app:layout_constraintRight_toRightOf="@+id/btnTeacher"
-        app:layout_constraintBottom_toBottomOf="@+id/btnTeacher"
-        app:layout_constraintTop_toTopOf="@+id/btnTeacher"/>
+        app:layout_constraintLeft_toLeftOf="@+id/btnLecturer"
+        app:layout_constraintRight_toRightOf="@+id/btnLecturer"
+        app:layout_constraintBottom_toBottomOf="@+id/btnLecturer"
+        app:layout_constraintTop_toTopOf="@+id/btnLecturer"/>
 
     <TextView
         android:id="@+id/textView9"
@@ -117,7 +117,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintVertical_bias="0.95"
         android:gravity="center"
-        android:text="Please Note: You will beable to switch between being a teacher and a student."
+        android:text="Please Note: You will be able to switch between being a teacher and a student."
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

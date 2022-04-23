@@ -4,10 +4,10 @@
     //creates menu items for student navigation bar and sets icons
     <item android:title="Home"
         android:icon="@drawable/ic_baseline_home_24"
-        android:id="@+id/home"/>
-    <item android:title="Subscriptions"
-        android:icon="@drawable/ic_baseline_subsciptions"
-        android:id="@+id/subscriptions"/>
+        android:id="@+id/lecturerHome"/>
+    <item android:title="Courses"
+        android:icon="@drawable/ic_baseline_library_courses_24"
+        android:id="@+id/courses"/>
     <item android:title="Account"
         android:icon="@drawable/ic_baseline_account_box_24"
         android:id="@+id/account"/>

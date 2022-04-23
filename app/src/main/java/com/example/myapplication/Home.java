@@ -6,11 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,6 +25,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     DatabaseReference fdata;
     String userId;
     private ImageButton student;
+    private ImageButton lecturer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +43,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         student =  findViewById(R.id.btnStudent);
         student.setOnClickListener(this);
 
+        lecturer =  findViewById(R.id.btnLecturer);
+        lecturer.setOnClickListener(this);
 
         //database object for referencing objects in database for use
         DatabaseReference data_ref = FirebaseDatabase.getInstance().getReference("Users/" + userId);
@@ -70,6 +71,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
             case R.id.btnStudent:
                 startActivity(new Intent(this, StudentNavigation.class));
                 break;
+            case R.id.btnLecturer:
+                startActivity(new Intent(this, LecturerNavigation.class));
+                break;
         }
     }
+
+
 }
