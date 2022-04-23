@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,13 +18,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 public class Home extends AppCompatActivity implements View.OnClickListener{
-    //creatings variables
+
+    //creating variables
     TextView fullName;
     FirebaseUser fAuth;
     DatabaseReference fdata;
     String userId;
-    private Button account;
+    private ImageButton student;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +41,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
             userId = fAuth.getUid();
         }
         fdata = FirebaseDatabase.getInstance().getReference();
-        account =  findViewById(R.id.btnAccount);
-        account.setOnClickListener(this);
+        student =  findViewById(R.id.btnStudent);
+        student.setOnClickListener(this);
 
 
         //database object for referencing objects in database for use
@@ -60,12 +63,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     }
 
 
-    //when account button pressed takes user to account page
+    //when student button pressed takes user to student view
     @Override
     public void onClick(View view) {
         switch(view.getId()){
-            case R.id.btnAccount:
-                startActivity(new Intent(this, Account.class));
+            case R.id.btnStudent:
+                startActivity(new Intent(this, StudentNavigation.class));
                 break;
         }
     }
