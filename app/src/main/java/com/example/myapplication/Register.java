@@ -41,7 +41,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     FirebaseUser fAuth;
     DatabaseReference fdata;
     String userId;
-
+    public String unitTest = "True";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,11 +151,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
-                                        Toast.makeText(Register.this,"User registration succesful",Toast.LENGTH_LONG).show();
+                                        Toast.makeText(Register.this,"User Registration Successful!",Toast.LENGTH_LONG).show();
                                         startActivity(new Intent(Register.this, Home.class));
                                     }
                                     else{
-                                        Toast.makeText(Register.this,"Failed",Toast.LENGTH_LONG).show();
+                                        Toast.makeText(Register.this,"Registration failed - Please try again",Toast.LENGTH_LONG).show();
+                                        unitTest ="False";
                                     }
                                 }
                             });
