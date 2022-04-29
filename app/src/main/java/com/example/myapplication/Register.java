@@ -22,14 +22,27 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.SignInMethodQueryResult;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
+    //creating variables to use for reference
     private FirebaseAuth mAuth;
     private Button registerUser;
     private TextView login;
     private EditText editTextFullName, editTextEmail, editTextPassword, editTextConfirmPassword;
     private CheckBox showPassword;
+    TextView email;
+    FirebaseUser fAuth;
+    DatabaseReference fdata;
+    String userId;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +50,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         getSupportActionBar().hide(); // hide the title bar
         setContentView(R.layout.activity_register);
 
+        //initialising constants
         mAuth=FirebaseAuth.getInstance();
         login = findViewById(R.id.loginText);
         login.setOnClickListener(this);
@@ -47,7 +61,15 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         editTextConfirmPassword = findViewById((R.id.confirmPassword));
         registerUser.setOnClickListener(this);
         showPassword = (CheckBox) findViewById(R.id.showRegisterPassword);
+        email = findViewById(R.id.email);
+        fAuth = FirebaseAuth.getInstance().getCurrentUser() ;
+        if (fAuth != null) {
+            userId = fAuth.getUid();
+        }
+        fdata = FirebaseDatabase.getInstance().getReference();
 
+
+        //show password function
         showPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -65,11 +87,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         });
     }
 
+    //when register button pressed authenticates user and sends user to home page
     @Override
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.loginText:
-                startActivity(new Intent(this, Login.class));
+                startActivity(new Intent(this, Login.class));//not a member?go back to login
                 break;
             case R.id.btnRegister:
                 registerUser();
@@ -77,47 +100,50 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
+    //authentication of credentials entered on register page
     private void registerUser() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         String fullName = editTextFullName.getText().toString().trim();
         String confirmPassword = editTextConfirmPassword.getText().toString().trim();
 
-        if(fullName.isEmpty()){
+        if(!RegisterValidation.notEmptyString(fullName)){
             editTextFullName.setError("Full name required");
             editTextFullName.requestFocus();
             return;
         }
-        if(email.isEmpty()){
+        if(!RegisterValidation.notEmptyString(email)){
             editTextEmail.setError("Email required");
             editTextEmail.requestFocus();
             return;
         }
 
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if(!RegisterValidation.matchesEmailPattern(email)){
             editTextEmail.setError("Valid Email Required");
             editTextEmail.requestFocus();
             return;
         }
 
-        if(password.isEmpty()&& password.length()<6){
+        if((!RegisterValidation.notEmptyString(password)) && (!RegisterValidation.lengthGreaterThanSix(password))){
             editTextPassword.setError("Invalid password");
             editTextPassword.requestFocus();
             return;
         }
 
-        if (!password.equals(confirmPassword)) {
+        if (!RegisterValidation.passwordMatchesConfirm(password, confirmPassword)) {
             editTextConfirmPassword.setError("Passwords do not match!");
             editTextConfirmPassword.requestFocus();
             return;
         }
 
+
+        //firebase function to store user credentials in realtime database
         mAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            User user = new User(fullName,email);
+                            User user = new User(fullName,email,password);//varaiables that are stored in database.
 
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -125,7 +151,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
-                                        Toast.makeText(Register.this,"user registration succesful",Toast.LENGTH_LONG).show();
+                                        Toast.makeText(Register.this,"User registration succesful",Toast.LENGTH_LONG).show();
                                         startActivity(new Intent(Register.this, Home.class));
                                     }
                                     else{
@@ -136,7 +162,29 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                         }
                     }
                 });
+
+        //getting email from database to compare with email entered(if exists already)
+        mAuth.fetchSignInMethodsForEmail(email)
+                .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+
+                        boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
+
+                        if (isNewUser) {
+                            //creates the new user will run through the previous function.
+                        } else {
+                            //if email already exists user not created must change email
+                            Toast.makeText(Register.this,"Email already exists",Toast.LENGTH_LONG).show();
+                            Toast.makeText(Register.this,"Please enter another email",Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                });
+
+
+
+
+
     }
-
-
 }
