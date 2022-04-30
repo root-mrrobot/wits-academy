@@ -119,6 +119,68 @@ public class RegisterTest {
         register.finish();
     }
 
+    @Test
+    public void testNegative1RegisterButton(){
+        onView(withId(R.id.btnRegister)).perform(click());
+        String check = register.unitTest;
+        assertEquals(check,"True");
+        register.finish();
+    }
+
+    @Test
+    public void testNegative2RegisterButton(){
+        onView(withId(R.id.fullName)).perform(typeText(STRING_TO_BE_TYPED_FULL_NAME), closeSoftKeyboard());
+        onView(withId(R.id.btnRegister)).perform(click());
+        String check = register.unitTest;
+        assertEquals(check,"True");
+        register.finish();
+    }
+
+    @Test
+    public void testNegative3RegisterButton(){
+        onView(withId(R.id.email)).perform(typeText(STRING_TO_BE_TYPED_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.btnRegister)).perform(click());
+        String check = register.unitTest;
+        assertEquals(check,"True");
+        register.finish();
+    }
+
+    @Test
+    public void testNegative4RegisterButton(){
+        onView(withId(R.id.password)).perform(typeText(STRING_TO_BE_TYPED_PASSWORD), closeSoftKeyboard());
+        onView(withId(R.id.btnRegister)).perform(click());
+        String check = register.unitTest;
+        assertEquals(check,"True");
+        register.finish();
+    }
+
+    @Test
+    public void testNegative5RegisterButton(){
+        onView(withId(R.id.confirmPassword)).perform(typeText(STRING_TO_BE_TYPED_CONFIRM_PASSWORD), closeSoftKeyboard());
+        onView(withId(R.id.btnRegister)).perform(click());
+        String check = register.unitTest;
+        assertEquals(check,"True");
+        register.finish();
+    }
+
+    @Test
+    public void testNegative6RegisterButton(){
+        onView(withId(R.id.password)).perform(typeText(STRING_TO_BE_TYPED_PASSWORD), closeSoftKeyboard());
+        onView(withId(R.id.confirmPassword)).perform(typeText(STRING_TO_BE_TYPED_CONFIRM_PASSWORD), closeSoftKeyboard());
+        onView(withId(R.id.btnRegister)).perform(click());
+        String check = register.unitTest;
+        assertEquals(check,"True");
+        register.finish();
+    }
+
+// Can't implement this because we done it differently (Can be used in the future maybe)
+//    @Test
+//    public void testRegister(){
+//        register.registerUser(STRING_TO_BE_TYPED_FULL_NAME, STRING_TO_BE_TYPED_EMAIL, STRING_TO_BE_TYPED_PASSWORD, STRING_TO_BE_TYPED_CONFIRM_PASSWORD);
+//
+//        register.finish();
+//    }
+
     @After
     public void tearDown() throws Exception {
         register = null;
