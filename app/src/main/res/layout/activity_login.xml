@@ -140,7 +140,7 @@
         android:id="@+id/imageView"
         android:layout_width="249dp"
         android:layout_height="270dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/loginTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
