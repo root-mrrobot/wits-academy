@@ -3,12 +3,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".LecturerAccountFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- NOTE: android:layout_marginTop="300dp" -->
+    <!-- That is the lowest we can go on fragments considering the nav bar  -->
+    <!-- If there is more to add to the screen, would be better to use ScrollView (I think) -->
+
+    <ImageView
+        android:id="@+id/profileBackground2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-315dp"
+        android:src="@drawable/background" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profilePic"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="-230dp"
+        android:layout_gravity="center"
+        android:src="@drawable/blank_profile_picture" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is an account page" />
+        android:id="@+id/profileName2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-140dp"
+        android:fontFamily="@font/poppinsbold"
+        android:layout_gravity="center"
+        android:text="Name"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/profileEmail2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-120dp"
+        android:fontFamily="@font/poppinsbold"
+        android:layout_gravity="center"
+        android:text="Email"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/btnSettings2"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="250sp"
+        android:layout_height="50sp"
+        android:layout_marginTop="180dp"
+        android:layout_gravity="center"
+        android:text="@string/settings"
+        app:backgroundTint="@color/colorAccent" />
+
+    <Button
+        android:id="@+id/btnLogout2"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="280dp"
+        android:text="@string/logout"
+        app:backgroundTint="@color/blue" />
+
+    <TextView
+        android:id="@+id/studentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-70dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:layout_gravity="center"
+        android:text="@string/studentTextView"
+        android:textSize="15sp" />
+
+    <ToggleButton
+        android:id="@+id/toggleBtn2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-20dp"
+        android:layout_gravity="center"
+        android:checked="true"
+        android:textOn="@string/teacher"
+        android:textOff="@string/student" />
 
 </FrameLayout>

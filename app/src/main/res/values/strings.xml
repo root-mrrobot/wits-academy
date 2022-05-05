@@ -19,4 +19,9 @@
     <string name="cae"> <b>Ctrl Alt Elite </b></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="teacher">teacher</string>
+    <string name="student">student</string>
+    <string name="teacherTextView">Want to change to <b>Teacher</b> view? Click below.</string>
+    <string name="settings">settings</string>
+    <string name="studentTextView">Want to change to <b>Student</b> view? Click below.</string>
 </resources>

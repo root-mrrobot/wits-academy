@@ -1,34 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/student_account_frag"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StudentAccountFragment">
 
-    <TextView
-        android:id="@+id/textView6"
+    <!-- NOTE: android:layout_marginTop="300dp" -->
+    <!-- That is the lowest we can go on fragments considering the nav bar  -->
+    <!-- If there is more to add to the screen, would be better to use ScrollView (I think) -->
+
+    <ImageView
+        android:id="@+id/profileBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="-315dp"
+        android:src="@drawable/background" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profilePic"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="-230dp"
+        android:layout_gravity="center"
+        android:src="@drawable/blank_profile_picture" />
+
+    <TextView
+        android:id="@+id/profileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-140dp"
         android:fontFamily="@font/poppinsbold"
-        android:text="This will be a Student Account Page"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="center"
+        android:text="Name"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/profileEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-120dp"
+        android:fontFamily="@font/poppinsbold"
+        android:layout_gravity="center"
+        android:text="Email"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/btnSettings"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="250sp"
+        android:layout_height="50sp"
+        android:layout_marginTop="180dp"
+        android:layout_gravity="center"
+        android:text="@string/settings"
+        app:backgroundTint="@color/colorAccent" />
 
     <Button
         android:id="@+id/btnLogout"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="280dp"
         android:text="@string/logout"
-        app:backgroundTint="@color/blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:backgroundTint="@color/blue" />
+
+    <TextView
+        android:id="@+id/studentTeacherTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-70dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:layout_gravity="center"
+        android:text="@string/teacherTextView"
+        android:textSize="15sp" />
+
+    <ToggleButton
+        android:id="@+id/toggleBtn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-20dp"
+        android:layout_gravity="center"
+        android:checked="true"
+        android:textOff="@string/teacher"
+        android:textOn="@string/student" />
 
 </FrameLayout>
