@@ -23,4 +23,5 @@
     <string name="student">student</string>
     <string name="teacherTextView">Want to change to <b>Teacher</b> view? Click below.</string>
     <string name="settings">settings</string>
+    <string name="studentTextView">Want to change to <b>Student</b> view? Click below.</string>
 </resources>

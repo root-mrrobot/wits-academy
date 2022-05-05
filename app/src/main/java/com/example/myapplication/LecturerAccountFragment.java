@@ -1,64 +1,119 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link LecturerAccountFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class LecturerAccountFragment extends Fragment {
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class LecturerAccountFragment extends Fragment implements View.OnClickListener{
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private FirebaseUser user;
+    private DatabaseReference ref;
 
-    public LecturerAccountFragment() {
-        // Required empty public constructor
-    }
+    private String userID;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment LecturerAccountFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static LecturerAccountFragment newInstance(String param1, String param2) {
-        LecturerAccountFragment fragment = new LecturerAccountFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    // Buttons, Toggles TextView variables
+    private SwitchCompat switchBtn;
+    private ToggleButton studentTeacherToggleBtn;
+    private TextView studentTextView;
+    private Button logout;
+    private Button settings;
+    View view;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lecturer_account, container, false);
+        view = inflater.inflate(R.layout.fragment_lecturer_account, container, false);
+
+        // Toggle Button things
+        studentTeacherToggleBtn = view.findViewById(R.id.toggleBtn2);
+        studentTeacherToggleBtn.setOnClickListener(this);
+        // Text variable to change
+        studentTextView = view.findViewById(R.id.studentTextView);
+
+        studentTeacherToggleBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked) {
+                    // Changed Text View to 'Teacher View' to show option to change to
+                    studentTextView.setText(R.string.studentTextView);
+                    // Toast Message to say successful change of View to Student View
+                    Toast.makeText(getActivity(), "You have successfully changed to Teacher View", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    // Changed Text View to 'Teacher View'
+                    //studentTeacherTextView.setText(R.string.studentTextView);
+                    // Toast Message to say successful change of View to Teacher View
+                    Toast.makeText(getActivity(), "You have successfully changed to Student View", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        // Referencing logout button from xml file
+        logout = view.findViewById(R.id.btnLogout2);
+        // setting on Click Listener
+        logout.setOnClickListener(this);
+
+        // Referencing settings button from xml file
+        settings = view.findViewById(R.id.btnSettings2);
+        // setting on Click Listener
+        settings.setOnClickListener(this);
+
+        // initialising Firebase Auth to get Current user
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        // Referencing Firebase Database to get Users
+        ref = FirebaseDatabase.getInstance().getReference("Users");
+        // assigning userID variable to get User ID
+        userID = user.getUid();
+
+        final TextView nameTextView = view.findViewById(R.id.profileName2);
+        final TextView emailTextView = view.findViewById(R.id.profileEmail2);
+
+        return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.btnLogout2:
+                Intent intent = new Intent(getActivity(), Login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                Toast.makeText(getActivity(),"You have successfully logged out. Please come back again!",Toast.LENGTH_SHORT).show();
+                //finish();
+                break;
+
+            case R.id.btnSettings2:
+                Intent intentSettings = new Intent(getActivity(), Settings.class);
+                startActivity(intentSettings);
+                break;
+
+            case R.id.toggleBtn2:
+                Intent intentStud = new Intent(getActivity(), StudentNavigation.class);
+                intentStud.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intentStud);
+                break;
+        }
     }
 }
