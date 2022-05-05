@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".Settings"
+            android:exported="false" />
+        <activity
             android:name=".LecturerNavigation"
             android:exported="false" />
         <activity
