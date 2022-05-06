@@ -46,6 +46,53 @@ public class SettingsTest {
         settings = loginActivityTestRule.getActivity();
     }
 
+    @Test
+    public void settingsTextTest() {
+        View view = settings.findViewById(R.id.editProfileText);
+        assertNotNull(view);
+    }
+
+    @Test
+    public void settingsTextTest2(){
+        TextView textViewTest = settings.findViewById(R.id.editProfileText);
+        String actual = textViewTest.getText().toString();
+        String expected = "Edit Profile Data";
+
+        assertEquals(actual,expected);
+        settings.finish();
+    }
+
+    @Test
+    public void ImageTest() {
+        View view = settings.findViewById(R.id.editProfilePic);
+        assertNotNull(view);
+    }
+
+    @Test
+    public void settingsNameTextTest() {
+        View view = settings.findViewById(R.id.settingsName);
+        assertNotNull(view);
+    }
+
+    @Test
+    public void testLaunchItems(){
+        View editProfileText = settings.findViewById(R.id.editProfileText);
+        View name = settings.findViewById(R.id.settingsName);
+        View editName = settings.findViewById(R.id.settingsNameEditText);
+        View editEmail = settings.findViewById(R.id.settingsEmailEditText);
+        View btnUpdate = settings.findViewById(R.id.btnUpdate);
+        View btnChangePw = settings.findViewById(R.id.btnChangePw);
+
+        assertNotNull(editProfileText);
+        assertNotNull(name);
+        assertNotNull(editName);
+        assertNotNull(editEmail);
+        assertNotNull(btnUpdate);
+        assertNotNull(btnChangePw);
+
+        settings.finish();
+    }
+
     @After
     public void tearDown() throws Exception {
         settings = null;
