@@ -67,7 +67,7 @@ public class info_courses extends AppCompatActivity {
                     if (coursesTableName.equals(name))
                     {
                         System.out.println("is equal");
-                        String description = child.child("description").getValue().toString();
+                        String description = child.child("description").getValue().toString();//getting description of course ot display
                         String Category = child.child("courseCategory").getValue().toString();
                         System.out.println(Category);
                         Ccat.setText(Category);
