@@ -5,12 +5,12 @@ package com.example.myapplication;
 class Course {
     String id;
     String name;
+    String description;
+    String category;
 
     // the following variables will have dummy values until fields for them are added to firebase
-
     String image = "this will be an image";                         // place holder until images are supported
-    String description = " this will be a course descripton for " + name;
-    String category = "this will be the course category for " + name;
+
 
 
     public String getId() {
@@ -27,5 +27,21 @@ class Course {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String name) {
+        this.category = category;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String name) {
+        this.name = description;
     }
 }

@@ -7,12 +7,26 @@
     tools:context=".LecturerCoursesFragment">
 
 
-
     <ListView
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:id="@+id/listView">
+        android:id="@+id/listView"
+        android:layout_width="411dp"
+        android:layout_height="640dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner2">
 
     </ListView>
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="269dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="31dp"
+        app:layout_constraintBottom_toTopOf="@+id/listView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
