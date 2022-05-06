@@ -7,57 +7,89 @@
     tools:context=".LecturerHomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/editTextTextPersonName3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Please name your course!"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="UnknownId" />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/add_course_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/course_name" />
 
     <EditText
         android:id="@+id/course_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="25dp"
         android:hint="name of course"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:background="@drawable/borderlines"
+        android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="127dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/add_course_name"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/course_name"
+        app:layout_constraintVertical_bias="0.772"
+        android:layout_width="70dp" />
+
+    <EditText
+        android:id="@+id/course_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="106dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Please Enter Course Description!"
+        android:background="@drawable/borderlines"
+        android:inputType="textMultiLine"
+        android:maxLines="10"
+        android:minLines="3"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/course_name" />
 
-    <TextView
-        android:id="@+id/my_courses"
+    <ImageView
+        android:id="@+id/imgView"
+        android:layout_width="272dp"
+        android:layout_height="271dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/borderlines"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/course_description" />
+
+    <Button
+        android:id="@+id/btnUpload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View my created courses"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="73dp"
+        android:text="Upload"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgView" />
+
+    <Button
+        android:id="@+id/btnChoose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="70dp"
+        android:text="Choose"
+        app:layout_constraintEnd_toStartOf="@+id/btnUpload"
+        app:layout_constraintTop_toBottomOf="@+id/imgView" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="342dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_course_name" />
+        app:layout_constraintTop_toBottomOf="@+id/course_name" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

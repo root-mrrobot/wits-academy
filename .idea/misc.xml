@@ -3,16 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_account.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_lecturer_navigation.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_login.xml" value="0.264" />
-        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_register.xml" value="0.264" />
-        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_splash_screen.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_student_navigation.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/fragment_lecturer_account.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/fragment_student_account.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/fragment_student_home.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/fragment_student_subsciptions.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/varac/AndroidStudioProjects/app/src/main/res/drawable/borderlines.xml" value="0.1285" />
+        <entry key="..\:/Users/varac/AndroidStudioProjects/app/src/main/res/layout/activity_home.xml" value="0.2" />
+        <entry key="..\:/Users/varac/AndroidStudioProjects/app/src/main/res/layout/activity_info_courses.xml" value="0.22146739130434784" />
+        <entry key="..\:/Users/varac/AndroidStudioProjects/app/src/main/res/layout/activity_lecturer_main.xml" value="0.24635416666666668" />
+        <entry key="..\:/Users/varac/AndroidStudioProjects/app/src/main/res/layout/activity_login.xml" value="0.22146739130434784" />
+        <entry key="..\:/Users/varac/AndroidStudioProjects/app/src/main/res/layout/activity_register.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/varac/AndroidStudioProjects/app/src/main/res/layout/activity_splash_screen.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/varac/AndroidStudioProjects/app/src/main/res/layout/fragment_lecturer_home.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/layout/fragment_lecturer_courses.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/fragment_student_home.xml" value="0.22056159420289856" />
       </map>

@@ -33,7 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Register extends AppCompatActivity implements View.OnClickListener {
     //creating variables to use for reference
     private FirebaseAuth mAuth;
-    private Button registerUser;
+    private Button registerUser,LETSGOO;
     private TextView login;
     private EditText editTextFullName, editTextEmail, editTextPassword, editTextConfirmPassword;
     private CheckBox showPassword;
@@ -69,6 +69,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         fdata = FirebaseDatabase.getInstance().getReference();
 
 
+
         //show password function
         showPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -97,6 +98,10 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             case R.id.btnRegister:
                 registerUser();
                 break;
+
+//            case R.id.btn_straightLecturer:
+//                startActivity(new Intent(getApplicationContext(), LecturerHomeFragment.class));
+//                break;
         }
     }
 
