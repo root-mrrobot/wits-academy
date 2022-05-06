@@ -88,35 +88,33 @@ public class StudentAccountFragment extends Fragment implements View.OnClickList
 
         // initialising Firebase Auth to get Current user
         user = FirebaseAuth.getInstance().getCurrentUser();
-        // Referencing Firebase Database to get Users
-        ref = FirebaseDatabase.getInstance().getReference("Users");
+
         // assigning userID variable to get User ID
-        userID = user.getUid();
+        if (user != null) {
+            userID = user.getUid();
+        }
 
         final TextView nameTextView = view.findViewById(R.id.profileName);
         final TextView emailTextView = view.findViewById(R.id.profileEmail);
 
+        // Referencing Firebase Database to get Users
+        ref = FirebaseDatabase.getInstance().getReference("Users/" + userID);
         // This fetches the data from firebase
-        // test
-//        ref.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                User userprofile = snapshot.getValue(User.class);
-//
-//                if (userprofile != null) {
-//                    String name = userprofile.fullName;
-//                    String email = userprofile.email;
-//
-//                    nameTextView.setText(name);
-//                    emailTextView.setText(email);
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                // Toast.makeText(getActivity(), "Something wrong happened!", Toast.LENGTH_LONG).show();
-//            }
-//        });
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String nameVal = snapshot.child("fullName").getValue(String.class);
+                nameTextView.setText(nameVal);
+
+                String emailVal = snapshot.child("email").getValue(String.class);
+                emailTextView.setText(emailVal);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity(), "Something wrong happened!", Toast.LENGTH_LONG).show();
+            }
+        });
 
         return view;
     }

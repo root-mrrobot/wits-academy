@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 
@@ -17,8 +18,11 @@ import android.widget.ToggleButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LecturerAccountFragment extends Fragment implements View.OnClickListener{
 
@@ -85,10 +89,31 @@ public class LecturerAccountFragment extends Fragment implements View.OnClickLis
         // Referencing Firebase Database to get Users
         ref = FirebaseDatabase.getInstance().getReference("Users");
         // assigning userID variable to get User ID
-        userID = user.getUid();
+        if (user != null) {
+            userID = user.getUid();
+        }
 
         final TextView nameTextView = view.findViewById(R.id.profileName2);
         final TextView emailTextView = view.findViewById(R.id.profileEmail2);
+
+        // Referencing Firebase Database to get Users
+        ref = FirebaseDatabase.getInstance().getReference("Users/" + userID);
+        // This fetches the data from firebase
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String nameVal = snapshot.child("fullName").getValue(String.class);
+                nameTextView.setText(nameVal);
+
+                String emailVal = snapshot.child("email").getValue(String.class);
+                emailTextView.setText(emailVal);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity(), "Something wrong happened!", Toast.LENGTH_LONG).show();
+            }
+        });
 
         return view;
     }
