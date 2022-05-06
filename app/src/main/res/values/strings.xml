@@ -26,4 +26,16 @@
     <string name="studentTextView">Want to change to <b>Student</b> view? Click below.</string>
     <string name="update">Update</string>
     <string name="change_password">Change Password</string>
+
+    <string-array name="Categories_array">
+        <item>All Courses</item>
+        <item>Science Faculty</item>
+        <item>Commerce Faculty</item>
+        <item>Health Sciences Faculty</item>
+        <item>Engineering Faculty</item>
+        <item>Arts and Music Faculty</item>
+    </string-array>
+
+
+
 </resources>
