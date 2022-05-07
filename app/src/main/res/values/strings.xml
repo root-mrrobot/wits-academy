@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Wits Academy</string>
 
@@ -31,11 +32,10 @@
         <item>All Courses</item>
         <item>Science Faculty</item>
         <item>Commerce Faculty</item>
-        <item>Health Sciences Faculty</item>
+        <item>Education Faculty</item>
+        <item>Health Science Faculty</item>
         <item>Engineering Faculty</item>
         <item>Arts and Music Faculty</item>
     </string-array>
-
-
 
 </resources>

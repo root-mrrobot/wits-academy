@@ -7,6 +7,8 @@ class Course {
     String name;
     String description;
     String category;
+    String teacher;
+    double rating;
 
     // the following variables will have dummy values until fields for them are added to firebase
     String image = "this will be an image";                         // place holder until images are supported
@@ -43,5 +45,21 @@ class Course {
 
     public void setDescription(String name) {
         this.name = description;
+    }
+
+    public String getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 }
