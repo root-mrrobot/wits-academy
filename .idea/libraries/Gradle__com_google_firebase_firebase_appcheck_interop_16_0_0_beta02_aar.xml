@@ -5,12 +5,17 @@
       <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/34a7d2ba74c81c863832a93a9d9ee7a8/transformed/firebase-appcheck-interop-16.0.0-beta02/res" />
       <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/87e7a7c268d26490ecab145bcb374777/transformed/firebase-appcheck-interop-16.0.0-beta02/AndroidManifest.xml" />
       <root url="jar://$PROJECT_DIR$/../.gradle/caches/transforms-3/87e7a7c268d26490ecab145bcb374777/transformed/firebase-appcheck-interop-16.0.0-beta02/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/87e7a7c268d26490ecab145bcb374777/transformed/firebase-appcheck-interop-16.0.0-beta02/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/87e7a7c268d26490ecab145bcb374777/transformed/firebase-appcheck-interop-16.0.0-beta02/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/87e7a7c268d26490ecab145bcb374777/transformed/firebase-appcheck-interop-16.0.0-beta02/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-appcheck-interop/16.0.0-beta02/7f3387a8931f360ef964123f9fae6ac0281ab0b5/firebase-appcheck-interop-16.0.0-beta02-javadoc.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-appcheck-interop/16.0.0-beta02/7f3387a8931f360ef964123f9fae6ac0281ab0b5/firebase-appcheck-interop-16.0.0-beta02-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-appcheck-interop/16.0.0-beta02/e5411d4ba6311ddb19ecec28e05c400c99a8d9bf/firebase-appcheck-interop-16.0.0-beta02-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-appcheck-interop/16.0.0-beta02/e5411d4ba6311ddb19ecec28e05c400c99a8d9bf/firebase-appcheck-interop-16.0.0-beta02-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
