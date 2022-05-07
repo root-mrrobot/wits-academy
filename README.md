@@ -13,9 +13,9 @@
 ### 🎓 Wits Academy 
 ### Contributors
 <em>Mohammed Zaid Ally, Aaqib Javed Khan, Yusuf Varachhia, Mikhail Chirkoot, Zainab Manack, Aashna Gaogle, Muhammad Ibrahim Suder, Anas Takolia, Fatima Essa</em>
-<a href="https://github.com/root-mrrobot/SD-Project/graphs/contributors">
+<!-- <a href="https://github.com/root-mrrobot/SD-Project/graphs/contributors">
   <img src="https://contributors-img.web.app/image?repo=root-mrrobot/SD-Project">
-</a>
+</a> -->
 
 ### Build-Test Status
 [![Android CI](https://github.com/root-mrrobot/SD-Project/actions/workflows/android.yml/badge.svg)](https://github.com/root-mrrobot/SD-Project/actions/workflows/android.yml)
