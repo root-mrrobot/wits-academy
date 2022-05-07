@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -64,13 +66,16 @@ public class StudentHomeFragment extends Fragment implements View.OnClickListene
                         myListCourses.setAdapter(null);
                         Course course = new Course();
                         course.setName(name);
-                        course.setDescription((description));
+                        course.setDescription(description);
                         course.setCategory(category);
                         course.setId(id);
                         myArrayList.add(course);
 
                         String singleCourse = "Category: " + category + "\nCourse Name: " + name + "\nDescription: " + description + "\n";
                         c.add(singleCourse);
+
+
+
                     }
                     else if (spinner.getSelectedItem().toString().equals("All Courses")){
                         myListCourses.setAdapter(null);
@@ -88,16 +93,39 @@ public class StudentHomeFragment extends Fragment implements View.OnClickListene
                         String singleCourse = "No Courses Available";
                         c.add(singleCourse);
                     }
-                }
-
-                    myArrayAdapter.notifyDataSetChanged();
-                    myListCourses.setAdapter(myArrayAdapter);
 
                 }
+                myArrayAdapter.notifyDataSetChanged();
+                myListCourses.setAdapter(myArrayAdapter);
+
+                // open the popup activity and display the course information according to what was clicked on
+                myListCourses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+                        String course = c.get(position);
+                        String[] splitCourse = course.split(":|\\\n");
 
 
+                        String courseName = splitCourse[3];
+                        //String courseId = splitCourse[];
+                        String category = splitCourse[1];
+                        String description = splitCourse[5];
+
+                        Bundle extras = new Bundle();
 
 
+                        extras.putString("courseName", courseName);
+                        extras.putString("courseDescription", description);
+                        extras.putString("category", category);
+                        //intent.putExtra("lecturerName", lecturer);
+
+                        Intent intent = new Intent(view.getContext(), StudentCoursePopUp.class);
+                        intent.putExtras(extras);
+                        startActivity(intent);
+                    }
+                });
+            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -107,8 +135,15 @@ public class StudentHomeFragment extends Fragment implements View.OnClickListene
 
         myListCourses=(ListView) view.findViewById(R.id.listView);
 
+
+
+
         return view;
+
+
     }
+
+
 
     @Override
     public void onClick(View view) {
