@@ -34,6 +34,7 @@ public class StudentHomeFragment extends Fragment implements View.OnClickListene
     Spinner spinner;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
