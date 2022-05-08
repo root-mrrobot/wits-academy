@@ -25,7 +25,7 @@ public class LecturerNavigationTest {
 
     private LecturerNavigation navigate = null;
 
-    Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(MainActivity.class.getName(),null ,false);
+    Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(Home.class.getName(),null ,false);
 
    @Test
     public void testLecturerNavigation() {
@@ -53,6 +53,7 @@ public class LecturerNavigationTest {
             //TEST
             Activity home = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
             assertNull(home);
+
 
         }
     }

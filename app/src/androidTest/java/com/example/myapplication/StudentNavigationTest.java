@@ -21,7 +21,7 @@ public class StudentNavigationTest {
 
     private StudentNavigation navigate = null;
 
-    Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(MainActivity.class.getName(),null ,false);
+    Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(Home.class.getName(),null ,false);
 
     @Test
     public void testStudentNavigation() {
