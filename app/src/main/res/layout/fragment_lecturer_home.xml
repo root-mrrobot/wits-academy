@@ -23,15 +23,15 @@
 
     <Button
         android:id="@+id/add_course_name"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:text="Add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/course_name"
-        app:layout_constraintVertical_bias="0.772"
-        android:layout_width="70dp" />
+        app:layout_constraintVertical_bias="0.755" />
 
     <EditText
         android:id="@+id/course_description"
@@ -76,8 +76,8 @@
         android:id="@+id/btnChoose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="70dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="84dp"
         android:text="Choose"
         app:layout_constraintEnd_toStartOf="@+id/btnUpload"
         app:layout_constraintTop_toBottomOf="@+id/imgView" />
