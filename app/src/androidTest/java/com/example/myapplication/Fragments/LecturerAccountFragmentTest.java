@@ -39,17 +39,17 @@ public class LecturerAccountFragmentTest {
     public void setUp() throws Exception {
     }
 
-    @Test
-    public void testLaunch(){
-        onView(withId(R.id.profileBackground2)).check(matches((isDisplayed())));
-        onView(withId(R.id.profilePic2)).check(matches(isDisplayed()));
-        onView(withId(R.id.profileName2)).check(matches(isDisplayed()));
-        onView(withId(R.id.profileEmail2)).check(matches(isDisplayed()));
-        onView(withId(R.id.btnSettings2)).check(matches(isDisplayed()));
-        onView(withId(R.id.btnLogout2)).check(matches(isDisplayed()));
-        onView(withId(R.id.studentTextView)).check(matches(isDisplayed()));
-        onView(withId(R.id.toggleBtn2)).check(matches(isDisplayed()));
-    }
+//     @Test
+//     public void testLaunch(){
+//         onView(withId(R.id.profileBackground2)).check(matches((isDisplayed())));
+//         onView(withId(R.id.profilePic2)).check(matches(isDisplayed()));
+//         onView(withId(R.id.profileName2)).check(matches(isDisplayed()));
+//         onView(withId(R.id.profileEmail2)).check(matches(isDisplayed()));
+//         onView(withId(R.id.btnSettings2)).check(matches(isDisplayed()));
+//         onView(withId(R.id.btnLogout2)).check(matches(isDisplayed()));
+//         onView(withId(R.id.studentTextView)).check(matches(isDisplayed()));
+//         onView(withId(R.id.toggleBtn2)).check(matches(isDisplayed()));
+//     }
 
     @Test
     public void testSettingsBtn() {
