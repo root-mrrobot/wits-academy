@@ -74,6 +74,11 @@ public class LoginTest {
     }
 
     @Test
+    public void registerPageBtnTest() {
+        onView(withId(R.id.registerText)).perform(click());
+    }
+
+    @Test
     public void testLaunchItems(){
         View email = login.findViewById(R.id.email);
         View password = login.findViewById(R.id.password);
@@ -118,7 +123,42 @@ public class LoginTest {
 //        onView(withId(R.id.calls)).perform(click());
 //        assertNotNull(login);
         login.finish();
+    }
 
+    @Test
+    public void testLoginButton2(){
+        onView(withId(R.id.buttonLogin)).perform(click());
+    }
+
+    @Test
+    public void testNegative1LoginButton(){
+        onView(withId(R.id.buttonLogin)).perform(click());
+        String check = login.unitTest;
+        assertEquals(check,"True");
+        login.finish();
+    }
+
+    @Test
+    public void testNegative2LoginButton(){
+        onView(withId(R.id.email)).perform(typeText(STRING_TO_BE_TYPED_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.buttonLogin)).perform(click());
+        String check = login.unitTest;
+        assertEquals(check,"True");
+        login.finish();
+    }
+
+    @Test
+    public void testNegative4LoginButton(){
+        onView(withId(R.id.password)).perform(typeText(STRING_TO_BE_TYPED_PASSWORD), closeSoftKeyboard());
+        onView(withId(R.id.buttonLogin)).perform(click());
+        String check = login.unitTest;
+        assertEquals(check,"True");
+        login.finish();
+    }
+
+    @Test
+    public void testForgotPwButton(){
+        onView(withId(R.id.forgotPassword)).perform(click());
     }
 
     @After
