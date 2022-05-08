@@ -39,17 +39,17 @@ public class StudentAccountFragmentTest {
     public void setUp() throws Exception {
     }
 
-    @Test
-    public void testLaunch(){
-        onView(withId(R.id.profileBackground)).check(matches((isDisplayed())));
-        onView(withId(R.id.profilePic)).check(matches(isDisplayed()));
-        onView(withId(R.id.profileName)).check(matches(isDisplayed()));
-        onView(withId(R.id.profileEmail)).check(matches(isDisplayed()));
-        onView(withId(R.id.btnSettings)).check(matches(isDisplayed()));
-        onView(withId(R.id.btnLogout)).check(matches(isDisplayed()));
-        onView(withId(R.id.studentTeacherTextView)).check(matches(isDisplayed()));
-        onView(withId(R.id.toggleBtn)).check(matches(isDisplayed()));
-    }
+//     @Test
+//     public void testLaunch(){
+//         onView(withId(R.id.profileBackground)).check(matches((isDisplayed())));
+//         onView(withId(R.id.profilePic)).check(matches(isDisplayed()));
+//         onView(withId(R.id.profileName)).check(matches(isDisplayed()));
+//         onView(withId(R.id.profileEmail)).check(matches(isDisplayed()));
+//         onView(withId(R.id.btnSettings)).check(matches(isDisplayed()));
+//         onView(withId(R.id.btnLogout)).check(matches(isDisplayed()));
+//         onView(withId(R.id.studentTeacherTextView)).check(matches(isDisplayed()));
+//         onView(withId(R.id.toggleBtn)).check(matches(isDisplayed()));
+//     }
 
     @Test
     public void testSettingsBtn() {
@@ -61,10 +61,10 @@ public class StudentAccountFragmentTest {
         onView(withId(R.id.btnLogout)).perform(click());
     }
 
-    @Test
-    public void testToggleBtn() {
-        onView(withId(R.id.toggleBtn)).perform(click());
-    }
+//     @Test
+//     public void testToggleBtn() {
+//         onView(withId(R.id.toggleBtn)).perform(click());
+//     }
 
     @Test
     public void testSettingsBtn2(){
@@ -84,14 +84,14 @@ public class StudentAccountFragmentTest {
         //LecturerAccountFragment.finish();
     }
 
-    @Test
-    public void testToggleBtn2(){
-        onView(withId(R.id.toggleBtn)).perform(click());
-        Activity studNav = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
-        assertNull(studNav);
+//     @Test
+//     public void testToggleBtn2(){
+//         onView(withId(R.id.toggleBtn)).perform(click());
+//         Activity studNav = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
+//         assertNull(studNav);
 
-        //LecturerAccountFragment.finish();
-    }
+//         //LecturerAccountFragment.finish();
+//     }
 
     @After
     public void tearDown() throws Exception {
