@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -29,7 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
+
 
 import java.util.ArrayList;
 
@@ -87,7 +88,7 @@ public class info_courses extends AppCompatActivity {
                         Ccat.setText(Category);
                         Cdesc.setText(description);
                         // variable which is ImageView
-                       Picasso.get().load(link).into(Cimg);
+                       Glide.with(getApplicationContext()).load(link).into(Cimg);
 
 
 
