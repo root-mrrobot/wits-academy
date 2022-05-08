@@ -2,11 +2,6 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +11,9 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.myapplication.R;
-import com.google.android.gms.common.util.JsonUtils;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,7 +22,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.jar.JarOutputStream;
 
 
 public class StudentHomeFragment extends Fragment implements AdapterView.OnItemSelectedListener {
@@ -54,9 +47,9 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.fragment_student_home, container, false);
 
-
         spinner = view.findViewById(R.id.spinner2);
         spinner.setOnItemSelectedListener(this);
+        spinner.setSelection(0);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),R.array.Categories_array, android.R.layout.simple_spinner_item);
@@ -65,10 +58,7 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
-        this.display();
-
         myListCourses=(ListView) view.findViewById(R.id.listView);
-
         return view;
     }
 
@@ -85,32 +75,41 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                     String name = child.child("name").getValue().toString();
                     String description = child.child("description").getValue().toString();
                     String category = child.child("courseCategory").getValue().toString();
+                    String lName = child.child("lecName").getValue().toString();
+                    String image = child.child("imageUri").getValue().toString();
                     float rating = r[new Random().nextInt(r.length)];
 
                     if (category.equals(spinner.getSelectedItem().toString())) {
                         Course course = new Course();
+
                         course.setName(name);
                         course.setDescription((description));
                         course.setCategory(category);
                         course.setId(id);
                         course.setRating(rating);
+                        course.setTeacher(lName);
+                        course.setImage(image);
                         myArrayList.add(course);
 
-                        String singleCourse = "\nCourse Name: " + name + "\nTeacher:" + "\nRating: " + rating;
+                        String singleCourse = "Course Name: " + name + "\nTeacher: " + "\nRating: " + rating;
                         c.add(singleCourse);
                     }
                     else if (spinner.getSelectedItem().toString().equals("All Courses")){
                         Course course = new Course();
+
                         course.setName(name);
                         course.setDescription((description));
                         course.setCategory(category);
                         course.setId(id);
+                        course.setRating(rating);
+                        course.setTeacher(lName);
+                        course.setImage(image);
                         myArrayList.add(course);
 
-                        String fullCourse = id + "\n" + name + "\n" + category + "\n" + description + "\n" + rating;
+                        String fullCourse = id + "\n" + name + "\n" + category + "\n" + description + "\n" + rating + "\n" + lName + "\n" + image;
                         fullC.add(fullCourse);
 
-                        String singleCourse =  "\nCourse Name: " + name + "\nTeacher:" + "\nRating: " + rating;
+                        String singleCourse =  "Course Name: " + name + "\nTeacher: " + lName + "\nRating: " + rating;
                         c.add(singleCourse);
 
                     }
@@ -124,8 +123,7 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
                         String course = fullC.get(position);
-                        String[] splitCourse = course.split(":|\\\n");
-                        System.out.println(course);
+                        String[] splitCourse = course.split(":|\n");
 
 
                         String courseName = splitCourse[1];
@@ -133,15 +131,17 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                         String category = splitCourse[2];
                         String description = splitCourse[3];
                         String rating = splitCourse[4];
+                        String lecturerName = splitCourse[5];
+                        String courseImage = splitCourse[6] + ":"+ splitCourse[7];
 
                         Bundle extras = new Bundle();
-
 
                         extras.putString("courseName", courseName);
                         extras.putString("courseDescription", description);
                         extras.putString("category", category);
                         extras.putString("rating", rating);
-                        //intent.putExtra("lecturerName", lecturer);
+                        extras.putString("lecturerName", lecturerName);
+                        extras.putString("image", courseImage);
 
                         Intent intent = new Intent(view.getContext(), StudentCoursePopUp.class);
                         intent.putExtras(extras);
