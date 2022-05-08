@@ -3,17 +3,14 @@ package com.example.myapplication;
 
 // This class allows for the creation and use of course objects
 class Course {
+
     String id;
     String name;
     String description;
     String category;
     String teacher;
+    String image;
     double rating;
-
-    // the following variables will have dummy values until fields for them are added to firebase
-    String image = "this will be an image";                         // place holder until images are supported
-
-
 
     public String getId() {
         return id;
@@ -35,7 +32,7 @@ class Course {
         return category;
     }
 
-    public void setCategory(String name) {
+    public void setCategory(String category) {
         this.category = category;
     }
 
@@ -43,8 +40,8 @@ class Course {
         return description;
     }
 
-    public void setDescription(String name) {
-        this.name = description;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getTeacher() {
@@ -53,6 +50,14 @@ class Course {
 
     public void setTeacher(String teacher) {
         this.teacher = teacher;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public double getRating() {
