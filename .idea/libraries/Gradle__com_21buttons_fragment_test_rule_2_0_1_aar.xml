@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.21buttons:fragment-test-rule:2.0.1@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/fb89db5b7d61f9bfee77556edb3363e9/transformed/fragment-test-rule-2.0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fb89db5b7d61f9bfee77556edb3363e9/transformed/fragment-test-rule-2.0.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fb89db5b7d61f9bfee77556edb3363e9/transformed/fragment-test-rule-2.0.1/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.21buttons/fragment-test-rule/2.0.1/4bd4cb5b68a1de91c238cea4f5cce1cf1abdc945/fragment-test-rule-2.0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.21buttons/fragment-test-rule/2.0.1/b53ca065dc1338b6b42e0eb70315f46a3b0a34e2/fragment-test-rule-2.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
