@@ -11,6 +11,13 @@
         <entry key="..\:/Users/varac/AndroidStudioProjects/app/src/main/res/layout/activity_register.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/varac/AndroidStudioProjects/app/src/main/res/layout/activity_splash_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/varac/AndroidStudioProjects/app/src/main/res/layout/fragment_lecturer_home.xml" value="0.24635416666666668" />
+        <entry key="..\:/Users/zania/AndroidStudioProjects/SD-Projectv1/app/src/main/res/layout/activity_lecturer_navigation.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/zania/AndroidStudioProjects/SD-Projectv1/app/src/main/res/layout/activity_student_navigation.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/zania/AndroidStudioProjects/SD-Projectv1/app/src/main/res/layout/fragment_lecturer_account.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/zania/AndroidStudioProjects/SD-Projectv1/app/src/main/res/layout/fragment_lecturer_courses.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/zania/AndroidStudioProjects/SD-Projectv1/app/src/main/res/layout/fragment_lecturer_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/zania/AndroidStudioProjects/SD-Projectv1/app/src/main/res/menu/lecturer_navigation_menu.xml" value="0.1" />
+        <entry key="..\:/Users/zania/AndroidStudioProjects/SD-Projectv1/app/src/main/res/menu/student_navigation_menu.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/fragment_lecturer_courses.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/fragment_student_home.xml" value="0.22056159420289856" />
       </map>
