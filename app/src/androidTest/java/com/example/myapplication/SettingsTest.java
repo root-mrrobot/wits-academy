@@ -63,6 +63,26 @@ public class SettingsTest {
     }
 
     @Test
+    public void NameTextTest(){
+        TextView textViewTest = settings.findViewById(R.id.settingsNameTextView);
+        String actual = textViewTest.getText().toString();
+        String expected = "Name:";
+
+        assertEquals(actual,expected);
+        settings.finish();
+    }
+
+    @Test
+    public void EmailTextTest(){
+        TextView textViewTest = settings.findViewById(R.id.settingsEmailTextView);
+        String actual = textViewTest.getText().toString();
+        String expected = "Email:";
+
+        assertEquals(actual,expected);
+        settings.finish();
+    }
+
+    @Test
     public void ImageTest() {
         View view = settings.findViewById(R.id.editProfilePic);
         assertNotNull(view);
@@ -91,6 +111,16 @@ public class SettingsTest {
         assertNotNull(btnChangePw);
 
         settings.finish();
+    }
+
+    @Test
+    public void testChangePwBtn() {
+        onView(withId(R.id.btnChangePw)).perform(click());
+    }
+
+    @Test
+    public void testUpdateBtn() {
+        onView(withId(R.id.btnUpdate)).perform(click());
     }
 
     @After

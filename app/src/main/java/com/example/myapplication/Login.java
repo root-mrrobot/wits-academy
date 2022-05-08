@@ -37,7 +37,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private Button signIn;
     private CheckBox showPassword;
     private FirebaseAuth mAuth;
-
+    public String unitTest = "True";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -179,6 +179,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 else{
                     Toast.makeText(Login.this, "Authentication failed", Toast.LENGTH_SHORT).show();
                     Toast.makeText(Login.this,"Failed to login, please check your credentials",Toast.LENGTH_LONG).show();
+                    unitTest = "False";
                 }
             }
         });
