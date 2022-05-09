@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +24,7 @@ public class info_courses extends AppCompatActivity {
     String courseId;
     public static TextView Cname;
     DatabaseReference ref;
+    TextView returnCourse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +34,25 @@ public class info_courses extends AppCompatActivity {
         String name = LecturerCoursesFragment.courseNameClicked;
         fAuth = FirebaseAuth.getInstance().getCurrentUser();
 
-        if (fAuth != null) {
+
+        returnCourse = findViewById(R.id.returnCourseButton);
+
+        returnCourse.setOnClickListener(new View.OnClickListener() { // Button to return to the Lecturer COurses Fragment
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), LecturerNavigation.class));
+            }
+        });
+
+
+        if (fAuth != null) { //Firebase Authorization
             courseId = fAuth.getUid();
         }
 
 
-        Cname = findViewById(R.id.test);
+        Cname = findViewById(R.id.crs_name);
         Cname.setText(name);
-        ImageView Cimg = findViewById(R.id.imageView2);
+        ImageView Cimg = findViewById(R.id.crs_image);
         TextView Cdesc = findViewById(R.id.crs_desc);
         TextView Ccat = findViewById(R.id.crs_category);
 
@@ -54,12 +68,12 @@ public class info_courses extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot child : snapshot.getChildren()) {
 
-
+                    //get the child of the course that we clicked on
                     String coursesTableName = child.child("name").getValue().toString();
 
 
                     // loading that data into rImage
-
+                    //Displays the courses information into the TextViews and retrieves the image associated with it
                     if (coursesTableName.equals(name))
                     {
                         System.out.println("is equal");
