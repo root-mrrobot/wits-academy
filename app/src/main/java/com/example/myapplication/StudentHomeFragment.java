@@ -65,12 +65,14 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
     public void display(){
         ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,c);
 
+        // Get the reference to the courses from the real-time database
         coursesRef= FirebaseDatabase.getInstance().getReference("courses/");
         coursesRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot child : snapshot.getChildren()) {
 
+                    // Retrieve all the necessary information from the real-time database
                     String id = child.getKey();
                     String name = child.child("name").getValue().toString();
                     String description = child.child("description").getValue().toString();
@@ -79,6 +81,10 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                     String image = child.child("imageUri").getValue().toString();
                     float rating = r[new Random().nextInt(r.length)];
 
+                    /* If a category filter is applied, add the courses that are in that category to myArrayList
+                     * Then create a string that contains all the relevant information for each course
+                     * and add each string to the arrayList c
+                     */
                     if (category.equals(spinner.getSelectedItem().toString())) {
                         Course course = new Course();
 
@@ -94,6 +100,10 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                         String singleCourse = "Course Name: " + name + "\nTeacher: " + "\nRating: " + rating;
                         c.add(singleCourse);
                     }
+                    /* If the all courses filter is applied, add all the courses to myArrayList
+                     * Then create a string that contains all the relevant information for each course
+                     * and add each string to the arrayList c
+                     */
                     else if (spinner.getSelectedItem().toString().equals("All Courses")){
                         Course course = new Course();
 
@@ -114,6 +124,7 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
 
                     }
                 }
+                // display courses using adapter
                 myArrayAdapter.notifyDataSetChanged();
                 myListCourses.setAdapter(myArrayAdapter);
 
@@ -121,11 +132,11 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                 myListCourses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-
+                        // get the course information of the selected course and enter it into an array
                         String course = fullC.get(position);
                         String[] splitCourse = course.split(":|\n");
 
-
+                        // get the necessary information from the above array
                         String courseName = splitCourse[1];
                         //String courseId = splitCourse[];
                         String category = splitCourse[2];
@@ -134,8 +145,10 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                         String lecturerName = splitCourse[5];
                         String courseImage = splitCourse[6] + ":"+ splitCourse[7];
 
+                        // create a bundle called extras
                         Bundle extras = new Bundle();
 
+                        // add all the information that needs to be imported to popup to the extras bundle
                         extras.putString("courseName", courseName);
                         extras.putString("courseDescription", description);
                         extras.putString("category", category);
@@ -143,6 +156,9 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                         extras.putString("lecturerName", lecturerName);
                         extras.putString("image", courseImage);
 
+                        /* create an intent to go from the current page to the popup and carry over the
+                        extras to be used on the popup
+                         */
                         Intent intent = new Intent(view.getContext(), StudentCoursePopUp.class);
                         intent.putExtras(extras);
                         startActivity(intent);
