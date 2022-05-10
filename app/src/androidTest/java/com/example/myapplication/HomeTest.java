@@ -154,10 +154,10 @@ public class HomeTest {
         home.finish();
     }
 
-    @Test
-    public void testLecturerBtn(){
-        onView(withId(R.id.btnLecturer)).perform(click());
-    }
+//     @Test
+//     public void testLecturerBtn(){
+//         onView(withId(R.id.btnLecturer)).perform(click());
+//     }
 
     @Test
     public void testLecturerBtn2() {
@@ -165,10 +165,10 @@ public class HomeTest {
         assertNotNull(view);
     }
 
-    @Test
-    public void testStudentBtn(){
-        onView(withId(R.id.btnStudent)).perform(click());
-    }
+//     @Test
+//     public void testStudentBtn(){
+//         onView(withId(R.id.btnStudent)).perform(click());
+//     }
 
     @Test
     public void testStudentBtn2() {
