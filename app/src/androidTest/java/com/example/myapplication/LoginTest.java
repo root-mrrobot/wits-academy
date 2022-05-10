@@ -131,6 +131,12 @@ public class LoginTest {
     }
 
     @Test
+    public void testLoginButton3() {
+        View view = login.findViewById(R.id.buttonLogin);
+        assertNotNull(view);
+    }
+
+    @Test
     public void testNegative1LoginButton(){
         onView(withId(R.id.buttonLogin)).perform(click());
         String check = login.unitTest;

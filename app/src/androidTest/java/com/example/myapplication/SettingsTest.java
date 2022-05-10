@@ -119,8 +119,20 @@ public class SettingsTest {
     }
 
     @Test
+    public void testChangePwBtn2() {
+        View view = settings.findViewById(R.id.btnChangePw);
+        assertNotNull(view);
+    }
+
+    @Test
     public void testUpdateBtn() {
         onView(withId(R.id.btnUpdate)).perform(click());
+    }
+
+    @Test
+    public void testUpdatePwBtn2() {
+        View view = settings.findViewById(R.id.btnUpdate);
+        assertNotNull(view);
     }
 
     @After

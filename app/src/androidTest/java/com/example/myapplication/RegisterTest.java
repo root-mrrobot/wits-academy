@@ -120,6 +120,12 @@ public class RegisterTest {
     }
 
     @Test
+    public void testRegisterButton2() {
+        View view = register.findViewById(R.id.btnRegister);
+        assertNotNull(view);
+    }
+
+    @Test
     public void testNegative1RegisterButton(){
         onView(withId(R.id.btnRegister)).perform(click());
         String check = register.unitTest;
