@@ -3,9 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_lecturer_navigation.xml" value="0.11980749746707194" />
         <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_login.xml" value="0.11666666666666667" />
+        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_main.xml" value="0.11980749746707194" />
         <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_settings.xml" value="0.264" />
+        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_splash_screen.xml" value="0.176" />
         <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/fragment_lecturer_account.xml" value="0.2" />
+        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/fragment_student_account.xml" value="0.11666666666666667" />
+        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/fragment_student_home.xml" value="0.11666666666666667" />
+        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/fragment_student_subsciptions.xml" value="0.11666666666666667" />
         <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/student_course_pop_up.xml" value="0.2" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/SD-Project/app/src/main/res/layout/student_course_pop_up.xml" value="0.17346014492753623" />
         <entry key="..\:/Users/varac/AndroidStudioProjects/app/src/main/res/drawable/borderlines.xml" value="0.1285" />
