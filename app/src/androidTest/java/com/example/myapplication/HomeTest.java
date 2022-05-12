@@ -195,6 +195,8 @@ public class HomeTest {
 //     public void testStudentBtn3(){
 //         onView(withId(R.id.btnStudent)).perform(click());
 //     }
+    
+//     Test
 
     @After
     public void tearDown() throws Exception {
