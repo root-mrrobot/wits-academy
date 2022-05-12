@@ -6,7 +6,9 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
+import android.app.Activity;
 import android.app.Instrumentation;
 import android.view.View;
 import android.widget.TextView;
@@ -154,10 +156,14 @@ public class HomeTest {
         home.finish();
     }
 
-//     @Test
-//     public void testLecturerBtn(){
-//         onView(withId(R.id.btnLecturer)).perform(click());
-//     }
+//    @Test
+//    public void testLecturerBtn(){
+//        onView(withId(R.id.btnLecturer)).perform(click());
+//        Activity home = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
+//        assertNull(home);
+//
+//        //home.finish();
+//    }
 
     @Test
     public void testLecturerBtn2() {
@@ -166,15 +172,29 @@ public class HomeTest {
     }
 
 //     @Test
-//     public void testStudentBtn(){
-//         onView(withId(R.id.btnStudent)).perform(click());
+//     public void testLecturerBtn3(){
+//         onView(withId(R.id.btnLecturer)).perform(click());
 //     }
+
+    @Test
+    public void testStudentBtn(){
+        onView(withId(R.id.btnStudent)).perform(click());
+        Activity home = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
+        assertNull(home);
+
+        //home.finish();
+    }
 
     @Test
     public void testStudentBtn2() {
         View view = home.findViewById(R.id.btnStudent);
         assertNotNull(view);
     }
+
+//     @Test
+//     public void testStudentBtn3(){
+//         onView(withId(R.id.btnStudent)).perform(click());
+//     }
 
     @After
     public void tearDown() throws Exception {
