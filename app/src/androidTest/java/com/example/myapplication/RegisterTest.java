@@ -107,6 +107,17 @@ public class RegisterTest {
     }
 
     @Test
+    public void testCheckBoxPw2(){
+        onView(withId(R.id.showRegisterPassword)).perform(click());
+    }
+
+    @Test
+    public void testCheckBoxPw3() {
+        View view = register.findViewById(R.id.showRegisterPassword);
+        assertNotNull(view);
+    }
+
+    @Test
     public void testRegisterButton(){
         onView(withId(R.id.fullName)).perform(typeText(STRING_TO_BE_TYPED_FULL_NAME), closeSoftKeyboard());
         onView(withId(R.id.email)).perform(typeText(STRING_TO_BE_TYPED_EMAIL), closeSoftKeyboard());
@@ -120,9 +131,33 @@ public class RegisterTest {
     }
 
     @Test
-    public void testRegisterButton2() {
+    public void testRegisterButton2(){
+        onView(withId(R.id.btnRegister)).perform(click());
+    }
+
+    @Test
+    public void testRegisterButton3(){
         View view = register.findViewById(R.id.btnRegister);
         assertNotNull(view);
+    }
+
+    @Test
+    public void testRegisterButton4(){
+        onView(withId(R.id.btnRegister)).perform(click());
+        Activity login = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
+        assertNull(login);
+
+        //login.finish();
+    }
+
+    @Test
+    public void testRegisterButton5(){
+        TextView textViewTest = register.findViewById(R.id.btnRegister);
+        String actual = textViewTest.getText().toString();
+        String expected = "Register";
+
+        assertEquals(actual,expected);
+        register.finish();
     }
 
     @Test
@@ -153,7 +188,8 @@ public class RegisterTest {
 
     @Test
     public void testNegative4RegisterButton(){
-        onView(withId(R.id.password)).perform(typeText(STRING_TO_BE_TYPED_PASSWORD), closeSoftKeyboard());
+        onView(withId(R.id.fullName)).perform(typeText(STRING_TO_BE_TYPED_FULL_NAME), closeSoftKeyboard());
+        onView(withId(R.id.email)).perform(typeText(STRING_TO_BE_TYPED_EMAIL), closeSoftKeyboard());
         onView(withId(R.id.btnRegister)).perform(click());
         String check = register.unitTest;
         assertEquals(check,"True");
@@ -162,7 +198,7 @@ public class RegisterTest {
 
     @Test
     public void testNegative5RegisterButton(){
-        onView(withId(R.id.confirmPassword)).perform(typeText(STRING_TO_BE_TYPED_CONFIRM_PASSWORD), closeSoftKeyboard());
+        onView(withId(R.id.password)).perform(typeText(STRING_TO_BE_TYPED_PASSWORD), closeSoftKeyboard());
         onView(withId(R.id.btnRegister)).perform(click());
         String check = register.unitTest;
         assertEquals(check,"True");
@@ -171,6 +207,57 @@ public class RegisterTest {
 
     @Test
     public void testNegative6RegisterButton(){
+        onView(withId(R.id.password)).perform(typeText(STRING_TO_BE_TYPED_PASSWORD), closeSoftKeyboard());
+        onView(withId(R.id.btnRegister)).perform(click());
+        String check = register.unitTest;
+        assertEquals(check,"True");
+        register.finish();
+    }
+
+    @Test
+    public void testNegative7RegisterButton(){
+        onView(withId(R.id.fullName)).perform(typeText(STRING_TO_BE_TYPED_FULL_NAME), closeSoftKeyboard());
+        onView(withId(R.id.email)).perform(typeText(STRING_TO_BE_TYPED_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.password)).perform(typeText(STRING_TO_BE_TYPED_PASSWORD), closeSoftKeyboard());
+        onView(withId(R.id.btnRegister)).perform(click());
+        String check = register.unitTest;
+        assertEquals(check,"True");
+        register.finish();
+    }
+
+    @Test
+    public void testNegative8RegisterButton(){
+        onView(withId(R.id.confirmPassword)).perform(typeText(STRING_TO_BE_TYPED_CONFIRM_PASSWORD), closeSoftKeyboard());
+        onView(withId(R.id.btnRegister)).perform(click());
+        String check = register.unitTest;
+        assertEquals(check,"True");
+        register.finish();
+    }
+
+    @Test
+    public void testNegative9RegisterButton(){
+        onView(withId(R.id.password)).perform(typeText(STRING_TO_BE_TYPED_PASSWORD), closeSoftKeyboard());
+        onView(withId(R.id.confirmPassword)).perform(typeText(STRING_TO_BE_TYPED_CONFIRM_PASSWORD), closeSoftKeyboard());
+        onView(withId(R.id.btnRegister)).perform(click());
+        String check = register.unitTest;
+        assertEquals(check,"True");
+        register.finish();
+    }
+
+    @Test
+    public void testNegative10RegisterButton(){
+        onView(withId(R.id.email)).perform(typeText(STRING_TO_BE_TYPED_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.password)).perform(typeText(STRING_TO_BE_TYPED_PASSWORD), closeSoftKeyboard());
+        onView(withId(R.id.confirmPassword)).perform(typeText(STRING_TO_BE_TYPED_CONFIRM_PASSWORD), closeSoftKeyboard());
+        onView(withId(R.id.btnRegister)).perform(click());
+        String check = register.unitTest;
+        assertEquals(check,"True");
+        register.finish();
+    }
+
+    @Test
+    public void testNegative11RegisterButton(){
+        onView(withId(R.id.fullName)).perform(typeText(STRING_TO_BE_TYPED_FULL_NAME), closeSoftKeyboard());
         onView(withId(R.id.password)).perform(typeText(STRING_TO_BE_TYPED_PASSWORD), closeSoftKeyboard());
         onView(withId(R.id.confirmPassword)).perform(typeText(STRING_TO_BE_TYPED_CONFIRM_PASSWORD), closeSoftKeyboard());
         onView(withId(R.id.btnRegister)).perform(click());

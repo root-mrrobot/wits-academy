@@ -104,6 +104,17 @@ public class LoginTest {
     }
 
     @Test
+    public void testCheckBoxPw2(){
+        onView(withId(R.id.showLoginPassword)).perform(click());
+    }
+
+    @Test
+    public void testCheckBoxPw3() {
+        View view = login.findViewById(R.id.showLoginPassword);
+        assertNotNull(view);
+    }
+
+    @Test
     public void testLoginButton(){
         onView(withId(R.id.email)).perform(typeText(STRING_TO_BE_TYPED_EMAIL), closeSoftKeyboard());
         onView(withId(R.id.password)).perform(typeText(STRING_TO_BE_TYPED_PASSWORD), closeSoftKeyboard());
@@ -131,9 +142,28 @@ public class LoginTest {
     }
 
     @Test
-    public void testLoginButton3() {
+    public void testLoginButton3(){
         View view = login.findViewById(R.id.buttonLogin);
         assertNotNull(view);
+    }
+
+    @Test
+    public void testLoginButton4(){
+        onView(withId(R.id.buttonLogin)).perform(click());
+        Activity login = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
+        assertNull(login);
+
+        //login.finish();
+    }
+
+    @Test
+    public void testLoginButton5(){
+        TextView textViewTest = login.findViewById(R.id.buttonLogin);
+        String actual = textViewTest.getText().toString();
+        String expected = "Login";
+
+        assertEquals(actual,expected);
+        login.finish();
     }
 
     @Test
@@ -165,6 +195,15 @@ public class LoginTest {
     @Test
     public void testForgotPwButton(){
         onView(withId(R.id.forgotPassword)).perform(click());
+    }
+
+    @Test
+    public void testForgotButton2(){
+        onView(withId(R.id.forgotPassword)).perform(click());
+        Activity login = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
+        assertNull(login);
+
+        //login.finish();
     }
 
     @After

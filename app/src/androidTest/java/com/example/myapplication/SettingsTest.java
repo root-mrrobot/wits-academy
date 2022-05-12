@@ -114,25 +114,63 @@ public class SettingsTest {
     }
 
     @Test
-    public void testChangePwBtn() {
+    public void testChangePwBtn(){
         onView(withId(R.id.btnChangePw)).perform(click());
     }
 
     @Test
-    public void testChangePwBtn2() {
+    public void testChangePwBtn2(){
         View view = settings.findViewById(R.id.btnChangePw);
         assertNotNull(view);
     }
 
     @Test
-    public void testUpdateBtn() {
+    public void testChangePwBtn3(){
+        onView(withId(R.id.btnChangePw)).perform(click());
+        Activity settings = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
+        assertNull(settings);
+
+        //settings.finish();
+    }
+
+//    @Test
+//    public void testChangePwBtn4(){
+//        TextView textViewTest = settings.findViewById(R.id.btnChangePw);
+//        String actual = textViewTest.getText().toString();
+//        String expected = "Change Password";
+//
+//        assertEquals(actual,expected);
+//        //settings.finish();
+//    }
+
+    @Test
+    public void testUpdateBtn(){
         onView(withId(R.id.btnUpdate)).perform(click());
     }
 
     @Test
-    public void testUpdatePwBtn2() {
+    public void testUpdateBtn2() {
         View view = settings.findViewById(R.id.btnUpdate);
         assertNotNull(view);
+    }
+
+    @Test
+    public void testUpdateBtn3(){
+        onView(withId(R.id.btnUpdate)).perform(click());
+        Activity settings = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
+        assertNull(settings);
+
+        //settings.finish();
+    }
+
+    @Test
+    public void testUpdateBtn4(){
+        TextView textViewTest = settings.findViewById(R.id.btnChangePw);
+        String actual = textViewTest.getText().toString();
+        String expected = "Update";
+
+        assertEquals(actual,expected);
+        settings.finish();
     }
 
     @After
