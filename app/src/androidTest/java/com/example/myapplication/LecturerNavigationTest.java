@@ -51,14 +51,14 @@ public class LecturerNavigationTest {
 //        assertNotNull(view);
 //    }
 
-    @Test
-    public void lecturerHomeTest3(){
-        onView(withId(R.id.lecturerHome)).perform(click());
-        Activity lecturerHome = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
-        assertNull(lecturerHome);
-
-        lecturerNavigate.finish();
-    }
+//    @Test
+//    public void lecturerHomeTest3(){
+//        onView(withId(R.id.lecturerHome)).perform(click());
+//        Activity lecturerHome = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
+//        assertNull(lecturerHome);
+//
+//        lecturerNavigate.finish();
+//    }
 
     @Test
     public void lecturerCoursesTest(){
