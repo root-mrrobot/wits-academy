@@ -2,6 +2,8 @@ package com.example.myapplication;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static org.junit.Assert.assertEquals;
@@ -13,6 +15,7 @@ import android.app.Instrumentation;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
@@ -38,6 +41,11 @@ public class HomeTest {
     }
 
     @Test
+    public void isActivityInView(){
+        onView(withId(R.id.home)).check(matches(isDisplayed()));
+    }
+
+    @Test
     public void welcomeTextTest() {
         View view = home.findViewById(R.id.welcomeTextView);
         assertNotNull(view);
@@ -51,6 +59,12 @@ public class HomeTest {
 
         assertEquals(actual,expected);
         home.finish();
+    }
+
+    @Test
+    public void welcomeTextTest3() {
+        onView(withId(R.id.welcomeTextView))
+                .check(matches(isDisplayed()));
     }
 
     @Test
