@@ -39,6 +39,11 @@ public class StudentAccountFragmentTest {
     public void setUp() throws Exception {
     }
 
+    @Test
+    public void isActivityInView(){
+        onView(withId(R.id.studentAccountFragment)).check(matches(isDisplayed()));
+    }
+
 //     @Test
 //     public void testLaunch(){
 //         onView(withId(R.id.profileBackground)).check(matches((isDisplayed())));
