@@ -45,11 +45,11 @@ public class LecturerNavigationTest {
         onView(withId(R.id.lecturerHome)).perform(click());
     }
 
-    @Test
-    public void lecturerHomeTest2(){
-        View view = lecturerNavigate.findViewById(R.id.lecturerHome);
-        assertNotNull(view);
-    }
+//    @Test
+//    public void lecturerHomeTest2(){
+//        View view = lecturerNavigate.findViewById(R.id.lecturerHome);
+//        assertNotNull(view);
+//    }
 
     @Test
     public void lecturerHomeTest3(){
