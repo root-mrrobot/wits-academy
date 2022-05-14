@@ -36,10 +36,10 @@ public class StudentNavigationTest {
         studentNavigate = navActivityTestRule.getActivity();
     }
 
-    @Test
-    public void isActivityInView(){
-        onView(withId(R.id.studentNavigation)).check(matches(isDisplayed()));
-    }
+//    @Test
+//    public void isActivityInView(){
+//        onView(withId(R.id.studentNavigation)).check(matches(isDisplayed()));
+//    }
 
     @Test
     public void studentHomeTest(){

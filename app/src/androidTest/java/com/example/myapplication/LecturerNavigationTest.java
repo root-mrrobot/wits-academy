@@ -35,10 +35,10 @@ public class LecturerNavigationTest {
         lecturerNavigate = navActivityTestRule.getActivity();
     }
 
-    @Test
-    public void isActivityInView(){
-        onView(withId(R.id.lecturerNavigation)).check(matches(isDisplayed()));
-    }
+//    @Test
+//    public void isActivityInView(){
+//        onView(withId(R.id.lecturerNavigation)).check(matches(isDisplayed()));
+//    }
 
     @Test
     public void lecturerHomeTest(){
