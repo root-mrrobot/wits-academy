@@ -65,11 +65,11 @@ public class LecturerNavigationTest {
         onView(withId(R.id.courses)).perform(click());
     }
 
-    @Test
-    public void lecturerCoursesTest2(){
-        View view = lecturerNavigate.findViewById(R.id.courses);
-        assertNotNull(view);
-    }
+//    @Test
+//    public void lecturerCoursesTest2(){
+//        View view = lecturerNavigate.findViewById(R.id.courses);
+//        assertNotNull(view);
+//    }
 
     @Test
     public void lecturerCoursesTest3(){
@@ -85,11 +85,11 @@ public class LecturerNavigationTest {
         onView(withId(R.id.account)).perform(click());
     }
 
-    @Test
-    public void lecturerAccountTest2(){
-        View view = lecturerNavigate.findViewById(R.id.account);
-        assertNotNull(view);
-    }
+//    @Test
+//    public void lecturerAccountTest2(){
+//        View view = lecturerNavigate.findViewById(R.id.account);
+//        assertNotNull(view);
+//    }
 
     @Test
     public void lecturerAccountTest3(){
