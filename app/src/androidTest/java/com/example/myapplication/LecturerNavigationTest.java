@@ -71,14 +71,14 @@ public class LecturerNavigationTest {
 //        assertNotNull(view);
 //    }
 
-    @Test
-    public void lecturerCoursesTest3(){
-        onView(withId(R.id.courses)).perform(click());
-        Activity lecturerCourses = getInstrumentation().waitForMonitorWithTimeout(monitor2,5000);
-        assertNull(lecturerCourses);
-
-        lecturerNavigate.finish();
-    }
+//    @Test
+//    public void lecturerCoursesTest3(){
+//        onView(withId(R.id.courses)).perform(click());
+//        Activity lecturerCourses = getInstrumentation().waitForMonitorWithTimeout(monitor2,5000);
+//        assertNull(lecturerCourses);
+//
+//        lecturerNavigate.finish();
+//    }
 
     @Test
     public void lecturerAccountTest(){
@@ -91,14 +91,14 @@ public class LecturerNavigationTest {
 //        assertNotNull(view);
 //    }
 
-    @Test
-    public void lecturerAccountTest3(){
-        onView(withId(R.id.account)).perform(click());
-        Activity lecturerAccount = getInstrumentation().waitForMonitorWithTimeout(monitor3,5000);
-        assertNull(lecturerAccount);
-
-        lecturerNavigate.finish();
-    }
+//    @Test
+//    public void lecturerAccountTest3(){
+//        onView(withId(R.id.account)).perform(click());
+//        Activity lecturerAccount = getInstrumentation().waitForMonitorWithTimeout(monitor3,5000);
+//        assertNull(lecturerAccount);
+//
+//        lecturerNavigate.finish();
+//    }
 
     @After
     public void tearDown() throws Exception {
