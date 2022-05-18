@@ -15,7 +15,7 @@ public class LecturerData {
     }
 
     String imageUri;
-String lecEmail;
+    String lecID;
 
 
 
@@ -27,20 +27,20 @@ String lecEmail;
         this.description = description;
     }
 
-    public String getLecEmail() {
-        return lecEmail;
+    public String getLecID() {
+        return lecID;
     }
 
-    public void setLecEmail(String lecEmail) {
-        this.lecEmail = lecEmail;
+    public void setLecID(String lecID) {
+        this.lecID = lecID;
     }
 
-    public LecturerData(String name, String description, String category1000, String imageUri, String lecEmail) {
+    public LecturerData(String name, String description, String category1000, String imageUri, String lecID) {
         this.name = name;
         this.description = description;
         this.category1000=category1000;
         this.imageUri=imageUri;
-        this.lecEmail = lecEmail;
+        this.lecID = lecID;
 
     }
 
