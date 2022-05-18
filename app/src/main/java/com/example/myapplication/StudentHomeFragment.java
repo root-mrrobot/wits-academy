@@ -31,6 +31,7 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
     ArrayList<String> c = new ArrayList<String>();
     ArrayList<String> fullC = new ArrayList<String>();
     DatabaseReference coursesRef;
+    DatabaseReference userRef;
     View view;
     Spinner spinner;
     String[] catArray;
@@ -77,7 +78,7 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                     String name = child.child("name").getValue().toString();
                     String description = child.child("description").getValue().toString();
                     String category = child.child("courseCategory").getValue().toString();
-                    String lName = child.child("lecName").getValue().toString();
+                    String lecEmail = child.child("lecEmail").getValue().toString();
                     String image = child.child("imageUri").getValue().toString();
                     float rating = r[new Random().nextInt(r.length)];
 
@@ -93,11 +94,11 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                         course.setCategory(category);
                         course.setId(id);
                         course.setRating(rating);
-                        course.setTeacher(lName);
+                        course.setTeacher(lecEmail);
                         course.setImage(image);
                         myArrayList.add(course);
 
-                        String singleCourse = "Course Name: " + name + "\nTeacher: " + "\nRating: " + rating;
+                        String singleCourse = "Course Name: " + name + "\nTeacher: " + lecEmail + "\nRating: " + rating;
                         c.add(singleCourse);
                     }
                     /* If the all courses filter is applied, add all the courses to myArrayList
@@ -112,14 +113,14 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                         course.setCategory(category);
                         course.setId(id);
                         course.setRating(rating);
-                        course.setTeacher(lName);
+                        course.setTeacher(lecEmail);
                         course.setImage(image);
                         myArrayList.add(course);
 
-                        String fullCourse = id + "\n" + name + "\n" + category + "\n" + description + "\n" + rating + "\n" + lName + "\n" + image;
+                        String fullCourse = id + "\n" + name + "\n" + category + "\n" + description + "\n" + rating + "\n" + lecEmail + "\n" + image;
                         fullC.add(fullCourse);
 
-                        String singleCourse =  "Course Name: " + name + "\nTeacher: " + lName + "\nRating: " + rating;
+                        String singleCourse =  "Course Name: " + name + "\nTeacher: " + lecEmail + "\nRating: " + rating;
                         c.add(singleCourse);
 
                     }

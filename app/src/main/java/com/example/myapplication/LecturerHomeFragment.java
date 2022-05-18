@@ -147,7 +147,7 @@ public class LecturerHomeFragment extends Fragment implements View.OnClickListen
                 .child("courses");
 
         descRef = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Lecturer created courses");
-        spinnerList = new ArrayList<>();//Array list to store cousre names created
+        spinnerList = new ArrayList<>();//Array list to store course names created
         adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, spinnerList);
 
         btnCHOOSE.setOnClickListener(this);//making listeners active to check for button click
@@ -213,12 +213,12 @@ public class LecturerHomeFragment extends Fragment implements View.OnClickListen
                             ref.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    String nameVal = snapshot.child("fullName").getValue(String.class);
-                                    System.out.println(nameVal);
+                                    String email = snapshot.child("email").getValue(String.class);
+                                    System.out.println(email);
                                     String name = course_name.getText().toString();
                                     category1000 = spinner.getSelectedItem().toString();//getting info that was entered from user
                                     String description = course_desc.getText().toString();//getting info that was entered from user
-                                    LecturerData lecturerData = new LecturerData(name,description,category1000,uri.toString(),nameVal);//constructor that deals with storing name and description for easier use
+                                    LecturerData lecturerData = new LecturerData(name,description,category1000,uri.toString(),email);//constructor that deals with storing name and description for easier use
                                     String key = userRef.push().getKey();//getting a key for a specific user
                                     String key1 = myRef.getKey();
                                     String key2 = descRef.push().getKey();
