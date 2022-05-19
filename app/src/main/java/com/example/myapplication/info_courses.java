@@ -31,9 +31,14 @@ public class info_courses extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_courses);
         String course_id = LecturerCoursesFragment.courseClicked;
-        String name = LecturerCoursesFragment.courseNameClicked;
-        fAuth = FirebaseAuth.getInstance().getCurrentUser();
+        String name;
 
+        if (LecturerCoursesFragment.isLecturerView)
+            name = LecturerCoursesFragment.courseNameClicked;
+        else
+            name = StudentSubscriptionsFragment.courseNameClicked;
+
+        fAuth = FirebaseAuth.getInstance().getCurrentUser();
 
         returnCourse = findViewById(R.id.returnCourseButton);
 
@@ -76,7 +81,8 @@ public class info_courses extends AppCompatActivity {
                     //Displays the courses information into the TextViews and retrieves the image associated with it
                     if (coursesTableName.equals(name))
                     {
-                        System.out.println("is equal");
+
+                        System.out.println("name " + name);
                         String description = child.child("description").getValue().toString();//getting description of course ot display
                         String Category = child.child("courseCategory").getValue().toString();
                         System.out.println(Category);

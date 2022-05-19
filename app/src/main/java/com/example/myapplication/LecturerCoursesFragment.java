@@ -38,6 +38,7 @@ public class LecturerCoursesFragment extends Fragment implements View.OnClickLis
     Spinner spinner;
     FirebaseUser fAuth;
     String userId;
+    public static  boolean isLecturerView;
     public static  String courseClicked,courseNameClicked;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -93,6 +94,7 @@ public class LecturerCoursesFragment extends Fragment implements View.OnClickLis
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         courseClicked = courseIDs.get(i);
                         courseNameClicked = courseNames.get(i);
+                        isLecturerView = true;
 
 
 
