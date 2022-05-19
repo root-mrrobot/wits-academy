@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    //creates menu items for student navigation bar and sets icons
+    <item android:title="Home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:id="@+id/home"/>
+    <item android:title="Subscriptions"
+        android:icon="@drawable/ic_baseline_subsciptions"
+        android:id="@+id/subscriptions"/>
+    <item android:title="Account"
+        android:icon="@drawable/ic_baseline_account_box_24"
+        android:id="@+id/account"/>
+</menu>
