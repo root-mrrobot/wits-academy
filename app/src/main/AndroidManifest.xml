@@ -16,6 +16,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".lecUploadPdf"
+            android:exported="false" />
+        <activity
+            android:name=".UploadLectures"
+            android:exported="false" />
+        <activity
+            android:name=".DisplayTopics"
+            android:exported="false" />
+        <activity
+            android:name=".ScrollLecturerCourse"
+            android:exported="false" />
+        <activity
             android:name=".info_courses"
             android:exported="false" />
         <activity
@@ -51,8 +63,8 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
-        <activity android:name=".StudentCoursePopUp"/>
+            android:exported="false" />
+        <activity android:name=".StudentCoursePopUp" />
     </application>
 
 </manifest>

@@ -123,7 +123,7 @@ public class LecturerAccountFragment extends Fragment implements View.OnClickLis
         // Referencing Firebase Database to get Users
         ref = FirebaseDatabase.getInstance().getReference("Users");
         // assigning userID variable to get User ID
-        if (!LecturerCourseInfoChecks.noUser(user)) {
+        if (user != null) {
             userID = user.getUid();
         }
 

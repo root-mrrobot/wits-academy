@@ -100,7 +100,7 @@ public class LecturerHomeFragment extends Fragment implements View.OnClickListen
         // Referencing Firebase Database to get Users
         ref = FirebaseDatabase.getInstance().getReference("Users");
         // assigning userID variable to get User ID
-        if (!LecturerCourseInfoChecks.noUser(user)) {
+        if (user != null) {
             userID = user.getUid();
         }
 
@@ -155,7 +155,7 @@ public class LecturerHomeFragment extends Fragment implements View.OnClickListen
                 //makes a listener to check for event using (registerForActivityResult)
                 @Override
                 public void onActivityResult(ActivityResult result) {
-                    if (LecturerCourseInfoChecks.successfulActivityResult(result)) {//if successful continue to get image
+                    if (result.getResultCode() == Activity.RESULT_OK) {//if successful continue to get image
                         Intent data = result.getData();
                         pickimage = (ImageView) view.findViewById(R.id.imgView);//defining a reference for imageview
                         filePath = data.getData();//getting image
@@ -199,7 +199,7 @@ public class LecturerHomeFragment extends Fragment implements View.OnClickListen
                                     String key2 = descRef.push().getKey();
 
                                     //statement to check if fields are empty than dont put values in firebase
-                                    if (LecturerCourseInfoChecks.emptyString(name) || LecturerCourseInfoChecks.emptyString(description)){
+                                    if (name.equals("") || description.equals("")){
                                         Toast.makeText(getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();//pop up to display failure of due to empty strings insertion to database
                                     }
                                     //else if fields are filled put values in database

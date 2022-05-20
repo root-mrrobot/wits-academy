@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,7 +26,7 @@ public class info_courses extends AppCompatActivity {
     public static TextView Cname;
     DatabaseReference ref;
     TextView returnCourse;
-
+    Button course_content;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +47,14 @@ public class info_courses extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), LecturerNavigation.class));
+            }
+        });
+
+        course_content = findViewById(R.id.course_contentBtn);
+        course_content.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ScrollLecturerCourse.class));
             }
         });
 

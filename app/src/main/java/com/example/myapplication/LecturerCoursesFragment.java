@@ -48,7 +48,7 @@ public class LecturerCoursesFragment extends Fragment implements View.OnClickLis
         ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, c);
 
         fAuth = FirebaseAuth.getInstance().getCurrentUser() ;
-        if(!LecturerCourseInfoChecks.noUser(fAuth)){
+        if(fAuth != null){
             userId = fAuth.getUid();
         }
 
