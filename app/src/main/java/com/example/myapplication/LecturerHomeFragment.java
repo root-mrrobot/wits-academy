@@ -73,13 +73,10 @@ public class LecturerHomeFragment extends Fragment implements View.OnClickListen
     //creating spinner
     DatabaseReference databaseReference;
     Spinner spinner;
-    String[] category = {"Health Science Faculty","Engineering Faculty", "Education Faculty","Commerce Faculty","Science Faculty"};
-    ArrayAdapter<String>adapt;
+    String[] category = {"Select A Category...","Health Science Faculty","Engineering Faculty", "Education Faculty","Commerce Faculty","Science Faculty"};
+    ArrayAdapter<String> adapt;
 
     ImageView pickimage;
-
-
-
 
  public static  String category1000;
 
@@ -107,7 +104,7 @@ public class LecturerHomeFragment extends Fragment implements View.OnClickListen
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_lecturer_home, container, false);
         course_name = (EditText) view.findViewById(R.id.course_name);//reference to edit text in xml file for name of course
-        course_desc = (EditText) view.findViewById(R.id.course_description);//reference to edit text in xml file for description of course
+        course_desc = (EditText) view.findViewById(R.id.course_rating);//reference to edit text in xml file for description of course
         btnCHOOSE = (Button) view.findViewById(R.id.btnChoose);//reference to button in xml file for choose button
         btnUPLOAD = (Button) view.findViewById(R.id.btnUpload); //reference to button in xml file for choose button
 
@@ -168,85 +165,77 @@ public class LecturerHomeFragment extends Fragment implements View.OnClickListen
     // UploadImage method
     private void uploadImage(Uri uri) {
 
-        if(uri != null) {
-            pd.setTitle("Image is Uploading...");
+        final StorageReference fileRef = reference.child(System.currentTimeMillis() + "." + GetFileExtension(uri));
+        fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        // Referencing Firebase Database to get Users
+                        ref = FirebaseDatabase.getInstance().getReference("Users/" + userID);
+                        // This fetches the data from firebase
+                        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                String id = userID;
+                                System.out.println(id);
+                                String name = course_name.getText().toString();
+                                category1000 = spinner.getSelectedItem().toString();//getting info that was entered from user
+                                String description = course_desc.getText().toString();//getting info that was entered from user
+                                LecturerData lecturerData = new LecturerData(name,description,category1000,uri.toString(), id);//constructor that deals with storing name and description for easier use
+                                String key = userRef.push().getKey();//getting a key for a specific user
+                                String key1 = myRef.getKey();
+                                String key2 = descRef.push().getKey();
 
-            // Showing progressDialog.
-            pd.show();
+                                //statement to check if fields are empty than dont put values in firebase
+                                if (name.equals("") || description.equals("") || category1000.equals("Select A Category...")){
+                                    Toast.makeText(getContext(), "Please ensure all fields are filled and a category has been selected.", Toast.LENGTH_SHORT).show();//pop up to display failure of due to empty strings insertion to database
+                                }else if(uri != null){
+                                    Toast.makeText(getContext(), "Please Select Image", Toast.LENGTH_LONG).show();
+                                }
+                                //else if fields are filled put values in database
+                                else {
+                                    pd.setTitle("Image is Uploading...");
+                                    // Showing progressDialog.
+                                    pd.show();
 
-            final StorageReference fileRef = reference.child(System.currentTimeMillis() + "." + GetFileExtension(uri));
-            fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
+                                    userRef.child(key).setValue(name);
+                                    //creates course name and description under lecturer created courses for that specific user
+                                    course_name.setText("");//once button pressed clear fields
+                                    course_desc.setText("");//once button pressed clear fields
+                                    spinnerList.clear();//once button pressed clear spinner
 
-                            // Referencing Firebase Database to get Users
-                            ref = FirebaseDatabase.getInstance().getReference("Users/" + userID);
-                            // This fetches the data from firebase
-                            ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    String id = userID;
-                                    System.out.println(id);
-                                    String name = course_name.getText().toString();
-                                    category1000 = spinner.getSelectedItem().toString();//getting info that was entered from user
-                                    String description = course_desc.getText().toString();//getting info that was entered from user
-                                    LecturerData lecturerData = new LecturerData(name,description,category1000,uri.toString(), id);//constructor that deals with storing name and description for easier use
-                                    String key = userRef.push().getKey();//getting a key for a specific user
-                                    String key1 = myRef.getKey();
-                                    String key2 = descRef.push().getKey();
-
-                                    //statement to check if fields are empty than dont put values in firebase
-                                    if (name.equals("") || description.equals("")){
-                                        Toast.makeText(getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();//pop up to display failure of due to empty strings insertion to database
-                                    }
-                                    //else if fields are filled put values in database
-                                    else {
-                                        userRef.child(key).setValue(name);
-                                        //creates course name and description under lecturer created courses for that specific user
-                                        course_name.setText("");//once button pressed clear fields
-                                        course_desc.setText("");//once button pressed clear fields
-                                        spinnerList.clear();//once button pressed clear spinner
-
-                                        myRef.push().setValue(lecturerData);//push entered data to courses column shown desc,name
-                                        Toast.makeText(getContext(), "Data inserted", Toast.LENGTH_SHORT).show();//pop up to display successful insertion to database
-                                        pickimage.setImageResource(android.R.color.transparent);
-                                    }
-
+                                    myRef.push().setValue(lecturerData);//push entered data to courses column shown desc,name
+                                    Toast.makeText(getContext(), "Data inserted", Toast.LENGTH_SHORT).show();//pop up to display successful insertion to database
+                                    pickimage.setImageResource(android.R.color.transparent);
                                 }
 
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-                                    Toast.makeText(getActivity(), "Something wrong happened!", Toast.LENGTH_LONG).show();
-                                }
-                            });
+                            }
 
-                            Toast.makeText(getContext(), "Uploaded Successfully", Toast.LENGTH_SHORT).show();
-                            pd.dismiss();
-
-                        }
-                    });
-                }
-            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                    pd.setTitle("Image is Uploading...");
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-
-                    Toast.makeText(getContext(), "Uploading Failed !!", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-        else{
-            Toast.makeText(getContext(), "Please Select Image", Toast.LENGTH_LONG).show();
-        }
-
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Toast.makeText(getActivity(), "Something wrong happened!", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                        pd.dismiss();
+                    }
+                });
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                pd.setTitle("Image is Uploading...");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getContext(), "Uploading Failed !!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
+
 
 
     // Creating Method to get the selected image file Extension from File Path URI.

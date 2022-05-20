@@ -45,7 +45,7 @@
 
 
     <TextView
-        android:id="@+id/course_description"
+        android:id="@+id/course_rating"
         android:layout_width="362dp"
         android:layout_height="103dp"
         android:layout_marginLeft="20dp"

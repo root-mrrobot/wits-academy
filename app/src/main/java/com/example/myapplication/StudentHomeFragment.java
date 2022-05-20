@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,13 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -21,6 +26,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -29,9 +35,10 @@ import java.util.Random;
 public class StudentHomeFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     ListView myListCourses;
-    ArrayList<Course> myArrayList = new ArrayList<Course>();
+    ArrayList<Course> myArrayList = new ArrayList<>();
     ArrayList<String> c = new ArrayList<String>();
     ArrayList<String> fullC = new ArrayList<String>();
+    ArrayList<String> url = new ArrayList<String>();
     DatabaseReference coursesRef;
     DatabaseReference lecRef;
     DatabaseReference userRef;
@@ -42,8 +49,6 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
     Spinner spinner;
     String[] catArray;
     float[] r = new float[] { 0.5f, 1, 1.5f, 2, 2.5f, 3, 3.5f, 4, 4.5f, 5};
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,12 +70,15 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
+
+
         myListCourses=(ListView) view.findViewById(R.id.listView);
         return view;
     }
 
     public void display(){
-        ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,c);
+        //ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,c);
+        MyAdapter adapter1 = new MyAdapter(getActivity(), c);
 
         // Get the reference to the courses from the real-time database
         coursesRef= FirebaseDatabase.getInstance().getReference("courses/");
@@ -93,7 +101,7 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
 
                     // if subbed
 
-                     userRef = FirebaseDatabase.getInstance().getReference("Users/" + userId + "/Subscriptions/");
+                    userRef = FirebaseDatabase.getInstance().getReference("Users/" + userId + "/Subscriptions/");
                     // This fetches the data from firebase
                     userRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -105,20 +113,17 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                                 if (name.equals(newChild.getValue().toString()))
                                 {
                                     isSubbed = true;
-                                    subbedBools.add(true);
+                                    subbedBools.add(isSubbed);
 
                                 }
                             }
 
                             if (!isSubbed)
-                                subbedBools.add(false);
-
-
-
+                                subbedBools.add(isSubbed);
 
                             lecRef = FirebaseDatabase.getInstance().getReference("Users/" + lecID);
                             // This fetches the data from firebase
-                            System.out.println(subbedBools);
+                            System.out.println(name + "blah" + subbedBools);
                             boolean finalIsSubbed = isSubbed;
                             lecRef.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
@@ -141,7 +146,7 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                                     course.setImage(image);
                                     myArrayList.add(course);
 
-                                    String singleCourse = "Course Name: " + name + "\nTeacher: " + lecName + "\nRating: " + rating;
+                                    String singleCourse = name + "\n" + lecName + "\n" + rating + "\n" + image;
                                     c.add(singleCourse);
                                 }
 
@@ -164,14 +169,13 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                                     String fullCourse = id + "\n" + name + "\n" + category + "\n" + description + "\n" + rating + "\n" + lecName + "\n" + image;
                                     fullC.add(fullCourse);
 
-                                    String singleCourse =  "Course Name: " + name + "\nTeacher: " + lecName + "\nRating: " + rating;
+                                    String singleCourse =  name + "\n" + lecName + "\n" + rating + "\n" + image;
                                     c.add(singleCourse);
 
                                 }
 
                                 // display courses using adapter
-                                myArrayAdapter.notifyDataSetChanged();
-                                myListCourses.setAdapter(myArrayAdapter);
+                                myListCourses.setAdapter(adapter1);
 
                                 // open the popup activity and display the course information according to what was clicked on
                                 myListCourses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -194,9 +198,6 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                                         // create a bundle called extras
                                         Bundle extras = new Bundle();
 
-
-                                        System.out.println("code reached 2");
-                                        System.out.println(name +" extras " + finalIsSubbed);
                                         // add all the information that needs to be imported to popup to the extras bundle
                                         extras.putString("courseName", courseName);
                                         extras.putString("courseDescription", description);
@@ -206,9 +207,9 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                                         extras.putString("image", courseImage);
                                         extras.putBoolean("isSubbed", subbedBools.get(position));
 
-                    /* create an intent to go from the current page to the popup and carry over the
-                    extras to be used on the popup
-                     */
+                                        /* create an intent to go from the current page to the popup and carry over the
+                                        extras to be used on the popup
+                                        */
                                         Intent intent = new Intent(view.getContext(), StudentCoursePopUp.class);
                                         intent.putExtras(extras);
                                         startActivity(intent);
@@ -220,33 +221,14 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                             public void onCancelled(@NonNull DatabaseError error) {
 
                             }
-
-
                             });
-
-
-
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-
                         }
-
-
                     });
-
-
-
-
-                    ///
-
-
-
-
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 System.out.println("The read failed: " + error.getMessage());
@@ -270,6 +252,49 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
+    class MyAdapter extends ArrayAdapter<String>{
+        Context context;
+        ArrayList<String> displayC = new ArrayList<String>();
+
+        public MyAdapter(@NonNull Context context, ArrayList displayC) {
+            super(context, R.layout.row, R.id.course_name,displayC);
+            this.context=context;
+            this.displayC = displayC;
+        }
+
+        @NotNull
+        @Override
+        public View getView (int position,
+                             @Nullable View convertView, @NonNull ViewGroup parent){
+            LayoutInflater layoutInflater = ( LayoutInflater )context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View row = layoutInflater.inflate(R.layout.row, parent, false) ;
+
+            ImageView image = row.findViewById(R.id.image);
+
+            TextView name = row.findViewById(R.id.course_name);
+            TextView lecturer = row.findViewById(R.id.course_lecturer);
+            TextView rating = row.findViewById(R.id.course_rating);
+
+            String dCourse = displayC.get(position);
+            String[] splitDC = dCourse.split("\n");
+
+            String courseName = splitDC[0];
+            String lecName = splitDC[1];
+            String rate = splitDC[2];
+            String fImage = splitDC[3];
+
+            name.setText("Course: " + courseName);
+            lecturer.setText("Lecturer: " + lecName);
+            rating.setText("Rating: " + rate);
+
+            Glide.with(getContext()).load(fImage).into(image);
+
+            return row;
+        }
+
 
     }
 

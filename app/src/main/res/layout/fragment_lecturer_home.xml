@@ -20,7 +20,7 @@
         android:gravity="center"
         android:hint="name of course"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/course_description"
+        app:layout_constraintBottom_toTopOf="@+id/course_rating"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner"
@@ -28,7 +28,7 @@
 
 
     <EditText
-        android:id="@+id/course_description"
+        android:id="@+id/course_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -59,7 +59,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnChoose"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/course_description" />
+        app:layout_constraintTop_toBottomOf="@+id/course_rating" />
 
     <Button
         android:id="@+id/btnUpload"
