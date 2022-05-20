@@ -58,6 +58,7 @@ dependencies {
     // Glide v4 uses this new annotation processor -- see https://bumptech.github.io/glide/doc/generatedapi.html
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 //    implementation 'androidx.squareup.picasso:picasso:2.71828'
+    implementation 'com.karumi:dexter:6.2.2'
 
     // androidx.test
     def androidx_test = "1.4.0"
