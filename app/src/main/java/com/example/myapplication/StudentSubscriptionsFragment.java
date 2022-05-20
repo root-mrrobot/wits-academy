@@ -1,64 +1,126 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Spinner;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link StudentSubscriptionsFragment#newInstance} factory method to
+ * Use the  factory method to
  * create an instance of this fragment.
  */
-public class StudentSubscriptionsFragment extends Fragment {
+public class StudentSubscriptionsFragment extends Fragment implements View.OnClickListener {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public StudentSubscriptionsFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment StudentSubsciptionsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static StudentSubscriptionsFragment newInstance(String param1, String param2) {
-        StudentSubscriptionsFragment fragment = new StudentSubscriptionsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
+    ListView myListCourses;
+    ArrayList<Course> myArrayList = new ArrayList<Course>();
+    ArrayList<String> c = new ArrayList<String>();
+    DatabaseReference coursesRef;
+    View view;
+    Spinner spinner;
+    FirebaseUser fAuth;
+    String userId;
+    public static  String courseClicked,courseNameClicked;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_student_subsciptions, container, false);
+        view = inflater.inflate(R.layout.fragment_student_home, container, false);
+        ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, c);
+
+        fAuth = FirebaseAuth.getInstance().getCurrentUser() ;
+        if(fAuth != null){
+            userId = fAuth.getUid();
+        }
+
+        coursesRef= FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Subscriptions");
+
+        spinner = view.findViewById(R.id.spinner2);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.Categories_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+
+//making a listview to display lecturer created courses
+        coursesRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                ArrayList<String> courseIDs = new ArrayList<>();
+                ArrayList<String> courseNames = new ArrayList<>();
+
+                for (DataSnapshot child : snapshot.getChildren()) {
+
+                    //System.out.println(child);
+                    String id = child.getKey();
+                    String name = child.getValue().toString();
+                    c.add(name);
+
+                    courseIDs.add(id);
+                    courseNames.add(name);
+
+
+                }
+
+                myArrayAdapter.notifyDataSetChanged();
+                myListCourses.setAdapter(myArrayAdapter);
+
+
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+
+                myListCourses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        courseClicked = courseIDs.get(i);
+                        courseNameClicked = courseNames.get(i);
+                        LecturerCoursesFragment.isLecturerView = false;
+
+                        System.out.println(courseNameClicked);
+
+
+
+
+                        startActivity(new Intent(getContext(), info_courses.class));
+                    }
+                });
+
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                System.out.println("The read failed: " + error.getMessage());
+            }
+        });
+
+        myListCourses = (ListView) view.findViewById(R.id.listView);
+
+        return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }

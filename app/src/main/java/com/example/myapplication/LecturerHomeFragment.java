@@ -3,15 +3,8 @@ package com.example.myapplication;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.List;
-import java.util.UUID;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -20,21 +13,17 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -44,16 +33,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 //imports for image
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -62,12 +43,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-
-
 
 
 import java.util.ArrayList;
@@ -125,7 +100,7 @@ public class LecturerHomeFragment extends Fragment implements View.OnClickListen
         // Referencing Firebase Database to get Users
         ref = FirebaseDatabase.getInstance().getReference("Users");
         // assigning userID variable to get User ID
-        if (user != null) {
+        if (!LecturerCourseInfoChecks.noUser(user)) {
             userID = user.getUid();
         }
 
@@ -147,7 +122,7 @@ public class LecturerHomeFragment extends Fragment implements View.OnClickListen
                 .child("courses");
 
         descRef = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Lecturer created courses");
-        spinnerList = new ArrayList<>();//Array list to store cousre names created
+        spinnerList = new ArrayList<>();//Array list to store course names created
         adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, spinnerList);
 
         btnCHOOSE.setOnClickListener(this);//making listeners active to check for button click
@@ -180,7 +155,7 @@ public class LecturerHomeFragment extends Fragment implements View.OnClickListen
                 //makes a listener to check for event using (registerForActivityResult)
                 @Override
                 public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == Activity.RESULT_OK) {//if successful continue to get image
+                    if (LecturerCourseInfoChecks.successfulActivityResult(result)) {//if successful continue to get image
                         Intent data = result.getData();
                         pickimage = (ImageView) view.findViewById(R.id.imgView);//defining a reference for imageview
                         filePath = data.getData();//getting image
@@ -213,18 +188,18 @@ public class LecturerHomeFragment extends Fragment implements View.OnClickListen
                             ref.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    String nameVal = snapshot.child("fullName").getValue(String.class);
-                                    System.out.println(nameVal);
+                                    String id = userID;
+                                    System.out.println(id);
                                     String name = course_name.getText().toString();
                                     category1000 = spinner.getSelectedItem().toString();//getting info that was entered from user
                                     String description = course_desc.getText().toString();//getting info that was entered from user
-                                    LecturerData lecturerData = new LecturerData(name,description,category1000,uri.toString(),nameVal);//constructor that deals with storing name and description for easier use
+                                    LecturerData lecturerData = new LecturerData(name,description,category1000,uri.toString(), id);//constructor that deals with storing name and description for easier use
                                     String key = userRef.push().getKey();//getting a key for a specific user
                                     String key1 = myRef.getKey();
                                     String key2 = descRef.push().getKey();
 
                                     //statement to check if fields are empty than dont put values in firebase
-                                    if (name.equals("") || description.equals("")){
+                                    if (LecturerCourseInfoChecks.emptyString(name) || LecturerCourseInfoChecks.emptyString(description)){
                                         Toast.makeText(getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();//pop up to display failure of due to empty strings insertion to database
                                     }
                                     //else if fields are filled put values in database
