@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +25,9 @@ public class StudentCoursePopUp extends AppCompatActivity {
     String courseName;
     boolean isClicked = false;
     Button subscribe, exit;
+    DatabaseReference userRef;
+    FirebaseUser fAuth = FirebaseAuth.getInstance().getCurrentUser() ;
+    String userId = fAuth.getUid();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,19 +59,44 @@ public class StudentCoursePopUp extends AppCompatActivity {
 
         Glide.with(getApplicationContext()).load(extras.getString("image")).into(image);
 
-        boolean isSubbed = extras.getBoolean("isSubbed");
+        //boolean isSubbed = extras.getBoolean("isSubbed");
 
-        if(isSubbed){
-            subscribe.setEnabled(false);
-        }else{
-            subscribe.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    addCoursesToDB(courseName);
-                    subscribe.setEnabled(false);
+
+        userRef = FirebaseDatabase.getInstance().getReference("Users/" + userId + "/Subscriptions/");
+        // This fetches the data from firebase
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                boolean isSubbed = false;
+                for(DataSnapshot newChild : snapshot.getChildren())
+                {
+                    if (courseName.equals(newChild.getValue().toString()))
+                    {
+                        isSubbed = true;
+
+                    }
                 }
-            });
-        }
+
+                if(isSubbed){
+                    subscribe.setEnabled(false);
+                }else{
+                    subscribe.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            addCoursesToDB(courseName);
+                            subscribe.setEnabled(false);
+                        }
+                    });
+                }
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+
 
         exit = findViewById(R.id.exit_button);
 
