@@ -107,7 +107,7 @@ public class LecturerHomeFragment extends Fragment implements View.OnClickListen
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_lecturer_home, container, false);
         course_name = (EditText) view.findViewById(R.id.course_name);//reference to edit text in xml file for name of course
-        course_desc = (EditText) view.findViewById(R.id.course_description);//reference to edit text in xml file for description of course
+        course_desc = (EditText) view.findViewById(R.id.course_rating);//reference to edit text in xml file for description of course
         btnCHOOSE = (Button) view.findViewById(R.id.btnChoose);//reference to button in xml file for choose button
         btnUPLOAD = (Button) view.findViewById(R.id.btnUpload); //reference to button in xml file for choose button
 

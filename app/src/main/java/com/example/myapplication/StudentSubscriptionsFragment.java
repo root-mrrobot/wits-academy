@@ -29,6 +29,7 @@ import java.util.ArrayList;
  * Use the  factory method to
  * create an instance of this fragment.
  */
+
 public class StudentSubscriptionsFragment extends Fragment implements View.OnClickListener {
 
     ListView myListCourses;

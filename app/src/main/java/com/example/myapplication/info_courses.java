@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -30,33 +32,124 @@ public class info_courses extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info_courses);
+
         String course_id = LecturerCoursesFragment.courseClicked;
         String name;
 
-        if (LecturerCoursesFragment.isLecturerView)
+        if (LecturerCoursesFragment.isLecturerView){
+
+            setContentView(R.layout.activity_info_courses);
             name = LecturerCoursesFragment.courseNameClicked;
-        else
+
+            returnCourse = findViewById(R.id.returnCourseButton);
+
+            returnCourse.setOnClickListener(new View.OnClickListener() { // Button to return to the Lecturer COurses Fragment
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(getApplicationContext(), LecturerNavigation.class));
+                }
+            });
+
+            course_content = findViewById(R.id.course_contentBtn);
+            course_content.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(getApplicationContext(), ScrollLecturerCourse.class));
+                }
+            });
+        }
+        else{
             name = StudentSubscriptionsFragment.courseNameClicked;
+            setContentView(R.layout.subscribed_course);
+
+            Button courseResources = findViewById(R.id.btnViewCourse);
+
+            courseResources.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(getApplicationContext(), SubbedCourseTopics.class));
+                    System.out.println("button works");
+                }
+            });
+
+            // Referencing unsub button from xml file
+            Button unsub = findViewById(R.id.btnUnsubscribe);
+
+            // setting on Click Listener
+            unsub.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Alert Dialog init
+                    AlertDialog.Builder unsub_dialog = new AlertDialog.Builder(view.getContext());
+                    // Title of Alert Dialog
+                    unsub_dialog.setTitle("Unsubscribe from " + name);
+                    // Message of Dialog
+                    unsub_dialog.setMessage("Are you sure you would like to Unsubscribed?");
+
+                    // creating yes and no buttons for pop up
+                    unsub_dialog.setPositiveButton("Log out", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            // Sending user to Login Page - User has logged out
+//                        Intent intent = new Intent(getActivity(), Login.class);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+//                        startActivity(intent);
+//                        Toast.makeText(getActivity(),"You have successfully logged out. Please come back again!",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    unsub_dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            // Close pop up and go back to subscriptions page
+                        }
+                    });
+
+                    unsub_dialog.create().show(); // Show the pop up
+                }
+            });
+
+            // Referencing rating button from xml file
+            Button rate = findViewById(R.id.btnRate);
+
+            // setting on Click Listener
+            rate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Alert Dialog init
+                    AlertDialog.Builder rating_dialog = new AlertDialog.Builder(view.getContext());
+                    // Title of Alert Dialog
+                    rating_dialog.setTitle("Rate Selected Course");
+                    // Message of Dialog
+                    rating_dialog.setMessage("Select a star Rating that you are happy with:");
+
+                    // creating yes and no buttons for pop up
+                    rating_dialog.setPositiveButton("Rate", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            // Sending user to Login Page - User has logged out
+//                        Intent intent = new Intent(getActivity(), Login.class);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+//                        startActivity(intent);
+//                        Toast.makeText(getActivity(),"You have successfully logged out. Please come back again!",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    rating_dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            // Close pop up and go back to subscriptions page
+                        }
+                    });
+
+                    rating_dialog.create().show(); // Show the pop up
+                }
+            });
+        }
+
 
         fAuth = FirebaseAuth.getInstance().getCurrentUser();
 
-        returnCourse = findViewById(R.id.returnCourseButton);
-
-        returnCourse.setOnClickListener(new View.OnClickListener() { // Button to return to the Lecturer COurses Fragment
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), LecturerNavigation.class));
-            }
-        });
-
-        course_content = findViewById(R.id.course_contentBtn);
-        course_content.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), ScrollLecturerCourse.class));
-            }
-        });
 
 
         if (fAuth != null) { //Firebase Authorization
@@ -73,7 +166,6 @@ public class info_courses extends AppCompatActivity {
         // Referencing Firebase Database to get Users
 
         ref = FirebaseDatabase.getInstance().getReference("courses/");
-
 
         String key = ref.getKey();
         // This fetches the data from firebase
@@ -114,4 +206,24 @@ public class info_courses extends AppCompatActivity {
 
 
     }
+
+//    public void onClick(View view){
+//        switch (view.getId()){
+//            case R.id.btnUnsubscribe:
+//                // Alert Dialog init
+//                AlertDialog.Builder unsub_dialog = new AlertDialog.Builder(view.getContext());
+//                // Title of Alert Dialog
+//                unsub_dialog.setTitle("Log out of Wits Academy");
+//                // Message of Dialog
+//                unsub_dialog.setMessage("Are you sure you would like to log out?");
+//
+//                // creating yes and no buttons for pop up
+//                unsub_dialog.setPositiveButton("Unsubscribe", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                    }
+//                });
+//        }
+//    }
+
 }

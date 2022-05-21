@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".TopicResources"
+            android:exported="false" />
+        <activity
             android:name=".lecUploadPdf"
             android:exported="false" />
         <activity
@@ -23,6 +26,9 @@
             android:exported="false" />
         <activity
             android:name=".DisplayTopics"
+            android:exported="false" />
+        <activity
+            android:name=".SubbedCourseTopics"
             android:exported="false" />
         <activity
             android:name=".ScrollLecturerCourse"
