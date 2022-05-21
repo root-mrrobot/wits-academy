@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="380dp"
+    android:layout_height="500dp"
+    android:layout_gravity="center"
+    android:background="#F6F1FF">
+
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        android:id="@+id/course_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="190dp"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/lecturer_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="190dp"
+        android:layout_marginTop="100dp"
+        android:text="Lecturer Name"
+        android:textSize="25sp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="190dp"
+        android:text=""
+        android:textSize="20sp"
+        android:textColor="@color/black"/>
+
+
+    <TextView
+        android:id="@+id/course_rating"
+        android:layout_width="362dp"
+        android:layout_height="103dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="210dp"
+        android:gravity="center_vertical"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="330dp"
+        android:numStars="5"
+        android:stepSize="0.5"
+        android:isIndicator="true"/>
+
+
+    <Button
+        android:id="@+id/subscribe_button"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="420dp"
+        android:text="Subscribe" />
+
+    <Button
+        android:id="@+id/exit_button"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="225dp"
+        android:layout_marginTop="420dp"
+        android:text="Exit" />
+
+
+</RelativeLayout>
