@@ -79,6 +79,7 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
     public void display(){
         //ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,c);
         MyAdapter adapter1 = new MyAdapter(getActivity(), c);
+        fullC.clear();
 
         // Get the reference to the courses from the real-time database
         coursesRef= FirebaseDatabase.getInstance().getReference("courses/");
@@ -135,6 +136,7 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                                  * and add each string to the arrayList c
                                  */
                                 if (category.equals(spinner.getSelectedItem().toString())) {
+
                                     Course course = new Course();
 
                                     course.setName(name);
@@ -146,6 +148,9 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                                     course.setImage(image);
                                     myArrayList.add(course);
 
+                                    String fullCourse = id + "\n" + name + "\n" + category + "\n" + description + "\n" + rating + "\n" + lecName + "\n" + image;
+                                    fullC.add(fullCourse);
+
                                     String singleCourse = name + "\n" + lecName + "\n" + rating + "\n" + image;
                                     c.add(singleCourse);
                                 }
@@ -155,6 +160,7 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                                  * and add each string to the arrayList c
                                  */
                                 else if (spinner.getSelectedItem().toString().equals("All Courses")){
+
                                     Course course = new Course();
 
                                     course.setName(name);
