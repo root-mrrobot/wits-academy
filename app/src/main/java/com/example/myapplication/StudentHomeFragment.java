@@ -127,106 +127,106 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                             System.out.println(name + "blah" + subbedBools);
                             boolean finalIsSubbed = isSubbed;
                             lecRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                String lecName = snapshot.child("fullName").getValue(String.class);
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    String lecName = snapshot.child("fullName").getValue(String.class);
 
-                                /* If a category filter is applied, add the courses that are in that category to myArrayList
-                                 * Then create a string that contains all the relevant information for each course
-                                 * and add each string to the arrayList c
-                                 */
-                                if (category.equals(spinner.getSelectedItem().toString())) {
+                                    /* If a category filter is applied, add the courses that are in that category to myArrayList
+                                     * Then create a string that contains all the relevant information for each course
+                                     * and add each string to the arrayList c
+                                     */
+                                    if (category.equals(spinner.getSelectedItem().toString())) {
 
-                                    Course course = new Course();
+                                        Course course = new Course();
 
-                                    course.setName(name);
-                                    course.setDescription((description));
-                                    course.setCategory(category);
-                                    course.setId(id);
-                                    course.setRating(rating);
-                                    course.setTeacher(lecName);
-                                    course.setImage(image);
-                                    myArrayList.add(course);
+                                        course.setName(name);
+                                        course.setDescription((description));
+                                        course.setCategory(category);
+                                        course.setId(id);
+                                        course.setRating(rating);
+                                        course.setTeacher(lecName);
+                                        course.setImage(image);
+                                        myArrayList.add(course);
 
-                                    String fullCourse = id + "\n" + name + "\n" + category + "\n" + description + "\n" + rating + "\n" + lecName + "\n" + image;
-                                    fullC.add(fullCourse);
+                                        String fullCourse = id + "\n" + name + "\n" + category + "\n" + description + "\n" + rating + "\n" + lecName + "\n" + image;
+                                        fullC.add(fullCourse);
 
-                                    String singleCourse = name + "\n" + lecName + "\n" + rating + "\n" + image;
-                                    c.add(singleCourse);
-                                }
+                                        String singleCourse = name + "\n" + lecName + "\n" + rating + "\n" + image;
+                                        c.add(singleCourse);
+                                    }
 
-                                /* If the all courses filter is applied, add all the courses to myArrayList
-                                 * Then create a string that contains all the relevant information for each course
-                                 * and add each string to the arrayList c
-                                 */
-                                else if (spinner.getSelectedItem().toString().equals("All Courses")){
+                                    /* If the all courses filter is applied, add all the courses to myArrayList
+                                     * Then create a string that contains all the relevant information for each course
+                                     * and add each string to the arrayList c
+                                     */
+                                    else if (spinner.getSelectedItem().toString().equals("All Courses")){
 
-                                    Course course = new Course();
+                                        Course course = new Course();
 
-                                    course.setName(name);
-                                    course.setDescription((description));
-                                    course.setCategory(category);
-                                    course.setId(id);
-                                    course.setRating(rating);
-                                    course.setTeacher(lecName);
-                                    course.setImage(image);
-                                    myArrayList.add(course);
+                                        course.setName(name);
+                                        course.setDescription((description));
+                                        course.setCategory(category);
+                                        course.setId(id);
+                                        course.setRating(rating);
+                                        course.setTeacher(lecName);
+                                        course.setImage(image);
+                                        myArrayList.add(course);
 
-                                    String fullCourse = id + "\n" + name + "\n" + category + "\n" + description + "\n" + rating + "\n" + lecName + "\n" + image;
-                                    fullC.add(fullCourse);
+                                        String fullCourse = id + "\n" + name + "\n" + category + "\n" + description + "\n" + rating + "\n" + lecName + "\n" + image;
+                                        fullC.add(fullCourse);
 
-                                    String singleCourse =  name + "\n" + lecName + "\n" + rating + "\n" + image;
-                                    c.add(singleCourse);
+                                        String singleCourse =  name + "\n" + lecName + "\n" + rating + "\n" + image;
+                                        c.add(singleCourse);
 
-                                }
+                                    }
 
-                                // display courses using adapter
-                                myListCourses.setAdapter(adapter1);
+                                    // display courses using adapter
+                                    myListCourses.setAdapter(adapter1);
 
-                                // open the popup activity and display the course information according to what was clicked on
-                                myListCourses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                    @Override
-                                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                                        // get the course information of the selected course and enter it into an array
-                                        String course = fullC.get(position);
-                                        String[] splitCourse = course.split(":|\n");
+                                    // open the popup activity and display the course information according to what was clicked on
+                                    myListCourses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                        @Override
+                                        public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                                            // get the course information of the selected course and enter it into an array
+                                            String course = fullC.get(position);
+                                            String[] splitCourse = course.split(":|\n");
 
-                                        // get the necessary information from the above array
-                                        String courseName = splitCourse[1];
-                                        //String courseId = splitCourse[];
-                                        String category = splitCourse[2];
-                                        String description = splitCourse[3];
-                                        String rating = splitCourse[4];
-                                        String lecturerName = splitCourse[5];
-                                        String courseImage = splitCourse[6] + ":"+ splitCourse[7];
+                                            // get the necessary information from the above array
+                                            String courseName = splitCourse[1];
+                                            //String courseId = splitCourse[];
+                                            String category = splitCourse[2];
+                                            String description = splitCourse[3];
+                                            String rating = splitCourse[4];
+                                            String lecturerName = splitCourse[5];
+                                            String courseImage = splitCourse[6] + ":"+ splitCourse[7];
 
 
-                                        // create a bundle called extras
-                                        Bundle extras = new Bundle();
+                                            // create a bundle called extras
+                                            Bundle extras = new Bundle();
 
-                                        // add all the information that needs to be imported to popup to the extras bundle
-                                        extras.putString("courseName", courseName);
-                                        extras.putString("courseDescription", description);
-                                        extras.putString("category", category);
-                                        extras.putString("rating", rating);
-                                        extras.putString("lecturerName", lecturerName);
-                                        extras.putString("image", courseImage);
-                                        extras.putBoolean("isSubbed", subbedBools.get(position));
+                                            // add all the information that needs to be imported to popup to the extras bundle
+                                            extras.putString("courseName", courseName);
+                                            extras.putString("courseDescription", description);
+                                            extras.putString("category", category);
+                                            extras.putString("rating", rating);
+                                            extras.putString("lecturerName", lecturerName);
+                                            extras.putString("image", courseImage);
+                                            extras.putBoolean("isSubbed", subbedBools.get(position));
 
                                         /* create an intent to go from the current page to the popup and carry over the
                                         extras to be used on the popup
                                         */
-                                        Intent intent = new Intent(view.getContext(), StudentCoursePopUp.class);
-                                        intent.putExtras(extras);
-                                        startActivity(intent);
-                                    }
-                                });
-                            }
+                                            Intent intent = new Intent(view.getContext(), StudentCoursePopUp.class);
+                                            intent.putExtras(extras);
+                                            startActivity(intent);
+                                        }
+                                    });
+                                }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
 
-                            }
+                                }
                             });
                         }
                         @Override

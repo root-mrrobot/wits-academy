@@ -81,7 +81,7 @@ public class LecturerHomeFragment extends Fragment implements View.OnClickListen
 
 
 
- public static  String category1000;
+    public static  String category1000;
 
     ProgressDialog pd;
     View view;
@@ -292,9 +292,9 @@ public class LecturerHomeFragment extends Fragment implements View.OnClickListen
 
             case R.id.btnUpload:
 
-                    uploadImage(filePath);
+                uploadImage(filePath);
 
-               // UploadImageFileToFirebaseStorage();
+                // UploadImageFileToFirebaseStorage();
                 break;
         }
     }
