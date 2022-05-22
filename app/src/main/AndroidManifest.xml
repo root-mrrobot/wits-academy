@@ -46,10 +46,6 @@
             android:name=".StudentNavigation"
             android:exported="false" />
         <activity
-            android:name=".Account"
-            android:exported="false"
-            android:label="My Account" />
-        <activity
             android:name=".Login"
             android:exported="false" />
         <activity
