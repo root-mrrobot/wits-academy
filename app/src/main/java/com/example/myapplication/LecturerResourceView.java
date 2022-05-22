@@ -1,8 +1,5 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,10 +20,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class TopicResources extends AppCompatActivity{
+public class LecturerResourceView extends AppCompatActivity {
 
-    Button getPdf;
-    Button getVideo;
+    Button pdf_intent, video_intent;
     Intent intent;
     ArrayList<String> videoName = new ArrayList<String>();
     ArrayList<String> pdfName = new ArrayList<String>();
@@ -35,17 +34,28 @@ public class TopicResources extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_topic_resources);
+        setContentView(R.layout.activity_lecturer_resource_view);
 
-        intent = getIntent();
+        pdf_intent = findViewById(R.id.btnUploadPDF);
+        pdf_intent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), lecUploadPdf.class));
+            }
+        });
 
-        Bundle extras = intent.getExtras();
+        video_intent = findViewById(R.id.btnUploadVid);
+        video_intent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), UploadLectures.class));
+            }
+        });
 
-        String course = extras.getString("courseName");
-        String topic = extras.getString("topic");
+        String course = LecturerCoursesFragment.courseNameClicked;
+        String topic = ScrollLecturerCourse.topicNameClicked;
 
         fetchUrls(course,topic);
-
     }
 
     public void retrievePdf(ArrayList pdf)
@@ -83,18 +93,16 @@ public class TopicResources extends AppCompatActivity{
         });
     }
 
-
-
     public void fetchUrls(String course, String topic)
     {
 
         ArrayAdapter<String> videoAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, videoName);
         //test = findViewById(R.id.textView2);
-        videoList = findViewById(R.id.videoListView);
+        videoList = findViewById(R.id.videoListView1);
 
         ArrayAdapter<String> pdfAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, pdfName);
         //test = findViewById(R.id.textView2);
-        pdfList = findViewById(R.id.pdfListView);
+        pdfList = findViewById(R.id.pdfListView1);
 
         DatabaseReference vidRef = FirebaseDatabase.getInstance().getReference("myvideos/");
         vidRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -114,7 +122,6 @@ public class TopicResources extends AppCompatActivity{
                         System.out.println("vid matches");
                     }
                 }
-
 
                 // on data change 2
                 DatabaseReference pdfRef = FirebaseDatabase.getInstance().getReference("pdfUploads/");
@@ -137,10 +144,6 @@ public class TopicResources extends AppCompatActivity{
                                 pdfURL.add(pdfUrl);
 
                             }
-
-
-
-
                         }
                         retrieveVideo(videoURL);
                         retrievePdf(pdfURL);
@@ -166,5 +169,4 @@ public class TopicResources extends AppCompatActivity{
             }
         });
     }
-
 }

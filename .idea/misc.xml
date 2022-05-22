@@ -40,10 +40,15 @@
         <entry key="app/src/main/res/layout/activity_course_topics.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/activity_info_courses.xml" value="0.22056159420289856" />
+        <entry key="app/src/main/res/layout/activity_lec_upload_pdf.xml" value="0.22056159420289856" />
+        <entry key="app/src/main/res/layout/activity_lecturer_resource_view.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/activity_scroll_lecturer_course.xml" value="0.22056159420289856" />
+        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/activity_topic_resources.xml" value="0.22056159420289856" />
+        <entry key="app/src/main/res/layout/activity_upload_lectures.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/course_topic_list.xml" value="0.22056159420289856" />
+        <entry key="app/src/main/res/layout/fragment_lecturer_account.xml" value="0.3333333333333333" />
         <entry key="app/src/main/res/layout/fragment_lecturer_courses.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/fragment_lecturer_home.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/fragment_student_home.xml" value="0.1" />

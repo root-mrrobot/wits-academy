@@ -26,16 +26,17 @@ public class lecUploadPdf extends AppCompatActivity {
     StorageReference storageReference;
     DatabaseReference pdfRef;
     EditText pdf;
-    Button btn_pdf;
+    Button btn_pdf, exit;
     String subject_name,Topic_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lec_upload_pdf);
         subject_name = LecturerCoursesFragment.courseNameClicked;
-        Topic_name = DisplayTopics.topicNameClicked;
+        Topic_name = ScrollLecturerCourse.topicNameClicked;
         pdf = findViewById(R.id.txt_pdf);
         btn_pdf = findViewById(R.id.btn_pdf);
+        exit = findViewById(R.id.btnExit);
         pdfRef = FirebaseDatabase.getInstance().getReference("pdfUploads");
         btn_pdf.setEnabled(false);
         storageReference= FirebaseStorage.getInstance().getReference();
@@ -44,6 +45,13 @@ public class lecUploadPdf extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PdfSelect();
+            }
+        });
+
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), LecturerResourceView.class));
             }
         });
     }
@@ -105,6 +113,7 @@ public class lecUploadPdf extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"File is uploaded",Toast.LENGTH_LONG).show();
                         pd1.dismiss();
                         pdf.setText("");
+
 
                     }
                 }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
