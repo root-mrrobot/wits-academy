@@ -68,25 +68,25 @@ public class SettingsTest {
         settings.finish();
     }
 
-    @Test
-    public void NameTextTest(){
-        TextView textViewTest = settings.findViewById(R.id.settingsNameTextView);
-        String actual = textViewTest.getText().toString();
-        String expected = "Name:";
-
-        assertEquals(actual,expected);
-        settings.finish();
-    }
-
-    @Test
-    public void EmailTextTest(){
-        TextView textViewTest = settings.findViewById(R.id.settingsEmailTextView);
-        String actual = textViewTest.getText().toString();
-        String expected = "Email:";
-
-        assertEquals(actual,expected);
-        settings.finish();
-    }
+//    @Test
+//    public void NameTextTest(){
+//        TextView textViewTest = settings.findViewById(R.id.settingsNameTextView);
+//        String actual = textViewTest.getText().toString();
+//        String expected = "Name:";
+//
+//        assertEquals(actual,expected);
+//        settings.finish();
+//    }
+//
+//    @Test
+//    public void EmailTextTest(){
+//        TextView textViewTest = settings.findViewById(R.id.settingsEmailTextView);
+//        String actual = textViewTest.getText().toString();
+//        String expected = "Email:";
+//
+//        assertEquals(actual,expected);
+//        settings.finish();
+//    }
 
     @Test
     public void ImageTest() {
@@ -104,16 +104,16 @@ public class SettingsTest {
     public void testLaunchItems(){
         View editProfileText = settings.findViewById(R.id.editProfileText);
         View name = settings.findViewById(R.id.settingsName);
-        View editName = settings.findViewById(R.id.settingsNameEditText);
-        View editEmail = settings.findViewById(R.id.settingsEmailEditText);
-        View btnUpdate = settings.findViewById(R.id.btnUpdate);
+//        View editName = settings.findViewById(R.id.settingsNameEditText);
+//        View editEmail = settings.findViewById(R.id.settingsEmailEditText);
+//        View btnUpdate = settings.findViewById(R.id.btnUpdate);
         View btnChangePw = settings.findViewById(R.id.btnChangePw);
 
         assertNotNull(editProfileText);
         assertNotNull(name);
-        assertNotNull(editName);
-        assertNotNull(editEmail);
-        assertNotNull(btnUpdate);
+//        assertNotNull(editName);
+//        assertNotNull(editEmail);
+//        assertNotNull(btnUpdate);
         assertNotNull(btnChangePw);
 
         settings.finish();
@@ -149,25 +149,25 @@ public class SettingsTest {
 //        //settings.finish();
 //    }
 
-    @Test
-    public void testUpdateBtn(){
-        onView(withId(R.id.btnUpdate)).perform(click());
-    }
-
-    @Test
-    public void testUpdateBtn2() {
-        View view = settings.findViewById(R.id.btnUpdate);
-        assertNotNull(view);
-    }
-
-    @Test
-    public void testUpdateBtn3(){
-        onView(withId(R.id.btnUpdate)).perform(click());
-        Activity settings = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
-        assertNull(settings);
-
-        //settings.finish();
-    }
+//    @Test
+//    public void testUpdateBtn(){
+//        onView(withId(R.id.btnUpdate)).perform(click());
+//    }
+//
+//    @Test
+//    public void testUpdateBtn2() {
+//        View view = settings.findViewById(R.id.btnUpdate);
+//        assertNotNull(view);
+//    }
+//
+//    @Test
+//    public void testUpdateBtn3(){
+//        onView(withId(R.id.btnUpdate)).perform(click());
+//        Activity settings = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
+//        assertNull(settings);
+//
+//        //settings.finish();
+//    }
 
     @Test
     public void testUpdateBtn4(){
