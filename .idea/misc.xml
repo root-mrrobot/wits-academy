@@ -3,20 +3,31 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_account.xml" value="0.11141304347826086" />
+        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_course_topics.xml" value="0.11980749746707194" />
+        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_display_topics.xml" value="0.11141304347826086" />
         <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_home.xml" value="0.11296296296296296" />
+        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_info_courses.xml" value="0.11203703703703703" />
+        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_lec_upload_pdf.xml" value="0.2" />
         <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_lecturer_navigation.xml" value="0.11980749746707194" />
         <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_login.xml" value="0.11666666666666667" />
         <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_main.xml" value="0.11980749746707194" />
         <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_scroll_lecturer_course.xml" value="0.11980749746707194" />
         <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_settings.xml" value="0.264" />
         <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_splash_screen.xml" value="0.176" />
+        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_student_navigation.xml" value="0.11203703703703703" />
+        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_topic_resources.xml" value="0.176" />
+        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_upload_lectures.xml" value="0.11980749746707194" />
         <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/fragment_lecturer_account.xml" value="0.152" />
         <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/fragment_lecturer_courses.xml" value="0.1" />
         <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/fragment_lecturer_home.xml" value="0.1" />
         <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/fragment_student_account.xml" value="0.152" />
         <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/fragment_student_home.xml" value="0.11666666666666667" />
         <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/fragment_student_subsciptions.xml" value="0.11666666666666667" />
+        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/row.xml" value="0.2" />
         <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/student_course_pop_up.xml" value="0.2" />
+        <entry key="..\:/Users/Aaqib/AndroidStudioProjects/SD-Project/app/src/main/res/layout/subscribed_course.xml" value="0.176" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/SD-Project/app/src/main/res/layout/student_course_pop_up.xml" value="0.17346014492753623" />
         <entry key="..\:/Users/varac/AndroidStudioProjects/app/src/main/res/drawable/borderlines.xml" value="0.1285" />
         <entry key="..\:/Users/varac/AndroidStudioProjects/app/src/main/res/layout/activity_home.xml" value="0.2" />
