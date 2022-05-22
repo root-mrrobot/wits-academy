@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 import com.example.myapplication.User;
 
 public class UserTest {
+    // Creating a hypothetical user for tests
     User user = new User("John Doe", "john@gmail.com", "john123");
 
     @Before
