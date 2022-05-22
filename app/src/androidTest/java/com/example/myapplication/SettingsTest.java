@@ -52,21 +52,21 @@ public class SettingsTest {
         onView(withId(R.id.settings)).check(matches(isDisplayed()));
     }
 
-    @Test
-    public void settingsTextTest() {
-        View view = settings.findViewById(R.id.editProfileText);
-        assertNotNull(view);
-    }
-
-    @Test
-    public void settingsTextTest2(){
-        TextView textViewTest = settings.findViewById(R.id.editProfileText);
-        String actual = textViewTest.getText().toString();
-        String expected = "Edit Profile";
-
-        assertEquals(actual,expected);
-        settings.finish();
-    }
+//    @Test
+//    public void settingsTextTest() {
+//        View view = settings.findViewById(R.id.editProfileText);
+//        assertNotNull(view);
+//    }
+//
+//    @Test
+//    public void settingsTextTest2(){
+//        TextView textViewTest = settings.findViewById(R.id.editProfileText);
+//        String actual = textViewTest.getText().toString();
+//        String expected = "Edit Profile";
+//
+//        assertEquals(actual,expected);
+//        settings.finish();
+//    }
 
 //    @Test
 //    public void NameTextTest(){
