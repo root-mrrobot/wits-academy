@@ -7,6 +7,7 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -210,6 +211,32 @@ public class LoginTest {
         assertNull(login);
 
         //login.finish();
+    }
+
+    @Test
+    public void testForgotButtonDialogTitle(){
+        onView(withId(R.id.forgotPassword)).perform(click());
+        onView(withText("Reset Password?")).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testForgotButtonDialogMsg(){
+        onView(withId(R.id.forgotPassword)).perform(click());
+        onView(withText("Enter your email to receive reset password link")).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testForgotButtonDialogOptions(){
+        onView(withId(R.id.forgotPassword)).perform(click());
+        onView(withId(android.R.id.button1)).check(matches(isDisplayed()));
+        onView(withId(android.R.id.button2)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testForgotClickCancelBtn(){
+        onView(withId(R.id.forgotPassword)).perform(click());
+        // android.R.id.button2 = negative button (Cancel)
+        onView(withId(android.R.id.button2)).perform(click());
     }
 
     @After
