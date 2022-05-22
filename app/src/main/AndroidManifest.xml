@@ -19,6 +19,9 @@
             android:name=".TopicResources"
             android:exported="false" />
         <activity
+            android:name=".LecturerResourceView"
+            android:exported="false" />
+        <activity
             android:name=".lecUploadPdf"
             android:exported="false" />
         <activity

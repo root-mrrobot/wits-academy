@@ -7,8 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,11 +21,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class ScrollLecturerCourse extends AppCompatActivity {
     TextView CourseName;
     Button addTopicBtn;
     EditText topic;
     int count = -1;
+    ArrayList<String> StringNames = new ArrayList<String>();
+    ListView myListTopics;
+    private DatabaseReference coursesRef;
+    public static  String topicsClicked,topicNameClicked;
 
     private DatabaseReference topicsRef,ref;
     TopicData tData;
@@ -42,19 +51,57 @@ public class ScrollLecturerCourse extends AppCompatActivity {
 
         addTopicBtn = findViewById(R.id.AddTopicBtn);
 
-        viewTopics = findViewById(R.id.test);
-
-        viewTopics.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ScrollLecturerCourse.this, DisplayTopics.class));
-            }
-        });
-
         addTopicBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 UploadtoFirebase();
+                StringNames.clear();
+            }
+        });
+
+        ArrayAdapter<String> myArray_topic_Adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, StringNames);
+        //test = findViewById(R.id.textView2);
+        myListTopics = findViewById(R.id.topicView);
+        String name1 = LecturerCoursesFragment.courseNameClicked;
+        coursesRef= FirebaseDatabase.getInstance().getReference("Topics/" + name1);
+        coursesRef.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                String nameVal = snapshot.child("Week 1").getValue(String.class);
+//               System.out.println(nameVal);
+//                test.setText(nameVal);
+
+
+                ArrayList<String> topicIDs = new ArrayList<>();
+                ArrayList<String> topicNames = new ArrayList<>();
+                for(DataSnapshot child:snapshot.getChildren()){
+                    String id = child.getKey();
+                    String name = child.getValue().toString();
+                    StringNames.add(name);
+
+                    topicIDs.add(id);
+                    topicNames.add(name);
+
+                }
+                myArray_topic_Adapter.notifyDataSetChanged();
+                myListTopics.setAdapter(myArray_topic_Adapter);
+
+                myListTopics.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        topicsClicked = topicIDs.get(i);
+                        topicNameClicked = topicNames.get(i);
+
+                        startActivity(new Intent(getApplicationContext(), LecturerResourceView.class));
+                    }
+                });
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 

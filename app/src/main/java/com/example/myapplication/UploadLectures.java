@@ -43,30 +43,23 @@ public class UploadLectures extends AppCompatActivity {
     MediaController mediaController;
     StorageReference storageReference;
     DatabaseReference vidRef;
-    TextView pdf_intent;
     String subject_name,topic_name;
+    Button exit;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_lectures);
-        pdf_intent = findViewById(R.id.pdf_intent);
         subject_name = LecturerCoursesFragment.courseNameClicked;
-         topic_name = DisplayTopics.topicNameClicked;
-        pdf_intent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), lecUploadPdf.class));
-            }
-        });
-
+        topic_name = ScrollLecturerCourse.topicNameClicked;
 
         vtitle=(EditText)findViewById(R.id.video_heading);
         storageReference= FirebaseStorage.getInstance().getReference();
         vidRef = FirebaseDatabase.getInstance().getReference("myvideos");
 
         videoView=(VideoView)findViewById(R.id.lec_video);
+        exit = (Button)findViewById(R.id.btnExit);
         upload=(Button)findViewById(R.id.btn_vidUpload);
         browse=(Button)findViewById(R.id.btn_vidBrowse);
         mediaController=new MediaController(this);
@@ -109,8 +102,12 @@ public class UploadLectures extends AppCompatActivity {
             }
         });
 
-
-
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), LecturerResourceView.class));
+            }
+        });
 
     }
 
@@ -168,7 +165,9 @@ public class UploadLectures extends AppCompatActivity {
 
 
                                                 pd.dismiss();
-
+                                                videoView.setVisibility(View.GONE);
+                                                videoView.setVisibility(View.VISIBLE);
+                                                vtitle.setText("");
                                                 Toast.makeText(getApplicationContext(),"Successfully uploaded",Toast.LENGTH_LONG).show();
                                             }
                                         })

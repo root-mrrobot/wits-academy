@@ -65,14 +65,18 @@
         app:layout_constraintTop_toBottomOf="@+id/video_heading"
         app:layout_constraintVertical_bias="0.115" />
 
-    <TextView
-        android:id="@+id/pdf_intent"
+    <Button
+        android:id="@+id/btnExit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="75dp"
-        android:layout_marginTop="81dp"
-        android:text="Click here if you want to upload pdfs"
+        android:layout_marginStart="151dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="172dp"
+        android:layout_marginBottom="238dp"
+        android:text="Exit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_vidBrowse" />
+        app:layout_constraintTop_toBottomOf="@+id/video_heading" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
