@@ -62,7 +62,7 @@ public class SettingsTest {
     public void settingsTextTest2(){
         TextView textViewTest = settings.findViewById(R.id.editProfileText);
         String actual = textViewTest.getText().toString();
-        String expected = "Edit Profile Data";
+        String expected = "Edit Profile";
 
         assertEquals(actual,expected);
         settings.finish();
@@ -119,25 +119,25 @@ public class SettingsTest {
         settings.finish();
     }
 
-    @Test
-    public void testChangePwBtn(){
-        onView(withId(R.id.btnChangePw)).perform(click());
-    }
-
-    @Test
-    public void testChangePwBtn2(){
-        View view = settings.findViewById(R.id.btnChangePw);
-        assertNotNull(view);
-    }
-
-    @Test
-    public void testChangePwBtn3(){
-        onView(withId(R.id.btnChangePw)).perform(click());
-        Activity settings = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
-        assertNull(settings);
-
-        //settings.finish();
-    }
+//    @Test
+//    public void testChangePwBtn(){
+//        onView(withId(R.id.btnChangePw)).perform(click());
+//    }
+//
+//    @Test
+//    public void testChangePwBtn2(){
+//        View view = settings.findViewById(R.id.btnChangePw);
+//        assertNotNull(view);
+//    }
+//
+//    @Test
+//    public void testChangePwBtn3(){
+//        onView(withId(R.id.btnChangePw)).perform(click());
+//        Activity settings = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
+//        assertNull(settings);
+//
+//        //settings.finish();
+//    }
 
 //    @Test
 //    public void testChangePwBtn4(){
