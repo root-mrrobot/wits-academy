@@ -103,4 +103,46 @@ public class RegisterValidationTest {
         assertFalse(output);
 
     }
+
+    // Correct Input
+    @Test
+    public void emailValidator_CorrectEmailSimple_ReturnsTrue() {
+        assertTrue(RegisterValidation.isValidEmail("name@email.com"));
+    }
+
+    // Email with subdomain
+    @Test
+    public void emailValidator_CorrectEmailSubDomain_ReturnsTrue() {
+        assertTrue(RegisterValidation.isValidEmail("name@email.co.uk"));
+    }
+
+    // Without .com
+    @Test
+    public void emailValidator_InvalidEmailNoTld_ReturnsFalse() {
+        assertFalse(RegisterValidation.isValidEmail("name@email"));
+    }
+
+    // With extra characters
+    @Test
+    public void emailValidator_InvalidEmailDoubleDot_ReturnsFalse() {
+        assertFalse(RegisterValidation.isValidEmail("name@email..com"));
+    }
+
+    // With no username
+    @Test
+    public void emailValidator_InvalidEmailNoUsername_ReturnsFalse() {
+        assertFalse(RegisterValidation.isValidEmail("@email.com"));
+    }
+
+    // Empty Input
+    @Test
+    public void emailValidator_EmptyString_ReturnsFalse() {
+        assertFalse(RegisterValidation.isValidEmail(""));
+    }
+
+    // Null value check
+    @Test
+    public void emailValidator_NullEmail_ReturnsFalse() {
+        assertFalse(RegisterValidation.isValidEmail(null));
+    }
 }

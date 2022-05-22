@@ -5,6 +5,7 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
+import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
@@ -19,16 +20,16 @@ public class DisplayTopicsTest {
 
     // Activity Test Rule for Display Topics Activity
     @Rule
-    public ActivityTestRule<DisplayTopics> DisplayTopicsTestRule = new ActivityTestRule<>(DisplayTopics.class);
+    public ActivityScenarioRule<DisplayTopics> DisplayTopicsTestRule = new ActivityScenarioRule<>(DisplayTopics.class);
 
     // displayTopics variable to be used throughout for tests
     private DisplayTopics displayTopics = null;
 
     // Set up method (default)
-    @Before
-    public void setUp() throws Exception {
-        displayTopics = DisplayTopicsTestRule.getActivity();
-    }
+//    @Before
+//    public void setUp() throws Exception {
+//        displayTopics = DisplayTopicsTestRule.getActivity();
+//    }
 
     // Checking if the activity appears and whether is matches the id 'displayTopics'
     @Test
@@ -37,8 +38,8 @@ public class DisplayTopicsTest {
     }
 
     // After method (default)
-    @After
-    public void tearDown() throws Exception {
-        displayTopics = null;
-    }
+//    @After
+//    public void tearDown() throws Exception {
+//        displayTopics = null;
+//    }
 }
