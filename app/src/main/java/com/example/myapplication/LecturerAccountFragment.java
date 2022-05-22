@@ -14,10 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,7 +32,7 @@ public class LecturerAccountFragment extends Fragment implements View.OnClickLis
 
     // Firebase variables
     private FirebaseUser user;
-    private DatabaseReference ref;
+    private DatabaseReference ref,ref1;
     private String userID;
 
     // Buttons, Toggles TextView and View variables
@@ -40,6 +42,7 @@ public class LecturerAccountFragment extends Fragment implements View.OnClickLis
     private Button logout;
     private Button settings;
     View view;
+    ImageView pro_pic;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,7 @@ public class LecturerAccountFragment extends Fragment implements View.OnClickLis
         studentTeacherToggleBtn.setOnClickListener(this);
         // Text variable of Student View
         studentTextView = view.findViewById(R.id.studentTextView);
+        pro_pic = view.findViewById(R.id.profilePic2);
 
         studentTeacherToggleBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -145,6 +149,46 @@ public class LecturerAccountFragment extends Fragment implements View.OnClickLis
                 String emailVal = snapshot.child("email").getValue(String.class);
                 // Setting textView to fetched email
                 emailTextView.setText(emailVal);
+
+                ref1 = FirebaseDatabase.getInstance().getReference("Profile pictures/" );
+
+
+
+
+                // This fetches the data from firebase
+                ref1.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot child : snapshot.getChildren()) {
+
+                            //get the child of the course that we clicked on
+                            String usersTableName = child.child("email_").getValue().toString();
+
+                            // loading that data into rImiage
+                            //Displays the courses information into the TextViews and retrieves the image associated with it
+                            if (usersTableName.equals(emailVal))
+                            {
+
+                                System.out.println("email " + emailVal);
+
+                                String link = child.child("profilePic_URI").getValue().toString();
+
+                                // variable which is ImageView
+                                Glide.with(getContext()).load(link).into(pro_pic);
+
+                            }
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
+
             }
 
             @Override
@@ -153,6 +197,8 @@ public class LecturerAccountFragment extends Fragment implements View.OnClickLis
                 Toast.makeText(getActivity(), "Something wrong happened!", Toast.LENGTH_LONG).show();
             }
         });
+
+
 
         return view;
     }
