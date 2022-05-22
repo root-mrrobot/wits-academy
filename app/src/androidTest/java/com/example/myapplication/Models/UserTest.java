@@ -27,8 +27,8 @@ public class UserTest {
         String expected1 = "john123";
         assertEquals(expected1, user.getPassword());
 
-        String expected3 = "john@gmail.com";
-        assertEquals(expected3, user.getEmail());
+        String expected2 = "john@gmail.com";
+        assertEquals(expected2, user.getEmail());
     }
 
     @Test
