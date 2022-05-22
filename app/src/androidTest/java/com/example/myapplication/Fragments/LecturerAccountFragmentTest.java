@@ -10,6 +10,7 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
 import static org.junit.Assert.assertNotNull;
@@ -95,6 +96,44 @@ public class LecturerAccountFragmentTest {
         assertNull(settings);
 
         //LecturerAccountFragment.finish();
+    }
+
+    // Testing to see if the Title of the Dialog matches with the text
+    @Test
+    public void testLogoutButtonDialogTitle(){
+        onView(withId(R.id.btnLogout2)).perform(click());
+        onView(withText("Log out of Wits Academy")).check(matches(isDisplayed()));
+    }
+
+    // Testing to see if the Message of the Dialog matches with the text
+    @Test
+    public void testLogoutButtonDialogMsg(){
+        onView(withId(R.id.btnLogout2)).perform(click());
+        onView(withText("Are you sure you would like to log out?")).check(matches(isDisplayed()));
+    }
+
+    // Testing to see if the options are displayed
+    @Test
+    public void testLogoutButtonDialogOptions(){
+        onView(withId(R.id.btnLogout2)).perform(click());
+        onView(withId(android.R.id.button1)).check(matches(isDisplayed()));
+        onView(withId(android.R.id.button2)).check(matches(isDisplayed()));
+    }
+
+    // Testing the logout button from the dialog to see if user is logged out
+    @Test
+    public void testLogoutClickLogoutBtn(){
+        onView(withId(R.id.btnLogout2)).perform(click());
+        // android.R.id.button1 = positive button (logout)
+        onView(withId(android.R.id.button1)).perform(click());
+    }
+
+    // Testing the cancel button from the dialog to see if user changes their mind
+    @Test
+    public void testLogoutClickCancelBtn(){
+        onView(withId(R.id.btnLogout2)).perform(click());
+        // android.R.id.button2 = negative button (Cancel)
+        onView(withId(android.R.id.button2)).perform(click());
     }
 
 //    @Test

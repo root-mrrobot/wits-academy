@@ -69,10 +69,18 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.btnStudent:
-                startActivity(new Intent(this, StudentNavigation.class));
+                // Sending to Student View
+                Intent intentStudent = new Intent(this, StudentNavigation.class);
+                // Prevents user to go back to Home Page
+                intentStudent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intentStudent);
                 break;
             case R.id.btnLecturer:
-                startActivity(new Intent(this, LecturerNavigation.class));
+                // Sending to Lecturer View
+                Intent intentLecturer = new Intent(this, LecturerNavigation.class);
+                // Prevents user to go back to Home Page
+                intentLecturer.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intentLecturer);
                 break;
         }
     }
