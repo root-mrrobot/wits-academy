@@ -23,62 +23,52 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 public class SplashScreenTest {
 
+    // Activity Test Rule for Splash Screen activity
     @Rule
     public ActivityTestRule<SplashScreen> splashScreenActivityTestRule = new ActivityTestRule<SplashScreen>(SplashScreen.class);
 
+    // splashScreen variable to be used throughout for tests
     private SplashScreen splashScreen = null;
 
+    // Monitor to be used for Instrumentation
     Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(MainActivity.class.getName(),null ,false);
 
+    // Set up method (default)
     @Before
     public void setUp() throws Exception {
         splashScreen = splashScreenActivityTestRule.getActivity();
     }
 
+    // Testing to see if image does exist and is not empty
     @Test
     public void imgViewTest() {
         View view = splashScreen.findViewById(R.id.WitsAcademyimg);
-        assertNotNull(view);
+        assertNotNull(view); // Making sure the view of image is not empty
     }
 
+    // Testing to see if developed by text does exist and is not empty
     @Test
     public void devTextTest() {
         View view = splashScreen.findViewById(R.id.slogan1);
-        assertNotNull(view);
+        assertNotNull(view); // Making sure the view of text is not empty
     }
 
-//    @Test
-//    public void devTextTest2(){
-//        TextView textViewTest = splashScreen.findViewById(R.id.slogan1);
-//        String actual = textViewTest.getText().toString();
-//        String expected = "Developed by:";
-//
-//        assertEquals(actual,expected);
-//        splashScreen.finish();
-//    }
-
+    // Testing to see if teamName text does exist and is not empty
     @Test
     public void teamNameTextTest() {
         View view = splashScreen.findViewById(R.id.slogan2);
-        assertNotNull(view);
+        assertNotNull(view); // Making sure the view of text is not empty
     }
 
-//    @Test
-//    public void teamNameTextTest2(){
-//        TextView textViewTest = splashScreen.findViewById(R.id.slogan2);
-//        String actual = textViewTest.getText().toString();
-//        String expected = "Ctrl Alt Elite";
-//
-//        assertEquals(actual,expected);
-//        splashScreen.finish();
-//    }
-
+    // Testing to see if all items are launched and not empty
     @Test
     public void testLaunchItems(){
+        // Assigning view variables to different components from the UI
         View img = splashScreen.findViewById(R.id.WitsAcademyimg);
         View dev = splashScreen.findViewById(R.id.slogan1);
         View teamName = splashScreen.findViewById(R.id.slogan2);
 
+        // Making sure the view is not empty
         assertNotNull(img);
         assertNotNull(dev);
         assertNotNull(teamName);
@@ -86,6 +76,7 @@ public class SplashScreenTest {
         splashScreen.finish();
     }
 
+    // After method (default)
     @After
     public void tearDown() throws Exception {
         splashScreen = null;
