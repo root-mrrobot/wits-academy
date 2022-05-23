@@ -52,11 +52,11 @@ public class LecturerNavigationTest {
 //    public void isHomeInView(){
 //        onView(withId(R.id.lecturerHome)).check(matches(isDisplayed()));
 //    }
-//
-    @Test
-    public void isCoursesInView(){
-        onView(withId(R.id.courses)).check(matches(isDisplayed()));
-    }
+
+//    @Test
+//    public void isCoursesInView(){
+//        onView(withId(R.id.courses)).check(matches(isDisplayed()));
+//    }
 
     @Test
     public void isAccountInView(){
