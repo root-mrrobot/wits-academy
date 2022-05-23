@@ -50,21 +50,30 @@ public class RegisterValidationTest {
      * 
      */
 
-    // password is >= 6 char
+    // password is > 6 char
     @Test
     public void lengthGreaterThanSix() {
 
-        boolean output = RegisterValidation.lengthGreaterThanSix("ash123");
+        boolean output = RegisterValidation.lengthGreaterThanSix("ashy123");
         assertTrue(output);
 
     }
 
-    // password is not >= 6 char
+    // password is not < 6 char
     @Test
     public void lengthNotGreaterThanSix() {
 
         boolean output = RegisterValidation.lengthGreaterThanSix("123");
         assertFalse(output);
+
+    }
+
+    //password is = 6
+    @Test
+    public void PasswordLengthSix() {
+
+        boolean output = RegisterValidation.lengthGreaterThanSix("ash123");
+        assertTrue(output);
 
     }
 
