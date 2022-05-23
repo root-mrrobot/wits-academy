@@ -25,8 +25,8 @@ public class filemodel
 
     String topic_name;
 
-    public filemodel() {
-    }
+//    public filemodel() {
+//    }
 
     public filemodel(String title, String vurl,String subject_name,String topic_name) {
         this.title = title;

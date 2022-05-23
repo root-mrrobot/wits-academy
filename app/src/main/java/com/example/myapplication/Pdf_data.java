@@ -4,8 +4,8 @@ public class Pdf_data {
     public String url_pdf;
     public String name_pdf;
     public String subject_name,topic_name;
-    public Pdf_data() {
-    }
+//    public Pdf_data() {
+//    }
 
     public Pdf_data(String name_pdf,String url_pdf,String subject_name, String topic_name) {
         this.name_pdf = name_pdf;

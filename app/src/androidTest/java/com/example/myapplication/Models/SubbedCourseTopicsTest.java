@@ -35,6 +35,16 @@ public class SubbedCourseTopicsTest {
         onView(withId(R.id.displaySubbedTopics)).check(matches(isDisplayed()));
     }
 
+//    @Test
+//    public void isTextViewInView(){
+//        onView(withId(R.id.txtHeading)).check(matches(isDisplayed()));
+//    }
+
+    @Test
+    public void isListViewInView(){
+        onView(withId(R.id.topicView)).check(matches(isDisplayed()));
+    }
+
     @After
     public void tearDown() throws Exception {
         displaySubbedTopics = null;
