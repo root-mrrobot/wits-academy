@@ -12,6 +12,7 @@ import static org.junit.Assert.assertNull;
 
 import android.app.Activity;
 import android.app.Instrumentation;
+import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -42,6 +43,7 @@ public class HomeTest {
     @Before
     public void setUp() throws Exception {
         home = homeActivityTestRule.getActivity();
+        home.sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
     }
 
     // Checking if the activity appears and whether is matches the id 'home'
@@ -208,33 +210,33 @@ public class HomeTest {
     //    NOTE: The commented out Tests used to work before but
     //    are not working anymore due to updated code.
 
-//    @Test
-//    public void testLecturerBtn(){
-//        onView(withId(R.id.btnLecturer)).perform(click());
-//        Activity home = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
-//        assertNull(home);
-//
-//        //home.finish();
-//    }
+    @Test
+    public void testLecturerBtn(){
+        onView(withId(R.id.btnLecturer)).perform(click());
+        Activity home = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
+        assertNull(home);
 
-//     @Test
-//     public void testLecturerBtn3(){
-//         onView(withId(R.id.btnLecturer)).perform(click());
-//     }
+        //home.finish();
+    }
 
-//    @Test
-//    public void testStudentBtn(){
-//        onView(withId(R.id.btnStudent)).perform(click());
-//        Activity home = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
-//        assertNull(home);
-//
-//        //home.finish();
-//    }
+     @Test
+     public void testLecturerBtn3(){
+         onView(withId(R.id.btnLecturer)).perform(click());
+     }
 
-//     @Test
-//     public void testStudentBtn3(){
-//         onView(withId(R.id.btnStudent)).perform(click());
-//     }
+    @Test
+    public void testStudentBtn(){
+        onView(withId(R.id.btnStudent)).perform(click());
+        Activity home = getInstrumentation().waitForMonitorWithTimeout(monitor,5000);
+        assertNull(home);
+
+        //home.finish();
+    }
+
+     @Test
+     public void testStudentBtn3(){
+         onView(withId(R.id.btnStudent)).perform(click());
+     }
 
     // After method (default)
     @After
