@@ -48,10 +48,10 @@ public class LecturerNavigationTest {
         onView(withId(R.id.bottomNavigationView1)).check(matches(isDisplayed()));
     }
 
-    @Test
-    public void isHomeInView(){
-        onView(withId(R.id.lecturerHome)).check(matches(isDisplayed()));
-    }
+//    @Test
+//    public void isHomeInView(){
+//        onView(withId(R.id.lecturerHome)).check(matches(isDisplayed()));
+//    }
 
     @Test
     public void isCoursesInView(){
