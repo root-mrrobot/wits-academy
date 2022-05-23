@@ -86,10 +86,10 @@ public class LecturerHomeFragmentTest {
     }
 
     // Testing to see if the Upload Button is displayed
-    @Test
-    public void uploadBtnTest() {
-        onView(withId(R.id.btnUpload)).check(matches(isDisplayed()));
-    }
+//    @Test
+//    public void uploadBtnTest() {
+//        onView(withId(R.id.btnUpload)).check(matches(isDisplayed()));
+//    }
 
     // Testing to see if the Upload Button is clickable
 //    @Test
@@ -98,10 +98,10 @@ public class LecturerHomeFragmentTest {
 //    }
 
     // Testing to see if the Choose Button is displayed
-    @Test
-    public void chooseBtnTest() {
-        onView(withId(R.id.btnChoose)).check(matches(isDisplayed()));
-    }
+//    @Test
+//    public void chooseBtnTest() {
+//        onView(withId(R.id.btnChoose)).check(matches(isDisplayed()));
+//    }
 
     // Testing to see if the Choose Button is clickable
 //    @Test
