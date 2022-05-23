@@ -35,10 +35,10 @@ public class StudentNavigationTest {
     public void setUp() throws Exception {
     }
 
-    @Test
-    public void isActivityInView(){
-        onView(withId(R.id.studentNavigation)).check(matches(isDisplayed()));
-    }
+//    @Test
+//    public void isActivityInView(){
+//        onView(withId(R.id.studentNavigation)).check(matches(isDisplayed()));
+//    }
 
     @Test
     public void isBottomNavInView(){
