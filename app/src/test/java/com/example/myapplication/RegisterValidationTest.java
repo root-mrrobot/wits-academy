@@ -54,6 +54,14 @@ public class RegisterValidationTest {
     @Test
     public void lengthGreaterThanSix() {
 
+        boolean output = RegisterValidation.lengthGreaterThanSix("ashy123");
+        assertTrue(output);
+
+    }
+
+    @Test
+    public void lengthEqualSix() {
+
         boolean output = RegisterValidation.lengthGreaterThanSix("ash123");
         assertTrue(output);
 

@@ -51,9 +51,17 @@ public class LoginValidationTest {
 
     // password is >= 6 char
     @Test
-    public void lengthGreaterThanSix() {
+    public void lengthEqualToSix() {
 
         boolean output = LoginValidation.lengthGreaterThanSix("ash123");
+        assertTrue(output);
+
+    }
+
+    @Test
+    public void passwordLengthGreaterThanSix() {
+
+        boolean output = LoginValidation.lengthGreaterThanSix("ashy123");
         assertTrue(output);
 
     }
