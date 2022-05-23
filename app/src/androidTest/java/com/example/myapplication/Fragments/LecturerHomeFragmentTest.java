@@ -44,10 +44,10 @@ public class LecturerHomeFragmentTest {
     }
 
     // Testing to see if the Spinner is displayed
-    @Test
-    public void spinnerTest() {
-        onView(withId(R.id.spinner)).check(matches(isDisplayed()));
-    }
+//    @Test
+//    public void spinnerTest() {
+//        onView(withId(R.id.spinner)).check(matches(isDisplayed()));
+//    }
 
     // Testing to see if the Spinner is clickable
     @Test
