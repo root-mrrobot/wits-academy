@@ -5,6 +5,7 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isClickable;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
@@ -36,11 +37,6 @@ public class SettingsTest {
     private Settings settings = null;
 
     Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(MainActivity.class.getName(),null ,false);
-
-    public static final String STRING_TO_BE_TYPED_NEW_FULL_NAME = "Jane Doe";
-    public static final String STRING_TO_BE_TYPED_NEW_EMAIL = "janedoe@gmail.com";
-    public static final String STRING_TO_BE_TYPED_NEW_PASSWORD = "janed123";
-    public static final String STRING_TO_BE_TYPED_NEW_CONFIRM_PASSWORD = "janed123";
 
     @Before
     public void setUp() throws Exception {
@@ -102,6 +98,7 @@ public class SettingsTest {
 
     @Test
     public void testLaunchItems(){
+        View editProfilePic = settings.findViewById(R.id.editProfilePic);
         View editProfileText = settings.findViewById(R.id.editProfileText);
         View name = settings.findViewById(R.id.settingsName);
 //        View editName = settings.findViewById(R.id.settingsNameEditText);
@@ -109,6 +106,7 @@ public class SettingsTest {
 //        View btnUpdate = settings.findViewById(R.id.btnUpdate);
         View btnChangePw = settings.findViewById(R.id.btnChangePw);
 
+        assertNotNull(editProfilePic);
         assertNotNull(editProfileText);
         assertNotNull(name);
 //        assertNotNull(editName);
@@ -178,6 +176,22 @@ public class SettingsTest {
         assertEquals(actual,expected);
         settings.finish();
     }
+
+    @Test
+    public void addImageBtnTest(){
+        TextView textViewTest = settings.findViewById(R.id.profilepic_uploadBtn);
+        String actual = textViewTest.getText().toString();
+        String expected = "Add picture";
+
+        assertEquals(actual,expected);
+        settings.finish();
+    }
+
+    // Testing to see if the Upload Button is clickable
+//    @Test
+//    public void addImageBtnTest2() {
+//        onView(withId(R.id.profilepic_uploadBtn)).check(matches(isClickable()));
+//    }
 
     @After
     public void tearDown() throws Exception {
