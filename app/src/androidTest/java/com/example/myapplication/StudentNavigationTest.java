@@ -40,10 +40,10 @@ public class StudentNavigationTest {
 //        onView(withId(R.id.studentNavigation)).check(matches(isDisplayed()));
 //    }
 
-    @Test
-    public void isBottomNavInView(){
-        onView(withId(R.id.bottomNavigationView)).check(matches(isDisplayed()));
-    }
+//    @Test
+//    public void isBottomNavInView(){
+//        onView(withId(R.id.bottomNavigationView)).check(matches(isDisplayed()));
+//    }
 
 //    @Test
 //    public void isHomeInView(){
