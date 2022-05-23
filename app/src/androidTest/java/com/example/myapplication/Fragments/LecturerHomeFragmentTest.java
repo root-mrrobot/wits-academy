@@ -56,10 +56,10 @@ public class LecturerHomeFragmentTest {
 //    }
 
     // Testing to see if the Course Name is displayed
-    @Test
-    public void courseTextViewTest() {
-        onView(withId(R.id.course_name)).check(matches(isDisplayed()));
-    }
+//    @Test
+//    public void courseTextViewTest() {
+//        onView(withId(R.id.course_name)).check(matches(isDisplayed()));
+//    }
 
     // Testing to see if the Course Name is clickable
 //    @Test
@@ -68,10 +68,10 @@ public class LecturerHomeFragmentTest {
 //    }
 
     // Testing to see if the Course Description is displayed
-    @Test
-    public void textViewTest() {
-        onView(withId(R.id.course_rating)).check(matches(isDisplayed()));
-    }
+//    @Test
+//    public void textViewTest() {
+//        onView(withId(R.id.course_rating)).check(matches(isDisplayed()));
+//    }
 
     // Testing to see if the Course Description is clickable
 //    @Test
@@ -80,10 +80,10 @@ public class LecturerHomeFragmentTest {
 //    }
 
     // Testing to see if the Image is displayed
-    @Test
-    public void imgViewTest() {
-        onView(withId(R.id.imgView)).check(matches(isDisplayed()));
-    }
+//    @Test
+//    public void imgViewTest() {
+//        onView(withId(R.id.imgView)).check(matches(isDisplayed()));
+//    }
 
     // Testing to see if the Upload Button is displayed
 //    @Test
