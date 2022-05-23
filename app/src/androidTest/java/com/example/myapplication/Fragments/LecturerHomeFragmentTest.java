@@ -62,10 +62,10 @@ public class LecturerHomeFragmentTest {
     }
 
     // Testing to see if the Course Name is clickable
-    @Test
-    public void courseTextViewTest2() {
-        onView(withId(R.id.course_name)).check(matches(isClickable()));
-    }
+//    @Test
+//    public void courseTextViewTest2() {
+//        onView(withId(R.id.course_name)).check(matches(isClickable()));
+//    }
 
     // Testing to see if the Course Description is displayed
     @Test
@@ -74,10 +74,10 @@ public class LecturerHomeFragmentTest {
     }
 
     // Testing to see if the Course Description is clickable
-    @Test
-    public void textViewTest2() {
-        onView(withId(R.id.course_rating)).check(matches(isClickable()));
-    }
+//    @Test
+//    public void textViewTest2() {
+//        onView(withId(R.id.course_rating)).check(matches(isClickable()));
+//    }
 
     // Testing to see if the Image is displayed
     @Test
