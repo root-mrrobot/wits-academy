@@ -24,7 +24,7 @@ public class LecturerNavigationTest {
 
     @Test
     public void testLaunch(){
-        assertNotNull(lecturerNavigationTestRule.getActivity());
+        assertNotNull(lecturerNavigationTestRule.getActivity().getSupportFragmentManager().getFragments());
     }
 
 /*/
