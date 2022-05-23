@@ -1,11 +1,15 @@
 package com.example.myapplication;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isChecked;
+import static androidx.test.espresso.matcher.ViewMatchers.isClickable;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.isNotChecked;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static org.junit.Assert.assertEquals;
@@ -108,7 +112,7 @@ public class RegisterTest {
 
     @Test
     public void testCheckBoxPwd(){
-        onView(withId(R.id.showRegisterPassword)).perform(click()).check(matches(ViewMatchers.isChecked()));
+        onView(withId(R.id.showRegisterPassword)).perform(click()).check(matches(isChecked()));
         register.finish();
     }
 
@@ -121,6 +125,18 @@ public class RegisterTest {
     public void testCheckBoxPw3() {
         View view = register.findViewById(R.id.showRegisterPassword);
         assertNotNull(view);
+    }
+
+    @Test
+    public void testCheckBoxPwd4(){
+        onView(withId(R.id.showRegisterPassword)).perform(click()).check(matches(isChecked()));
+        onView(withId(R.id.showRegisterPassword)).perform(click()).check(matches(isNotChecked()));
+        register.finish();
+    }
+
+    @Test
+    public void testCheckBoxPw5(){
+        onView(withId(R.id.showRegisterPassword)).check(matches(isClickable()));
     }
 
     @Test

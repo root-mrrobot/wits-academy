@@ -5,7 +5,10 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isChecked;
+import static androidx.test.espresso.matcher.ViewMatchers.isClickable;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.isNotChecked;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
@@ -119,6 +122,18 @@ public class LoginTest {
     public void testCheckBoxPw3() {
         View view = login.findViewById(R.id.showLoginPassword);
         assertNotNull(view);
+    }
+
+    @Test
+    public void testCheckBoxPwd4(){
+        onView(withId(R.id.showLoginPassword)).perform(click()).check(matches(isChecked()));
+        onView(withId(R.id.showLoginPassword)).perform(click()).check(matches(isNotChecked()));
+        login.finish();
+    }
+
+    @Test
+    public void testCheckBoxPw5(){
+        onView(withId(R.id.showLoginPassword)).check(matches(isClickable()));
     }
 
     @Test
