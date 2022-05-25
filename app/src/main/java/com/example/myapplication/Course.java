@@ -2,7 +2,7 @@ package com.example.myapplication;
 
 
 // This class allows for the creation and use of course objects
-class Course {
+public class Course {
 
     String id;
     String name;
