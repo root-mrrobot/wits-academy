@@ -1,4 +1,4 @@
-package com.example.myapplication.Models;
+package com.example.myapplication;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
