@@ -137,7 +137,7 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                                      */
                                     if (category.equals(spinner.getSelectedItem().toString())) {
 
-                                        Course course = new Course();
+                                        Course course = new Course(id, name, description, category, lecName, image, rating);
 
                                         course.setName(name);
                                         course.setDescription((description));
@@ -161,7 +161,7 @@ public class StudentHomeFragment extends Fragment implements AdapterView.OnItemS
                                      */
                                     else if (spinner.getSelectedItem().toString().equals("All Courses")){
 
-                                        Course course = new Course();
+                                        Course course = new Course(id, name, description, category, lecName, image, rating);
 
                                         course.setName(name);
                                         course.setDescription((description));

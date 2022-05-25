@@ -67,4 +67,15 @@ class Course {
     public void setRating(double rating) {
         this.rating = rating;
     }
+
+    public Course(String id, String name, String description, String category, String teacher, String image, double rating)
+    {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.category = category;
+        this.teacher = teacher;
+        this.image = image;
+        this.rating = rating;
+    }
 }
