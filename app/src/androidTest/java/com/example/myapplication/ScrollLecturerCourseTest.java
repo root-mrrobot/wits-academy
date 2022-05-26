@@ -38,36 +38,6 @@ public class ScrollLecturerCourseTest {
         onView(withId(R.id.scrollLecturerCourse)).check(matches(isDisplayed()));
     }
 
-    @Test
-    public void isTextNotInView(){
-        onView(withId(R.id.SVcourseName)).check(matches(not(isDisplayed())));
-    }
-
-    @Test
-    public void isButtonInView(){
-        onView(withId(R.id.AddTopicBtn)).check(matches(isDisplayed()));
-    }
-
-    @Test
-    public void isEditTextInView(){
-        onView(withId(R.id.topic)).check(matches(isDisplayed()));
-    }
-
-    @Test
-    public void isTextViewInView(){
-        onView(withId(R.id.textView5)).check(matches(isDisplayed()));
-    }
-
-    @Test
-    public void isTextView7InView(){
-        onView(withId(R.id.textView7)).check(matches(isDisplayed()));
-    }
-
-    @Test
-    public void isListViewInView(){
-        onView(withId(R.id.topicView)).check(matches(isDisplayed()));
-    }
-
     // After method (default)
     @After
     public void tearDown() throws Exception {
