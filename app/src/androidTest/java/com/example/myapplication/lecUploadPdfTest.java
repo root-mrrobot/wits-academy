@@ -3,7 +3,12 @@ package com.example.myapplication;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+
+import static org.junit.Assert.assertEquals;
+
+import android.widget.TextView;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
@@ -34,6 +39,31 @@ public class lecUploadPdfTest {
     @Test
     public void isActivityInView(){
         onView(withId(R.id.lecUploadPdf)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isTextHintInView(){
+        onView(withHint("Click here to upload pdf")).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void pdfBtnTest(){
+        TextView textViewTest = lecUploadPdf.findViewById(R.id.btnExit);
+        String actual = textViewTest.getText().toString();
+        String expected = "Exit";
+
+        assertEquals(actual,expected);
+        lecUploadPdf.finish();
+    }
+
+    @Test
+    public void videoBtnTest(){
+        TextView textViewTest = lecUploadPdf.findViewById(R.id.btn_pdf);
+        String actual = textViewTest.getText().toString();
+        String expected = "Upload pdf";
+
+        assertEquals(actual,expected);
+        lecUploadPdf.finish();
     }
 
     // After method (default)

@@ -18,10 +18,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/pdfResources" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/videoResources"
         android:layout_width="382dp"
         android:layout_height="44dp"
         android:layout_marginStart="35dp"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/pdfResources"
         android:layout_width="377dp"
         android:layout_height="41dp"
         android:layout_marginStart="35dp"
@@ -56,10 +56,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/pdfResources"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/videoResources" />
 
     <Button
         android:id="@+id/btnUploadVid"
