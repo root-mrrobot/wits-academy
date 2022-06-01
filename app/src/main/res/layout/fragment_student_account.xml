@@ -66,33 +66,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileName"/>
 
-    <Button
-        android:id="@+id/btnSettings"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="250sp"
-        android:layout_height="50sp"
-        android:layout_marginTop="-30dp"
-        android:layout_gravity="center"
-        android:text="@string/settings"
-        app:backgroundTint="@color/colorAccent"
-        app:layout_constraintBottom_toTopOf="@+id/btnLogout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileBackground"/>
-
-    <Button
-        android:id="@+id/btnLogout"
-        style="@style/Widget.AppCompat.Button.Colored"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="380dp"
-        android:text="@string/logout"
-        app:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileName" />
+        app:layout_constraintTop_toTopOf="@+id/profileEmail"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/btnSettings"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/settings"
+            app:backgroundTint="@color/colorAccent" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/logout"
+            app:backgroundTint="@color/blue" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/studentTeacherTextView"
@@ -109,16 +110,15 @@
 
     <ToggleButton
         android:id="@+id/toggleBtn"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
         android:layout_gravity="center"
         android:checked="true"
-        android:textOff="@string/teacher"
-        android:textOn="@string/student"
+        android:textOff="@string/student"
+        android:textOn="@string/teacher"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentTeacherTextView"/>
+        app:layout_constraintTop_toBottomOf="@+id/studentTeacherTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

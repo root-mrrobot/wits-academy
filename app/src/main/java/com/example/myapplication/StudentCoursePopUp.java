@@ -33,7 +33,9 @@ public class StudentCoursePopUp extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_course_pop_up);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         // initialize all xml objects that appear on the pop up page
         ImageView image = (ImageView)findViewById(R.id.image);
         TextView course_name = (TextView)findViewById(R.id.course_name);

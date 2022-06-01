@@ -49,7 +49,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         requestWindowFeature(Window.FEATURE_NO_TITLE); // will hide the title
         getSupportActionBar().hide(); // hide the title bar
         setContentView(R.layout.activity_register);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         //initialising constants
         mAuth=FirebaseAuth.getInstance();
         login = findViewById(R.id.loginText);

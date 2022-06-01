@@ -32,7 +32,9 @@ public class info_courses extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         String course_id = LecturerCoursesFragment.courseClicked;
         String name;
 

@@ -18,7 +18,9 @@ public class LecturerNavigation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lecturer_navigation);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         bottomNavigationView1 = findViewById(R.id.bottomNavigationView1);
 
         //sets home fragment as first fragment when logged in as a lecturer

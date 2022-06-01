@@ -31,6 +31,9 @@ public class SubbedCourseTopics extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_topics);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         ArrayAdapter<String> myArray_topic_Adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, StringNames);
 
         myListTopics = findViewById(R.id.topicView);

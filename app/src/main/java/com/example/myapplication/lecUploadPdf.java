@@ -32,6 +32,9 @@ public class lecUploadPdf extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lec_upload_pdf);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         subject_name = LecturerCoursesFragment.courseNameClicked;
         Topic_name = ScrollLecturerCourse.topicNameClicked;
         pdf = findViewById(R.id.txt_pdf);

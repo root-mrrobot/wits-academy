@@ -41,7 +41,9 @@ public class ScrollLecturerCourse extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scroll_lecturer_course);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         String name = LecturerCoursesFragment.courseNameClicked;
         CourseName = findViewById(R.id.SVcourseName);
         topic = findViewById(R.id.topic);
