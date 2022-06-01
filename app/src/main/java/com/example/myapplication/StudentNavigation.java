@@ -18,7 +18,9 @@ public class StudentNavigation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_navigation);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         //sets home fragment as first fragment set on when on student view

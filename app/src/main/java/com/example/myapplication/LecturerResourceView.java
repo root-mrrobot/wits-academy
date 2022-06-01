@@ -35,7 +35,9 @@ public class LecturerResourceView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lecturer_resource_view);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         pdf_intent = findViewById(R.id.btnUploadPDF);
         pdf_intent.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -31,7 +31,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         //constants
         fullName = findViewById(R.id.full_Name);
         fAuth = FirebaseAuth.getInstance().getCurrentUser() ;

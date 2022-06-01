@@ -51,6 +51,9 @@ public class UploadLectures extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_lectures);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         subject_name = LecturerCoursesFragment.courseNameClicked;
         topic_name = ScrollLecturerCourse.topicNameClicked;
 

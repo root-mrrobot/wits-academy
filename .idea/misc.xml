@@ -40,6 +40,18 @@
         <entry key="..\:/Users/varac/AndroidStudioProjects/app/src/main/res/layout/activity_register.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/varac/AndroidStudioProjects/app/src/main/res/layout/activity_splash_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/varac/AndroidStudioProjects/app/src/main/res/layout/fragment_lecturer_home.xml" value="0.24635416666666668" />
+        <entry key="..\:/Users/zania/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_course_topics.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/zania/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_display_topics.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/zania/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="..\:/Users/zania/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_info_courses.xml" value="0.264" />
+        <entry key="..\:/Users/zania/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_lec_upload_pdf.xml" value="0.264" />
+        <entry key="..\:/Users/zania/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_lecturer_navigation.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/zania/AndroidStudioProjects/SD-Project/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/zania/AndroidStudioProjects/SD-Project/app/src/main/res/layout/fragment_lecturer_account.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/zania/AndroidStudioProjects/SD-Project/app/src/main/res/layout/fragment_lecturer_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/zania/AndroidStudioProjects/SD-Project/app/src/main/res/layout/fragment_student_account.xml" value="0.1554140127388535" />
+        <entry key="..\:/Users/zania/AndroidStudioProjects/SD-Project/app/src/main/res/layout/fragment_student_home.xml" value="0.1" />
+        <entry key="..\:/Users/zania/AndroidStudioProjects/SD-Project/app/src/main/res/layout/subscribed_course.xml" value="0.264" />
         <entry key="app/src/main/res/layout/activity_course_topics.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/activity_info_courses.xml" value="0.22056159420289856" />

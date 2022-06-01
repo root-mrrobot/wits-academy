@@ -36,7 +36,9 @@ public class TopicResources extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic_resources);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         intent = getIntent();
 
         Bundle extras = intent.getExtras();
