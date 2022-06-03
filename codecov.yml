@@ -1,0 +1,13 @@
+ignore:
+    - "**/LecturerCoursesFragment.java"
+    - "**/LecturerHomeFragment.java"
+    - "**/LecturerAccountFragment.java"
+    - "**/LecturerNavigation.java"
+    - "**/StudentNavigation.java"
+    - "**/StudentHomeFragment.java"
+    - "**/StudentSubscriptionsFragment.java"
+    - "**/StudentAccountFragment.java"
+    - "**/StudentCoursePopUp.java"
+    - "**/TopicResources.java"
+    - "**/info_courses.java"
+    - "**/Settings.java"
