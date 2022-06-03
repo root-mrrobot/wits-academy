@@ -12,3 +12,7 @@ ignore:
     - "**/info_courses.java"
     - "**/Settings.java"
     - "**/SrollLecturerCourse.java"
+    - "**/UploadLectures.java"
+    - "**/lecUploadPdf.java"
+    - "**/SubbedCourseTopics.java"
+    - "**/DisplayTopics.java"
