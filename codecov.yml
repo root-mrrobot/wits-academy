@@ -16,3 +16,4 @@ ignore:
     - "**/lecUploadPdf.java"
     - "**/SubbedCourseTopics.java"
     - "**/DisplayTopics.java"
+    - "**/MainActivity.java"
