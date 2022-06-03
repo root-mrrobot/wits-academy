@@ -17,3 +17,5 @@ ignore:
     - "**/SubbedCourseTopics.java"
     - "**/DisplayTopics.java"
     - "**/MainActivity.java"
+    - "**/RegisterValidation.java"
+    - "**/LoginValidation.java"
