@@ -50,14 +50,15 @@
 
     <ListView
         android:id="@+id/videoListView1"
-        android:layout_width="341dp"
-        android:layout_height="221dp"
+        android:layout_width="338dp"
+        android:layout_height="172dp"
         android:layout_marginStart="35dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/pdfResources"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/videoResources" />
 
@@ -87,4 +88,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnUploadVid"
         app:layout_constraintTop_toBottomOf="@+id/pdfListView1" />
+
+    <Button
+        android:id="@+id/btn_addQuiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="95dp"
+        android:layout_marginBottom="13dp"
+        android:text="Create a Quiz"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

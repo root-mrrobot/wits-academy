@@ -16,6 +16,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".displayQuizResults"
+            android:exported="false" />
+        <activity
+            android:name=".TakeQuiz"
+            android:exported="false" />
+        <activity
+            android:name=".QuizzesList"
+            android:exported="false" />
+        <activity
+            android:name=".StudentTopicDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".CreateQuiz"
+            android:exported="false" />
+        <activity
             android:name=".TopicResources"
             android:exported="false" />
         <activity
