@@ -42,9 +42,12 @@ public class TopicResources extends AppCompatActivity{
         intent = getIntent();
 
         Bundle extras = intent.getExtras();
+//
+//        String course = extras.getString("courseName");
+//        String topic = extras.getString("topic");
 
-        String course = extras.getString("courseName");
-        String topic = extras.getString("topic");
+        String course = StudentSubscriptionsFragment.courseNameClicked;
+        String topic = SubbedCourseTopics.topicNameClicked;
 
         fetchUrls(course,topic);
 
@@ -170,3 +173,4 @@ public class TopicResources extends AppCompatActivity{
     }
 
 }
+

@@ -69,7 +69,7 @@ public class SubbedCourseTopics extends AppCompatActivity {
                         extras.putString("courseName", name1);
                         extras.putString("topic", topicNameClicked);
 
-                        Intent intent = new Intent(getApplicationContext(), TopicResources.class);
+                        Intent intent = new Intent(getApplicationContext(), StudentTopicDashboard.class);
                         intent.putExtras(extras);
                         startActivity(intent);
                     }

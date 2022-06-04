@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class LecturerResourceView extends AppCompatActivity {
 
-    Button pdf_intent, video_intent;
+    Button pdf_intent, video_intent, createQuiz;
     Intent intent;
     ArrayList<String> videoName = new ArrayList<String>();
     ArrayList<String> pdfName = new ArrayList<String>();
@@ -43,6 +43,14 @@ public class LecturerResourceView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), lecUploadPdf.class));
+            }
+        });
+
+        createQuiz = findViewById(R.id.btn_addQuiz);
+        createQuiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), CreateQuiz.class));
             }
         });
 
