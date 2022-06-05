@@ -13,7 +13,9 @@ public class StudentTopicDashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_topic_dashboard);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         Button resources = findViewById(R.id.btn_resources);
         resources.setOnClickListener(new View.OnClickListener() {
             @Override

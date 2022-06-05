@@ -75,7 +75,7 @@ public class info_courses extends AppCompatActivity {
             });
 
             // Referencing unsub button from xml file
-            Button unsub = findViewById(R.id.btnUnsubscribe);
+        /*    Button unsub = findViewById(R.id.btnUnsubscribe);
 
             // setting on Click Listener
             unsub.setOnClickListener(new View.OnClickListener() {
@@ -86,10 +86,10 @@ public class info_courses extends AppCompatActivity {
                     // Title of Alert Dialog
                     unsub_dialog.setTitle("Unsubscribe from " + name);
                     // Message of Dialog
-                    unsub_dialog.setMessage("Are you sure you would like to Unsubscribed?");
+                    unsub_dialog.setMessage("Are you sure you would like to Unsubscribe?");
 
                     // creating yes and no buttons for pop up
-                    unsub_dialog.setPositiveButton("Log out", new DialogInterface.OnClickListener() {
+                    unsub_dialog.setPositiveButton("Unsubscribe", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             // Sending user to Login Page - User has logged out
@@ -110,7 +110,7 @@ public class info_courses extends AppCompatActivity {
                     unsub_dialog.create().show(); // Show the pop up
                 }
             });
-
+*/
             // Referencing rating button from xml file
             Button rate = findViewById(R.id.btnRate);
 

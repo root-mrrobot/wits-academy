@@ -36,7 +36,9 @@ public class CreateQuiz extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_quiz);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         quizNameBox = (EditText) findViewById(R.id.edtxt_quizName);
 
 

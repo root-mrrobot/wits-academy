@@ -26,8 +26,8 @@
 
     <TextView
         android:id="@+id/crs_desc"
-        android:layout_width="278dp"
-        android:layout_height="114dp"
+        android:layout_width="279dp"
+        android:layout_height="71dp"
         android:layout_marginStart="66dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="67dp"
@@ -39,6 +39,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/crs_image"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/crs_name" />
 
@@ -63,6 +64,7 @@
         android:layout_width="229dp"
         android:layout_height="237dp"
         android:layout_marginStart="91dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="91dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,40 +75,28 @@
         android:id="@+id/btnRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="117dp"
         android:layout_marginTop="17dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="117dp"
         android:layout_marginBottom="16dp"
         android:text="Rate This Course"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnUnsubscribe"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnViewCourse" />
+        app:layout_constraintTop_toBottomOf="@+id/btnViewCourse"
+        app:layout_constraintVertical_bias="0.277" />
 
     <Button
         android:id="@+id/btnViewCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="117dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="118dp"
         android:text="View This Course"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/crs_image" />
-
-    <Button
-        android:id="@+id/btnUnsubscribe"
-        android:layout_width="178dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="18dp"
-        android:text="Unsubscribe"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnRate"
-        app:layout_constraintTop_toBottomOf="@+id/btnViewCourse" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

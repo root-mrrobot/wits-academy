@@ -14,7 +14,8 @@
         android:layout_marginStart="136dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="137dp"
-        android:fontFamily="@font/poppinsmedium"
+        android:fontFamily="@font/poppinsbold"
+        android:textSize="40sp"
         android:gravity="center"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
@@ -59,16 +60,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="114dp"
-        android:layout_marginTop="50dp"
         android:layout_marginEnd="114dp"
         android:layout_marginBottom="5dp"
+        android:fontFamily="@font/poppinsmedium"
         android:text="ALL TOPICS"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/topicView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AddTopicBtn" />
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
         android:id="@+id/topicView"
@@ -89,11 +90,15 @@
         android:layout_marginTop="26dp"
         android:layout_marginEnd="105dp"
         android:layout_marginBottom="25dp"
+        android:fontFamily="@font/poppinsmedium"
         android:text="ADD A TOPIC"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/topic"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SVcourseName" />
+        app:layout_constraintTop_toBottomOf="@+id/SVcourseName"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
