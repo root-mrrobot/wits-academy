@@ -79,4 +79,3 @@ public class Course {
         this.rating = rating;
     }
 }
-
