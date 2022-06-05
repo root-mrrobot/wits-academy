@@ -10,14 +10,18 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="128dp"
         android:layout_marginTop="27dp"
-        android:layout_marginEnd="146dp"
+        android:layout_marginEnd="128dp"
         android:layout_marginBottom="15dp"
+        android:fontFamily="@font/poppinsbold"
         android:text="Quizzes"
-        android:textSize="34sp"
+        android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/listView_quizzes"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.458" />
 
     <ListView
         android:id="@+id/listView_quizzes"
