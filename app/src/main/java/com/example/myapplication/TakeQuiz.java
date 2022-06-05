@@ -206,10 +206,7 @@ public class TakeQuiz extends AppCompatActivity {
 
                                 int selectedId = radioGroup.getCheckedRadioButtonId();
                                 if (selectedId == -1) {
-                                    Toast.makeText(TakeQuiz.this,
-                                            "No answer has been selected",
-                                            Toast.LENGTH_SHORT)
-                                            .show();
+                                    System.out.println("");
                                 }
                                 else {
 

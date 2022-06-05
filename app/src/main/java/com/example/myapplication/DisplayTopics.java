@@ -40,10 +40,6 @@ TextView test;
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                String nameVal = snapshot.child("Week 1").getValue(String.class);
-//               System.out.println(nameVal);
-//                test.setText(nameVal);
-
 
                 ArrayList<String> topicIDs = new ArrayList<>();
                 ArrayList<String> topicNames = new ArrayList<>();
@@ -64,10 +60,6 @@ TextView test;
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         topicsClicked = topicIDs.get(i);
                         topicNameClicked = topicNames.get(i);
-
-
-
-
                         startActivity(new Intent(getApplicationContext(), UploadLectures.class));
                     }
                 });
