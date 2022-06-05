@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -28,11 +29,14 @@ public class QuizzesList extends AppCompatActivity {
     //public static  String topicsClicked,topicNameClicked;
     //public static String courseName, topic;
     public static String quizNameClicked;
+    Button exit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizzes_list);
+
+        exit = (Button)findViewById(R.id.btnExit1);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -94,6 +98,13 @@ public class QuizzesList extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), info_courses.class));
             }
         });
 

@@ -8,6 +8,13 @@ plugins {
 android {
     compileSdk 32
 
+//    packagingOptions {
+//        resources {
+//            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+//            excludes += '/META-INF/{NOTICE.md,LICENSE.md}' // <-- This line
+//        }
+//    }
+
     defaultConfig {
         applicationId "com.example.myapplication"
         minSdk 21
@@ -37,6 +44,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    packagingOptions{
+        exclude 'META-INF/NOTICE.md'
+        exclude 'META-INF/LICENSE.md'
+    }
 }
 
 dependencies {
@@ -59,6 +71,10 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 //    implementation 'androidx.squareup.picasso:picasso:2.71828'
     implementation 'com.karumi:dexter:6.2.2'
+    implementation 'com.sun.mail:android-mail:1.6.7'
+    implementation 'com.sun.mail:android-activation:1.6.7'
+    // Dumb Email Sending
+    //implementation "com.sun.mail:android-mail:$java_mail_version"
 
     // androidx.test
     def androidx_test = "1.4.0"

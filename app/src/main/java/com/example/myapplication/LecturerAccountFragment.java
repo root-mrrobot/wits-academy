@@ -174,7 +174,7 @@ public class LecturerAccountFragment extends Fragment implements View.OnClickLis
                                 String link = child.child("profilePic_URI").getValue().toString();
 
                                 // variable which is ImageView
-                                Glide.with(getContext()).load(link).into(pro_pic);
+                                Glide.with(getActivity()).load(link).into(pro_pic);
 
                             }
 

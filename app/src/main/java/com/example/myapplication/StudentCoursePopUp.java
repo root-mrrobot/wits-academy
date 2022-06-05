@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -52,11 +53,22 @@ public class StudentCoursePopUp extends AppCompatActivity {
         courseName = extras.getString("courseName");
         subscribe = findViewById(R.id.subscribe_button);
 
+        DatabaseReference subRef = FirebaseDatabase.getInstance().getReference("Subscribers/" + courseName + "/");
+
         // set all the objects to the matching information that was retrieved using the getExtras method
         course_name.setText(extras.getString("courseName"));
         course_description.setText("Description: " + extras.getString("courseDescription"));
         category.setText(extras.getString("category"));
-        ratingbar.setRating(Float.parseFloat(extras.getString("rating")));
+
+        if (extras.getString("rating").length() > 5)
+        {
+            ratingbar.setRating(0);
+        }
+
+        else
+            ratingbar.setRating(Float.parseFloat(extras.getString("rating")));
+
+
         lecturer_name.setText(extras.getString("lecturerName"));
 
         Glide.with(getApplicationContext()).load(extras.getString("image")).into(image);
@@ -87,6 +99,21 @@ public class StudentCoursePopUp extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
                             addCoursesToDB(courseName);
+                            DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference("courses/");
+                            ref1.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                    subRef.child(ref.push().getKey()).setValue(fAuth.getEmail());
+                                    // after adding this data we are showing toast message.
+                                    Toast.makeText(StudentCoursePopUp.this, "data added", Toast.LENGTH_SHORT).show();
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    Toast.makeText(StudentCoursePopUp.this, "Fail to add rating " + error, Toast.LENGTH_SHORT).show();
+                                }
+                            });
                             subscribe.setEnabled(false);
                         }
                     });
@@ -125,5 +152,9 @@ public class StudentCoursePopUp extends AppCompatActivity {
             }
         });
     }
+
+
+
+
 
 }
