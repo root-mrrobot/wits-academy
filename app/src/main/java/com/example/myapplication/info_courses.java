@@ -1,12 +1,18 @@
 package com.example.myapplication;
 
+import android.app.ActionBar;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -24,17 +30,28 @@ import com.google.firebase.database.ValueEventListener;
 public class info_courses extends AppCompatActivity {
 
     FirebaseUser fAuth;
-    String courseId;
+    String courseId, uID;
     public static TextView Cname;
     DatabaseReference ref;
     TextView returnCourse;
     Button course_content;
+    float rating;
+    private DatabaseReference coursesRef;
+    private DatabaseReference rateRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
+        fAuth = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (fAuth != null) { //Firebase Authorization
+            uID = fAuth.getUid();
+        }
+
         String course_id = LecturerCoursesFragment.courseClicked;
         String name;
 
@@ -61,7 +78,9 @@ public class info_courses extends AppCompatActivity {
             });
         }
         else{
+
             name = StudentSubscriptionsFragment.courseNameClicked;
+            rateRef = FirebaseDatabase.getInstance().getReference("Ratings/" + name + "/");
             setContentView(R.layout.subscribed_course);
 
             Button courseResources = findViewById(R.id.btnViewCourse);
@@ -120,15 +139,52 @@ public class info_courses extends AppCompatActivity {
                 public void onClick(View view) {
                     // Alert Dialog init
                     AlertDialog.Builder rating_dialog = new AlertDialog.Builder(view.getContext());
+                    // Rating bar init
+                    RatingBar ratingBar = new RatingBar(view.getContext());
+                    //sets number of stars and intervals of rating
+                    ratingBar.setNumStars(5);
+                    ratingBar.setStepSize(0.5f);
                     // Title of Alert Dialog
-                    rating_dialog.setTitle("Rate Selected Course");
+                    rating_dialog.setTitle("Rate " + name);
                     // Message of Dialog
                     rating_dialog.setMessage("Select a star Rating that you are happy with:");
+
+                    ratingBar.setLayoutParams(new ActionBar.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT,
+                            ActionBar.LayoutParams.WRAP_CONTENT));
+                    LinearLayout parent = new LinearLayout(view.getContext());
+                    parent.setGravity(Gravity.CENTER);
+                    parent.setLayoutParams(new ActionBar.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.MATCH_PARENT));
+                    parent.addView(ratingBar);
+
+                    rating_dialog.setView(parent);
+
 
                     // creating yes and no buttons for pop up
                     rating_dialog.setPositiveButton("Rate", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
+
+                            rating = ratingBar.getRating();
+
+                            Rate rateData = new Rate(uID, name, rating);
+
+                            ref = FirebaseDatabase.getInstance().getReference("courses/");
+                            ref.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                        rateRef.child(ref.push().getKey()).setValue(rateData);
+                                        ratingBar.setRating(0);
+                                        // after adding this data we are showing toast message.
+                                        Toast.makeText(info_courses.this, "data added", Toast.LENGTH_SHORT).show();
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    Toast.makeText(info_courses.this, "Fail to add rating " + error, Toast.LENGTH_SHORT).show();
+                                }
+                            });
                             // Sending user to Login Page - User has logged out
 //                        Intent intent = new Intent(getActivity(), Login.class);
 //                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -209,23 +265,7 @@ public class info_courses extends AppCompatActivity {
 
     }
 
-//    public void onClick(View view){
-//        switch (view.getId()){
-//            case R.id.btnUnsubscribe:
-//                // Alert Dialog init
-//                AlertDialog.Builder unsub_dialog = new AlertDialog.Builder(view.getContext());
-//                // Title of Alert Dialog
-//                unsub_dialog.setTitle("Log out of Wits Academy");
-//                // Message of Dialog
-//                unsub_dialog.setMessage("Are you sure you would like to log out?");
-//
-//                // creating yes and no buttons for pop up
-//                unsub_dialog.setPositiveButton("Unsubscribe", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                    }
-//                });
-//        }
-//    }
+
+
 
 }

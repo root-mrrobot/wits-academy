@@ -1,4 +1,8 @@
 buildscript {
+//    ext {
+//        // ...
+//        java_mail_version = "1.6.7"
+//    }
     dependencies {
         classpath 'com.google.gms:google-services:4.3.10'
         classpath 'com.dicedmelon.gradle:jacoco-android:0.1.5'
