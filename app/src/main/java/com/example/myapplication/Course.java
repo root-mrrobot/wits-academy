@@ -10,7 +10,7 @@ public class Course {
     String category;
     String teacher;
     String image;
-    double rating;
+    String rating;
 
     public String getId() {
         return id;
@@ -60,15 +60,15 @@ public class Course {
         this.image = image;
     }
 
-    public double getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
-    public Course(String id, String name, String description, String category, String teacher, String image, double rating)
+    public Course(String id, String name, String description, String category, String teacher, String image, String rating)
     {
         this.id = id;
         this.name = name;
@@ -79,3 +79,4 @@ public class Course {
         this.rating = rating;
     }
 }
+
