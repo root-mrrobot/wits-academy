@@ -60,7 +60,7 @@ public class LecturerHomeFragment extends Fragment implements View.OnClickListen
     private String userID;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference myRef;
-    private DatabaseReference userRef,descRef;
+    private DatabaseReference userRef,descRef,rateRef,rRef;
     private ArrayList<String> spinnerList;
     private ArrayAdapter<String> adapter;
     // instance for firebase storage and StorageReference
@@ -222,6 +222,7 @@ public class LecturerHomeFragment extends Fragment implements View.OnClickListen
                                     Toast.makeText(getActivity(), "Something wrong happened!", Toast.LENGTH_LONG).show();
                                 }
                             });
+
 
                             Toast.makeText(getContext(), "Uploaded Successfully", Toast.LENGTH_SHORT).show();
                             pd.dismiss();
