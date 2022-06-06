@@ -12,28 +12,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="82dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="82dp"
-        android:layout_marginBottom="12dp"
-        android:text="NOTIFICATIONS"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="27dp"
+        android:layout_marginBottom="-15dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="Notifications"
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/notifications"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topicView" />
+        app:layout_constraintTop_toBottomOf="@+id/AddTopicBtn" />
 
     <TextView
         android:id="@+id/SVcourseName"
         android:layout_width="281dp"
         android:layout_height="64dp"
         android:layout_marginStart="65dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="26dp"
         android:layout_marginEnd="65dp"
-        android:layout_marginBottom="14dp"
-        android:fontFamily="@font/poppinsmedium"
+        android:fontFamily="@font/poppinsbold"
         android:gravity="center"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="@color/blue"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,13 +46,10 @@
         android:id="@+id/AddTopicBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="27dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="41dp"
-        android:text="      Add Topic      "
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Add Topic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnNotifications" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topicView" />
 
     <TextView
         android:id="@+id/textView5"
@@ -58,9 +58,10 @@
         android:layout_marginStart="132dp"
         android:layout_marginEnd="133dp"
         android:layout_marginBottom="12dp"
-        android:text="TOPICS"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="27dp"
+        android:text="Topics"
+        android:fontFamily="@font/poppinsmedium"
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/topicView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,13 +69,13 @@
 
     <ListView
         android:id="@+id/topicView"
-        android:layout_width="375dp"
-        android:layout_height="202dp"
+        android:layout_width="370dp"
+        android:layout_height="161dp"
         android:layout_marginStart="18dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="18dp"
-        android:layout_marginBottom="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -82,24 +83,45 @@
         android:id="@+id/btnNotifications"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginBottom="41dp"
+        android:layout_marginStart="117dp"
+        android:layout_marginTop="-15dp"
+        android:layout_marginEnd="118dp"
+        android:layout_marginBottom="16dp"
         android:text="Add Notification"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/AddTopicBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/AddTopicBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/notifications" />
 
     <ListView
         android:id="@+id/notifications"
         android:layout_width="375dp"
         android:layout_height="202dp"
         android:layout_marginStart="21dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginBottom="34dp"
-        app:layout_constraintBottom_toTopOf="@+id/AddTopicBtn"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnNotifications"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.857" />
+
+    <View
+        android:id="@+id/divider5"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="18dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/AddTopicBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
