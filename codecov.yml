@@ -26,3 +26,4 @@ ignore:
     - "**/Rate.java"
     - "**/StudentTopicDashboard.java"
     - "**/displayQuizResults.java"
+    - "**/Login.java"
