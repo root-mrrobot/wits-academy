@@ -19,3 +19,4 @@ ignore:
     - "**/MainActivity.java"
     - "**/RegisterValidation.java"
     - "**/LoginValidation.java"
+    - "**/TakeQuiz.java"
