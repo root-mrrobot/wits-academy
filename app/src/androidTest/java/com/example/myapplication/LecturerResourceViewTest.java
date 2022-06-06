@@ -98,6 +98,16 @@ public class LecturerResourceViewTest {
         lecturerResource.finish();
     }
 
+    @Test
+    public void quizBtnTest(){
+        TextView textViewTest = lecturerResource.findViewById(R.id.btn_addQuiz);
+        String actual = textViewTest.getText().toString();
+        String expected = "Create a Quiz";
+
+        assertEquals(actual,expected);
+        lecturerResource.finish();
+    }
+
     // After method (default)
     @After
     public void tearDown() throws Exception {
