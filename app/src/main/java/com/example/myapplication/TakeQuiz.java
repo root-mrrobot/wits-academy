@@ -32,7 +32,9 @@ public class TakeQuiz extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_quiz);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         quizName = findViewById(R.id.txt_quizName);
         quizName.setText(QuizzesList.quizNameClicked);
 

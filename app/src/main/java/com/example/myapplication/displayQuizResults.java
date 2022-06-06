@@ -14,7 +14,9 @@ public class displayQuizResults extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_quiz_results);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         Intent takeQuizIntent = getIntent();
         String score = takeQuizIntent.getStringExtra("scoreString");
 

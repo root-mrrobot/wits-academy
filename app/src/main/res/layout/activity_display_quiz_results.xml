@@ -7,23 +7,47 @@
     tools:context=".displayQuizResults">
 
     <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="131dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Results"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="79dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="79dp"
+        android:layout_marginBottom="385dp"
         android:text="Your grade for this quiz:"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_doneReview"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
     <TextView
         android:id="@+id/txt_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
+        android:layout_marginStart="205dp"
         android:layout_marginTop="232dp"
+        android:layout_marginEnd="206dp"
+        android:layout_marginBottom="454dp"
         android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,9 +55,9 @@
         android:id="@+id/btn_doneReview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="358dp"
-        android:layout_marginEnd="168dp"
+        android:layout_marginTop="304dp"
+        android:layout_marginEnd="160dp"
         android:text="Done"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_score" />
 </androidx.constraintlayout.widget.ConstraintLayout>
