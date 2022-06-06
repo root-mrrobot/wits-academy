@@ -6,9 +6,9 @@ public class ImageUploadInfo {
     public String courseName;
     public String imageURL;
 
-    public ImageUploadInfo() {
-
-    }
+//    public ImageUploadInfo() {
+//
+//    }
 
     public ImageUploadInfo(String name,String url) {
        this.courseName = name;
