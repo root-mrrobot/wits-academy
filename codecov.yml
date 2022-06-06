@@ -11,6 +11,7 @@ ignore:
     - "**/TopicResources.java"
     - "**/info_courses.java"
     - "**/Settings.java"
+    - "**/Home.java"
     - "**/ScrollLecturerCourse.java"
     - "**/UploadLectures.java"
     - "**/lecUploadPdf.java"
