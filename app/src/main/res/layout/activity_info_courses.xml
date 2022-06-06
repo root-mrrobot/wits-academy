@@ -26,8 +26,8 @@
 
     <TextView
         android:id="@+id/crs_desc"
-        android:layout_width="278dp"
-        android:layout_height="114dp"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
         android:layout_marginStart="66dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="67dp"
@@ -65,7 +65,7 @@
         android:layout_width="166dp"
         android:layout_height="155dp"
         android:layout_marginStart="91dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="68dp"
         android:layout_marginEnd="91dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"

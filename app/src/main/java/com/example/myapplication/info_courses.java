@@ -94,7 +94,7 @@ public class info_courses extends AppCompatActivity {
             });
 
             // Referencing unsub button from xml file
-            Button unsub = findViewById(R.id.btnUnsubscribe);
+ /*           Button unsub = findViewById(R.id.btnUnsubscribe);
 
             // setting on Click Listener
             unsub.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +129,7 @@ public class info_courses extends AppCompatActivity {
                     unsub_dialog.create().show(); // Show the pop up
                 }
             });
-
+*/
             // Referencing rating button from xml file
             Button rate = findViewById(R.id.btnRate);
 

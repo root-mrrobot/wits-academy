@@ -7,50 +7,64 @@
     android:id="@+id/uploadLectures"
     tools:context=".UploadLectures">
 
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="103dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="103dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Upload Video"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/lec_video"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <VideoView
         android:id="@+id/lec_video"
         android:layout_width="280dp"
         android:layout_height="185dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginEnd="84dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginEnd="66dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.047" />
+        app:layout_constraintVertical_bias="0.282" />
 
     <EditText
         android:id="@+id/video_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="74dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="127dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="101dp"
         android:ems="10"
         android:hint="Add Video heading"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lec_video"
-        app:layout_constraintVertical_bias="0.008" />
+        app:layout_constraintVertical_bias="0.156" />
 
     <Button
         android:id="@+id/btn_vidBrowse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="46dp"
-        android:layout_marginEnd="187dp"
         android:text="Browse"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.281"
+        app:layout_constraintEnd_toStartOf="@+id/btn_vidUpload"
+        app:layout_constraintHorizontal_bias="0.827"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/video_heading"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.163" />
 
     <Button
         android:id="@+id/btn_vidUpload"
@@ -60,10 +74,10 @@
         android:text="Upload"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.661"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/video_heading"
-        app:layout_constraintVertical_bias="0.115" />
+        app:layout_constraintVertical_bias="0.334" />
 
     <Button
         android:id="@+id/btnExit"
