@@ -27,3 +27,4 @@ ignore:
     - "**/StudentTopicDashboard.java"
     - "**/displayQuizResults.java"
     - "**/LecturerResourceView.java"
+    - "**/Home.java"
